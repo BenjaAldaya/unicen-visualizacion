@@ -1,0 +1,42 @@
+.container{
+    display: flex;
+    width: 950px;
+    height: 350px;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+figure{
+    padding: 0;
+    margin: 0;
+    height: 100%;
+    width: 183px;
+}
+figure img {
+    height: 350px;
+    width: 183px;
+}
+figure img .joyderecho{
+    margin-left: -10px;
+}
+
+.container-center{
+    margin-top:8px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 553px;
+    height: 320px;
+    justify-content: center;
+    border-color: #3F2E3E;
+    border-style: solid;
+    border-width: 10px 16px 10px 16px;
+    background: linear-gradient(180deg, #35ABD2 0%, #3CC2EF 51.56%, #154A5B 100%);
+
+}
+
+.container-center form {
+    display: flex;
+    flex-direction: column;
+}
