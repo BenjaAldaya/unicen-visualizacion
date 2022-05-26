@@ -6,6 +6,7 @@ import { GameLGComponent } from './game-lg/game-lg.component';
 import { NavbarComponent } from './navbar/navbar.component';
 import { LoginRegisterComponent } from './login-register/login-register.component';
 import { AdComponent } from './ad/ad.component';
+import { CategoryComponent } from './category/category.component';
 
 @NgModule({
   declarations: [
@@ -13,7 +14,8 @@ import { AdComponent } from './ad/ad.component';
     GameLGComponent,
     NavbarComponent,
     LoginRegisterComponent,
-    AdComponent
+    AdComponent,
+    CategoryComponent
   ],
   imports: [
     BrowserModule

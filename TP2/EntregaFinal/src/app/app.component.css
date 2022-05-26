@@ -5,10 +5,10 @@
     margin-left: 2rem;
     display: flex;
     float: left;
-    /* width: 90%; */
+    width: 90%;
     flex-wrap: wrap;
 }
 .right{
     float: right;
-    width: 10%
+    width: 120px;
 }

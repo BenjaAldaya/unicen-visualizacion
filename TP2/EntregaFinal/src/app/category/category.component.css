@@ -1,0 +1,30 @@
+.card-category-g{
+    display: flex;
+    width: 201px;
+    height: 68px;
+    border: 1px solid #000000;
+    border-radius: 5px;
+    margin-right: 8px;
+}
+
+.container-category-g{
+    margin-top: 116px;
+    display: flex;
+}
+
+.container-category-s{
+    margin-top: 18px;
+    display: flex;
+}
+
+.card-category-g-icon{
+    width: 30%;
+    height: 100%;
+    background-color: #ED6077;
+}
+
+.card-category-g-text{
+    width: 70%;
+    height: 100%;
+    background: #3CC2EF;
+}
