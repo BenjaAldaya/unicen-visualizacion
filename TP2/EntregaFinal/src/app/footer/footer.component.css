@@ -1,3 +1,4 @@
+
 .footer{
     width: 100%;
     background-color: #032A59;
@@ -16,11 +17,14 @@
     cursor: pointer;
   }
 
+/* Derecha del footer */
 
 .right{
     width: 80%;
 }
-
+.right div{
+    margin-top: 3rem;
+}
 .right p {
     font-family: 'Lato';
     font-style: normal;
@@ -33,10 +37,14 @@
     justify-content: center;
 }
 
+
+/* Izquierda del footer */
 .left{
     border: 1px solid black;
     width: 20%;
 }
+
+/* Logo */
 
 .left .logo{
     width:100%;
@@ -70,4 +78,22 @@
   text-transform: uppercase;
   color: #FFFFFF;
   text-shadow: 0px 2px 2px #ED6077;
+  }
+
+
+/* Redes */
+
+  .left .redes{
+    width:100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .left .redes .icon{
+      width: 40px;
+      height: 40px;
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
   }
