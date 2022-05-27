@@ -1,13 +1,12 @@
 .container{
     width: 100%;
-    /* display: flex;
-    justify-content: flex-start; */
+    padding-top: 6.25rem;
 }
 .left{
     margin-left: 2rem;
     display: flex;
     float: left;
-    width: 88%;
+    max-width: 90%;
     flex-wrap: wrap;
     margin-bottom: 2rem;
 }
@@ -19,7 +18,7 @@
     /* margin-left: ; */
 }
 .right{
-    /* display: block; */
+    display: flex;
     float: right;
     width: 120px;
     margin-right: 1rem;
