@@ -1,0 +1,40 @@
+.card-category{
+    display: flex;
+    width: 201px;
+    height: 68px;
+    border-radius: 5px;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+    margin-right: 0.6rem;
+    margin-bottom: 1rem;
+}
+
+.card-category .left{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    width: 30%;
+    height: 100%;
+    background-color: #ED6077;
+    border-radius: 5px 0px 0px 5px;
+    border:1px solid #000000;
+}
+
+.card-category .left .ellipse{
+    width: 40px;
+    height: 40px;
+    background: rgba(162, 186, 185, 0.44);
+    border-radius: 50%;
+}
+
+.card-category .right{
+    width: 70%;
+    height: 100%;
+    background: #3CC2EF;
+    border-color: #000000;
+    border-style: solid;
+    border-width: 1px 1px 1px 0px;
+    border-radius: 0px 5px 5px 0px;
+    box-shadow: inset 1px 1px 6px rgba(0, 0, 0, 0.5);
+}

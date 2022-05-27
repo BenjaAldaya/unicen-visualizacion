@@ -1,15 +1,11 @@
 
 .gamecontainer {
     width:100% ;
-    margin-left: 1.20rem;
+    margin-right: 1.20rem;
     margin-bottom: 1.20rem;
     /* display: flex;
     justify-content: center;
     align-items: center; */
-}
-
-figure{
-  margin: 0;
 }
 
 .gamecontainer figure{
@@ -58,10 +54,17 @@ figure{
 }
 .gamecontainer figure a:hover> .capa .namebg{
     width: 100%;
-    background-color: rgba(0, 0, 0, 0.6);
+    margin-top: 50%;
+    padding: 0.5rem 0 0.5rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-width: 1px 0 1px 0;
 }
 
-.gamecontainer figure a:hover> .capa h3{
+.gamecontainer figure a:hover> .capa p{
+    width: 100%;
+    text-align: center;
     color: white;
     border: 25px white;
     opacity: 0;
