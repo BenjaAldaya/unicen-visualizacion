@@ -73,13 +73,26 @@ nav .content input {
 }
 /* --------Categorias---------- */
 .navcat {
-  font-style: normal;
-  font-size: 16px;
   width: 200px;
-  height: 100%;
-  font-weight: 700;
-  font-size: 16px;
   cursor: pointer;
+  margin-left: 1.5rem;
+}
+
+.navcat a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+
+.navcat:hover{
+  background-color: #383838;
+  box-shadow: inset 1px 1px 2px;
+}
+
+.navcat:hover > #catbutton p{
+  text-shadow: 0px 6px 8px #35ABD2;    
 }
 
 .navcat a span {
@@ -111,9 +124,9 @@ nav ul {
 }
 
 nav ul li {
-  float: left;
+  /* float: left; */
   width: 200px;
-  height: 40px;
+  height: 60px;
   line-height: 40px;
 }
 
@@ -125,7 +138,7 @@ nav ul li a {
   width: 100%;
   height: 100%;
   text-align: center;
-  border-top:3px groove #969696;
+  border-top:3px inset #969696;
   text-decoration: none;
 }
 
@@ -168,19 +181,20 @@ ul.drop-menu li:last-child {
   display: block;
 }
 
-.navcat:hover > .navcat a span{
+/* .navcat:hover > .navcat a span{
   -webkit-transform: rotate(-180deg);
 -moz-transform: rotate(-180deg);
 transform: rotate(-180deg);
-}
+} */
 
 .navcat:hover>.drop-menu.cat {
-  perspective: 1000px;
+  perspective: 1000px
 }
 
 .navcat:hover>.drop-menu.cat li {
   opacity: 0;
   transform-origin: top center;
+  background-color: #383838;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(1) {
@@ -189,6 +203,7 @@ transform: rotate(-180deg);
   animation-delay: -100ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(2) {
@@ -197,6 +212,7 @@ transform: rotate(-180deg);
   animation-delay: -20ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(3) {
@@ -205,6 +221,7 @@ transform: rotate(-180deg);
   animation-delay: 60ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(4) {
@@ -213,6 +230,7 @@ transform: rotate(-180deg);
   animation-delay: 140ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(5) {
@@ -221,6 +239,7 @@ transform: rotate(-180deg);
   animation-delay: 220ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(6) {
@@ -229,6 +248,7 @@ transform: rotate(-180deg);
   animation-delay: 300ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(7) {
@@ -237,6 +257,7 @@ transform: rotate(-180deg);
   animation-delay: 380ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
 }
 
 .navcat:hover>.drop-menu.cat li:nth-child(8) {
@@ -245,6 +266,23 @@ transform: rotate(-180deg);
   animation-delay: 460ms;
   animation-timing-function: ease-in-out;
   animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+.navcat:hover>.drop-menu.cat li:nth-child(9) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 540ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+.navcat:hover>.drop-menu.cat li:nth-child(10) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 620ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 4px 4px 4px;
 }
 
 @keyframes dropcat {
@@ -258,7 +296,10 @@ transform: rotate(-180deg);
     transform: rotateX(0deg);
   }
 }
-
+.drop-menu.cat img{
+  width:60%;
+  height: 60%;
+}
 
 /* --------------Login---------------- */
 #btnlogin {

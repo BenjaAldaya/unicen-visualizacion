@@ -15,16 +15,9 @@
         <input type="text" placeholder="Buscador">
     </div>
     <div class="navcat">
-        <a href="#" id="catbutton" role="button"> CATEGORIAS <span>&#9660;</span></a>
+        <a id="catbutton" role="button"><p>CATEGORIAS</p><span>&#9660;</span></a>
         <ul class="drop-menu cat">
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
-          <li><a href="">Categoria 1 <figure class="ellipse"><img src="" alt=""></figure></a></li>
+          <li *ngFor="let categoria of Categorias;"><a href="category/{{categoria.link}}">{{categoria.name}}<figure class="ellipse"><img src={{categoria.icon}} alt=""></figure></a></li>
         </ul>
     </div>
     <div class="navlogin">
