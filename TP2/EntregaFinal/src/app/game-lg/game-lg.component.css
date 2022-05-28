@@ -1,19 +1,19 @@
 .gamecontainer {
     margin-bottom: 1.20rem;
     display: flex;
-    justify-content: center;
-    align-items: center;
+    justify-items: space-between;
+    /* align-items: center; */
 }
 .lg {
   width: 228px;
   height: 176px;
-  margin-right: 1.20rem;
+  /* margin-right: 1.20rem; */
 }
 
 .sm{
   width: 140px;
   height: 140px;
-  margin-right: 1rem;
+  /* margin-right: 1rem; */
 }
 
 .gamecontainer figure {
@@ -74,6 +74,7 @@
     height: 1rem;
     align-self: flex-end;
     justify-self: center;
+    align-items: center;
     margin-bottom: 1.5rem;
     padding: 0.5rem 0 0.5rem 0;
     background-color: rgba(0, 0, 0, 0.7);
