@@ -3,12 +3,13 @@
     padding-top: 6.25rem;
 }
 .left{
-    margin-left: 2rem;
+    margin-left: 3%;
+    max-width: 85%;
     display: flex;
     float: left;
-    max-width: 90%;
     flex-wrap: wrap;
     margin-bottom: 2rem;
+    justify-content: space-between;
 }
 
 .left h3{
@@ -21,5 +22,6 @@
     display: flex;
     float: right;
     width: 120px;
-    margin-right: 1rem;
+    width: 9%;
+    margin-right: 1%;
 }
