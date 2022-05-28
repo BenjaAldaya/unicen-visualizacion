@@ -30,16 +30,9 @@
         <app-game-lg></app-game-lg>
     </section>
     <section class="left">
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
+        <div *ngFor="let categoria of categorias">
+        <app-category [categoria]="categoria"></app-category>
+        </div>
     </section>
 </div>
 

@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Category } from '../category';
-import { CategorysService } from '../categorys.service';
+import { Categorias } from '../category-array';
+
 
 @Component({
   selector: 'app-home',
@@ -14,5 +14,5 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  
+  categorias = Categorias
 }
