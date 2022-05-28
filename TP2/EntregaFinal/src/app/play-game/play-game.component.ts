@@ -13,5 +13,4 @@ export class PlayGameComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
 }
