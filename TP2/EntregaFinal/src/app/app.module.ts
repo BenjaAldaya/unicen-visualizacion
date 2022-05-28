@@ -8,6 +8,9 @@ import { LoginRegisterComponent } from './login-register/login-register.componen
 import { AdComponent } from './ad/ad.component';
 import { CategoryComponent } from './category/category.component';
 import { FooterComponent } from './footer/footer.component';
+import { AppRoutingModule } from './app-routing.module';
+import { HomeComponent } from './home/home.component';
+import { PlayGameComponent } from './play-game/play-game.component';
 
 @NgModule({
   declarations: [
@@ -17,10 +20,13 @@ import { FooterComponent } from './footer/footer.component';
     LoginRegisterComponent,
     AdComponent,
     CategoryComponent,
-    FooterComponent
+    FooterComponent,
+    HomeComponent,
+    PlayGameComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

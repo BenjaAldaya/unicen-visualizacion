@@ -4,7 +4,8 @@
     background-color: #032A59;
     height: 140px;
     display: flex;
-    flex-wrap: nowrap;
+    flex-wrap: nowrap; 
+    /* align-self: end; */
 }
 
 .footer a{
