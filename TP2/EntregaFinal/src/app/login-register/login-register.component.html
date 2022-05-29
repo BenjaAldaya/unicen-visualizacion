@@ -3,22 +3,47 @@
     <figure><img src="./assets/images/izq.png" alt=""></figure>
     <div class="container-center">
         <div class="tabs">
-            <a href="" role="button" id="loginbtn">Iniciar Sesion</a>
-            <a href="" role="button" id="registerbtn">Registrarse</a>
+            <button type="button" id="loginbtn">Iniciar Sesion</button>
+            <button type="button" id="registerbtn">Registrarse</button>
         </div>
-        <div class="contenido">
+        <div class="contenidologin">
             <form class="login">
                 <div>
-                    <label for="inputuser">Usuario</label>
+                    <label for="inputuser">Usuario o Email:</label>
                     <input type="text" name="inputuser" id="inputuser">
                 </div>
                 <div>
-                    <label for="inputpass">Contraseña</label>
+                    <label for="inputpass">Contraseña:</label>
                     <input type="text" name="inputpass" id="inputpass">
                 </div>
                 <div>
                     <a href="">Olvidaste tu contraseña?</a>
-                    <button>Iniciar Sesion</button>
+                </div>
+                <div>
+                    <button class="btn-primary" type="submit">Iniciar Sesion</button>
+                </div>
+            </form>
+        </div>
+        <div class="contenidoregister">
+            <form class="login">
+                <div>
+                    <label for="inputuser">Usuario o Email:</label>
+                    <input type="text" name="inputuser" id="inputuser">
+                </div>
+                <div>
+                    <label for="inputemail">Email:</label>
+                    <input type="text" name="inputemail" id="inputemail">
+                </div>
+                <div>
+                    <label for="inputpass">Contraseña:</label>
+                    <input type="text" name="inputpass" id="inputpass">
+                </div>
+                <div class="terminos">
+                    <input type="checkbox">
+                    <label href="">Acepto los terminos y condiciones</label>
+                </div>
+                <div>
+                    <button class="btn-primary" type="submit">Registrarse</button>
                 </div>
             </form>
         </div>
