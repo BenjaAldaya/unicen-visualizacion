@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Categorias } from '../category-array';
 
 @Component({
   selector: 'app-advanced-search',
@@ -9,7 +10,18 @@ export class AdvancedSearchComponent implements OnInit {
 
   constructor() { }
 
+  categorias = Categorias; 
+
   ngOnInit(): void {
+    document.getElementById('category')?.addEventListener('click', event => {
+      if(document.getElementById('category2')?.classList.contains('none')){
+        document.getElementById('category2')?.classList.remove('none');
+        document.getElementById('category2')?.classList.add('more-category');
+      }else{
+        document.getElementById('category2')?.classList.remove('more-category');
+        document.getElementById('category2')?.classList.add('none');
+      }
+    })
   }
 
 }

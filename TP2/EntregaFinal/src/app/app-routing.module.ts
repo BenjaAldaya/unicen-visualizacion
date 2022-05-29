@@ -6,10 +6,10 @@ import { PlayGameComponent } from './play-game/play-game.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 const routes: Routes = [
-  {path:"", redirectTo:'home', pathMatch:'full'},
   {path:"home", component:HomeComponent },
   {path:'playgame', component:PlayGameComponent},
-  {path:'search', component: AdvancedSearchComponent}
+  {path:'search', component: AdvancedSearchComponent},
+  {path:'**', redirectTo:'home'}
 ];
 
 const routerOptions: ExtraOptions = {
