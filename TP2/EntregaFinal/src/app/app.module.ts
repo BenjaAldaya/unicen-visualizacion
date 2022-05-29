@@ -11,6 +11,7 @@ import { FooterComponent } from './footer/footer.component';
 import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PlayGameComponent } from './play-game/play-game.component';
+import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +23,8 @@ import { PlayGameComponent } from './play-game/play-game.component';
     CategoryComponent,
     FooterComponent,
     HomeComponent,
-    PlayGameComponent
+    PlayGameComponent,
+    AdvancedSearchComponent
   ],
   imports: [
     BrowserModule,

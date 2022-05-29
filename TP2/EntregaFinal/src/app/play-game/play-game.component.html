@@ -54,15 +54,8 @@
         </article>
     </section>
     <section class="more-category">
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
-        <app-category></app-category>
+        <div *ngFor="let categoria of categorias">
+            <app-category [categoria]="categoria"></app-category>
+        </div>
     </section>
 </div>

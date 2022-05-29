@@ -1,4 +1,5 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
+import { Categorias } from '../category-array';
 
 @Component({
   selector: 'app-play-game',
@@ -8,9 +9,12 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 })
 export class PlayGameComponent implements OnInit {
 
+
+
   constructor() { }
 
   ngOnInit(): void {
   }
-
+  
+  categorias = Categorias
 }

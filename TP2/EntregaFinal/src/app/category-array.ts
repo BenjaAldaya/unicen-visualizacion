@@ -46,4 +46,9 @@ export const Categorias : Category[] = [
       icon:'./assets/images/category/icon-.svg',
       link:'carreras'
     },  
+    {
+      name: 'Deportes',
+      icon:'./assets/images/category/icon-.svg',
+      link:'deportes'
+    },  
   ]
