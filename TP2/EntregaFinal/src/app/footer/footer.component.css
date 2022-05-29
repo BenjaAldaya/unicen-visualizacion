@@ -5,6 +5,7 @@
     height: 140px;
     display: flex;
     flex-wrap: nowrap; 
+    margin-top: 1.25rem;
     /* align-self: end; */
 }
 

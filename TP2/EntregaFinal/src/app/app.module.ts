@@ -12,6 +12,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { HomeComponent } from './home/home.component';
 import { PlayGameComponent } from './play-game/play-game.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { AdvancedSearchComponent } from './advanced-search/advanced-search.compo
     FooterComponent,
     HomeComponent,
     PlayGameComponent,
-    AdvancedSearchComponent
+    AdvancedSearchComponent,
+    ProfileComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,94 @@
+.container{
+    width: 100%;
+    display:flex;
+    justify-content: center;
+    padding-top: 6.25rem;
+}
+
+.profile{
+    width: 600px;
+    height: 800px;
+}
+
+.user-background {
+    width: 100%;
+    height: 200px;
+    background-color: black;
+}
+
+.user{
+    display: flex;
+    align-items: center;
+    padding-left: 3rem;
+    padding-top: 6.25rem;
+}
+
+.user-image{
+    width: 133px;
+    height: 133px;
+    background-color: white;
+    border: 1px solid black;
+    filter: drop-shadow(0,4,4,rgba(0,0,0,0.25));
+    border-radius: 160px;
+}
+.right{
+    width: 133px;
+    height: 133px;
+    display: block;
+    padding-left: 1.25rem;
+}
+
+.user-name{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-end;
+}
+.user-country{
+    width: 100%;
+    height: 50%;
+    display: flex;
+    align-items: flex-start;
+}
+
+.profile-games{
+    background-color: rgba(0,0,0,0.5);
+    padding-top: 3rem;
+    display: block;  
+}
+
+.title{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    margin-top: 2rem;
+    margin-bottom: 3rem;
+}
+
+.title h1{
+    text-shadow: 0px 4px 4px rgba(0,0,0,0.5);
+    transform: rotate(-0.44deg);
+}
+
+.profile-games .cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.games{
+    width: 80%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+
+.ads{
+    display: flex;
+    justify-content: flex-end;
+    width: 20%;
+}

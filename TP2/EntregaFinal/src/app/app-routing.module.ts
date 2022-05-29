@@ -4,11 +4,13 @@ import { Routes, RouterModule, ExtraOptions } from '@angular/router';
 import { HomeComponent } from './home/home.component';
 import { PlayGameComponent } from './play-game/play-game.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path:"home", component:HomeComponent },
   {path:'playgame', component:PlayGameComponent},
   {path:'search', component: AdvancedSearchComponent},
+  {path:'profile', component: ProfileComponent},
   {path:'**', redirectTo:'home'}
 ];
 
