@@ -20,10 +20,9 @@
 <div class="container"> -->
     <section class="playgame">
         <article class="more-games-column">
-            <app-game-lg></app-game-lg>
-            <app-game-lg></app-game-lg>
-            <app-game-lg></app-game-lg>
-            <app-game-lg></app-game-lg>
+            <div *ngFor="let juego of juegos | slice:0:4;">
+            <app-game-lg [juego]="juego"></app-game-lg>
+            </div>
         </article>
         <article class="game">
             <img src="./assets/images/games/Among Us.png" alt="game-icon">
@@ -33,13 +32,9 @@
         </article>
     </section>
     <section class="more-games-maxwidth">
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
+        <div *ngFor="let juego of juegos | slice:0:7;">
+            <app-game-lg [juego]="juego"></app-game-lg>
+        </div>
     </section>
     <section class="game-desc-big">
         <article class="description" id="description">

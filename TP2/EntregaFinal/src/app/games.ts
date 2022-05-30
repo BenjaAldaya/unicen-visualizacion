@@ -1,11 +1,9 @@
-import { Category } from "./category";
-
 export interface Games {
     nombre:String;
-    categoria:Category;
-    categoria2:Category;
+    categoria:String;
+    categoria2:String;
     img:String;
-    clicks:String;
+    clicks:number;
     link:String;
     descripcion:String;
     fecha:Date;

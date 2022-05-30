@@ -13,10 +13,13 @@
     justify-content: space-between;
 }
 
-.left h3{
-    display:flex;
+.left h2{
     width: 100%;
+    display:flex;
     margin: 0;
+    text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+    -webkit-text-stroke-width: 0.1px;
+    -webkit-text-stroke-color: #000000;
     /* margin-left: ; */
 }
 .right{

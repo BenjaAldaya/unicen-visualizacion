@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-game-lg',
@@ -7,9 +7,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class GameLGComponent implements OnInit {
 
+  @Input() clase:string='sm';
+
   constructor() { }
 
   ngOnInit(): void {
   }
+
+  @Input() juego:any;
 
 }
