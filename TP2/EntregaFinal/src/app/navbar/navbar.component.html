@@ -11,8 +11,15 @@
             </figure>
         </a>
     </div>
-    <div class="content">
-        <input type="text" placeholder="Buscador" id="search" [(ngModel)]="search">
+    <div class="content navcat">
+        <input type="text" placeholder="Buscador" id="search" [(ngModel)]="search" (ngModelChange)="buscar($event)">
+        <ul class="drop-menu cat">
+            <li *ngFor="let juego of juegosFiltrados">
+                <a href="playgame/{{juego.nombre}}">{{juego.nombre}}
+                    <figure class="ellipse"><img src={{juego.img}} alt=""></figure>
+                </a>
+            </li>
+        </ul>
     </div>
     <div class="navcat">
         <a id="catbutton" role="button"><p>CATEGORIAS</p><span>&#9660;</span></a>
