@@ -1,11 +1,11 @@
 export interface Games {
-    nombre:String;
-    categoria:String;
-    categoria2:String;
-    img:String;
+    nombre:string;
+    categoria:string;
+    categoria2:string;
+    img:string;
     clicks:number;
-    link:String;
-    descripcion:String;
+    link:string;
+    descripcion:string;
     fecha:Date;
     valoracion:Number;
 }

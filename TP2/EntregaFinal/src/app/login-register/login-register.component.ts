@@ -16,9 +16,9 @@ export class LoginRegisterComponent implements OnInit {
 
   activelogin:boolean = true;
   activeregister:boolean = false;
-  bgcolor:String="linear-gradient(180deg, #35ABD2 0%, #3CC2EF 51.56%, #154A5B 100%);"
-  displaylogin:String="block";
-  displayregister:String="none";
+  bgcolor:string="linear-gradient(180deg, #35ABD2 0%, #3CC2EF 51.56%, #154A5B 100%);"
+  displaylogin:string="block";
+  displayregister:string="none";
 
   changeToRegister():void{
     this.activelogin = false;

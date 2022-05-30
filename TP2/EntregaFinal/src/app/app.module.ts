@@ -13,6 +13,8 @@ import { HomeComponent } from './home/home.component';
 import { PlayGameComponent } from './play-game/play-game.component';
 import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
 import { ProfileComponent } from './profile/profile.component';
+import { FormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -30,7 +32,8 @@ import { ProfileComponent } from './profile/profile.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
