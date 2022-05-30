@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { Categorias } from '../category-array';
 ;
 
@@ -15,4 +15,10 @@ export class NavbarComponent implements OnInit {
   }
   
   categorias = Categorias
+
+  @Output() show = new EventEmitter<string>();
+  
+  ShowLoginModal():void{
+    return this.show.emit('flex');
+  }
 }

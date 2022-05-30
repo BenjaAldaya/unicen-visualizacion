@@ -1,51 +1,53 @@
-
-<div class="container">
+<div class="containermodal">
     <figure><img src="./assets/images/izq.png" alt=""></figure>
-    <div class="container-center">
-        <div class="tabs">
-            <button type="button" id="loginbtn">Iniciar Sesion</button>
-            <button type="button" id="registerbtn"> Registrarse </button>
-        </div>
-        <div class="contenidologin">
-            <form class="login">
-                <div>
-                    <label for="inputuser">Usuario o Email:</label>
-                    <input class="inputtext" type="text" name="inputuser" id="inputuser">
-                </div>
-                <div>
-                    <label for="inputpass">Contraseña:</label>
-                    <input class="inputtext" type="text" name="inputpass" id="inputpass">
-                </div>
-                <div>
-                    <a href="">Olvidaste tu contraseña?</a>
-                </div>
-                <div class="divbtnlogin">
-                    <button class="btn-secondary" type="submit">Iniciar Sesion</button>
-                </div>
-            </form>
-        </div>
-        <div class="contenidoregister">
-            <form class="login">
-                <div>
-                    <label for="inputuser">Usuario o Email:</label>
-                    <input class="inputtext" type="text" name="inputuser" id="inputuser">
-                </div>
-                <div>
-                    <label for="inputemail">Email:</label>
-                    <input class="inputtext" type="text" name="inputemail" id="inputemail">
-                </div>
-                <div>
-                    <label for="inputpass">Contraseña:</label>
-                    <input class="inputtext" type="text" name="inputpass" id="inputpass">
-                </div>
-                <div class="terminos">
-                    <input type="checkbox" id="terminoscheck">
-                    <span href="">Acepto los terminos y condiciones</span>
-                </div>
-                <div>
-                    <button class="btn-primary" type="submit">Registrarse</button>
-                </div>
-            </form>
+   <div class="bgcontainercenter">
+        <div [ngStyle]="{'background':bgcolor}" class="container-center">
+            <div class="tabs">
+                <button [ngClass]="{'active':activelogin}" class="loginbtn" type="button" id="loginbtn" (click)="changeToLogin()">Iniciar Sesion</button>
+                <button [ngClass]="{'active':activeregister}" class="registerbtn" type="button" id="registerbtn" (click)="changeToRegister()"> Registrarse </button>
+                <button type="button" class="btn-primary" (click)="closeLogin()">X</button>
+            </div>
+            <div [ngStyle]="{'display':displaylogin}" class="contenidologin">
+                <form>
+                    <div>
+                        <label for="inputuser">Usuario o Email:</label>
+                        <input class="inputtext" type="text" name="inputuser" id="inputuser">
+                    </div>
+                    <div>
+                        <label for="inputpass">Contraseña:</label>
+                        <input class="inputtext" type="text" name="inputpass" id="inputpass">
+                    </div>
+                    <div>
+                        <a href="">Olvidaste tu contraseña?</a>
+                    </div>
+                    <div class="divbtnlogin">
+                        <button class="btn-secondary" type="submit">Iniciar Sesion</button>
+                    </div>
+                </form>
+            </div>
+            <div [ngStyle]="{'display':displayregister}" class="contenidoregister">
+                <form >
+                    <div>
+                        <label for="inputuser">Usuario o Email:</label>
+                        <input class="inputtext" type="text" name="inputuser" id="inputuser">
+                    </div>
+                    <div>
+                        <label for="inputemail">Email:</label>
+                        <input class="inputtext" type="text" name="inputemail" id="inputemail">
+                    </div>
+                    <div>
+                        <label for="inputpass">Contraseña:</label>
+                        <input class="inputtext" type="text" name="inputpass" id="inputpass">
+                    </div>
+                    <div class="terminos">
+                        <input type="checkbox" id="terminoscheck">
+                        <span href="">Acepto los terminos y condiciones</span>
+                    </div>
+                    <div>
+                        <button class="btn-primary" type="submit">Registrarse</button>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <figure><img src="./assets/images/der.png" alt="" class="joyderecho"></figure>
