@@ -1,5 +1,5 @@
 <header><app-navbar (show)="openLogin($event)"></app-navbar></header>
-<body>
+<body (window.resize)="onResize($event)">
     <div class="modal" [ngStyle]="{'display':showlogin}">
         <div class="modalcontent">
           <app-login-register (close)="closeLogin($event)"></app-login-register>

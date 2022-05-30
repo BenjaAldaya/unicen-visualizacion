@@ -1,5 +1,4 @@
-import { Component, ViewChild } from '@angular/core';
-import { NavbarComponent } from './navbar/navbar.component';
+import { Component, HostListener, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-root',
@@ -9,7 +8,23 @@ import { NavbarComponent } from './navbar/navbar.component';
 
 
 
-export class AppComponent {
+export class AppComponent implements OnInit {
+  public innerwidth:number =0;
+  
+  constructor(){
+
+  }
+
+  ngOnInit(): void {
+    this.innerwidth = window.innerWidth;
+  }
+
+  @HostListener('window:resize',['$event'])
+  onResize(event:any){
+    this.innerwidth = event.target.innerWidth;
+    console.log(this.innerwidth);
+  }
+
   showlogin:string = 'none';
   openLogin(s:string):void{
     this.showlogin = s;
@@ -18,4 +33,8 @@ export class AppComponent {
   closeLogin(c:string):void{
     this.showlogin = c;
   }
+
+  
+
+  
 }
