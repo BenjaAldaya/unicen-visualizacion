@@ -1,5 +1,6 @@
 .ads{
     width: 120px;
     height: 600px;
-    background-color: #000000;
+    background-image: url(../../assets/images/anuncio.png);
+    background-size: cover;
 }
