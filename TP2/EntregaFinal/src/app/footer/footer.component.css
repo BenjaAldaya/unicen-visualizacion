@@ -25,7 +25,7 @@
     width: 80%;
 }
 .right div{
-    margin-top: 3rem;
+    padding-top: 2rem;
 }
 .right p {
     font-family: 'Lato';
@@ -42,9 +42,14 @@
 
 /* Izquierda del footer */
 .left{
-    border: 1px solid black;
     width: 20%;
 }
+
+/* .left .center{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+} */
 
 /* Logo */
 
@@ -88,14 +93,42 @@
   .left .redes{
     width:100%;
     display: flex;
-    justify-content: space-around;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .left .redes .center{
+    padding-left: 1rem;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
   }
 
   .left .redes .icon{
-      width: 40px;
-      height: 40px;
+      width: 30px;
+      height: 30px;
       margin-right: 1rem;
       display: flex;
       align-items: center;
       justify-content: center;
   }
+
+#facebook{
+    background-image: url(../../assets/images/facebook.png);
+    background-size: cover;
+    border-radius: 50px;
+}
+
+#twitter{
+    background-image: url(../../assets/images/twitter.png);
+    background-size: cover;
+    border-radius: 50px;
+}
+
+#youtube{
+    background-image: url(../../assets/images/youtube.png);
+    background-size: cover;
+    border-radius: 50px;
+}
