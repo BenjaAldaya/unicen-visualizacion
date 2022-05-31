@@ -10,11 +10,10 @@ figure{
     margin: 0;
     height: 100%;
     width: 183px;
-    animation: joy 1.5s ease-in; 
+    animation: joy 3s ease-in; 
 }
 @keyframes joy{
     from {
-        opacity: 0;
         transform: scale(0);
     }
     to{
@@ -39,7 +38,7 @@ figure img .joyderecho{
     border-width: 10px 16px 10px 16px;
     opacity: 0;
     animation: drop 1.5s linear;
-    animation-delay: 3s;
+    animation-delay: 2.9s;
     animation-fill-mode: forwards;
 }
 .container-center{
