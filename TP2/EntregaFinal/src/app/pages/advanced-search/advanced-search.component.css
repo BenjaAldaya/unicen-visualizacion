@@ -24,7 +24,7 @@
 .ads{
     width: 600px;
     height: 120px;
-    background-image: url(../../assets/images/anuncio2.png);
+    background-image: url(../../../assets/images/anuncio2.png);
     background-size: cover;
     border-radius: 5px;
 }

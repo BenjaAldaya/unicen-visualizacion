@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Juegos } from 'src/app/games-array';
 import { Categorias } from '../../category-array';
 
 @Component({
@@ -8,6 +9,7 @@ import { Categorias } from '../../category-array';
 })
 export class AdvancedSearchComponent implements OnInit {
 
+  juegos = Juegos;  
   constructor() { }
 
   categorias = Categorias; 

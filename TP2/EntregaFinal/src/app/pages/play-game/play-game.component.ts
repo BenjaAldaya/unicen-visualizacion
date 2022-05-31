@@ -11,7 +11,6 @@ import { Juegos } from '../../games-array';
 export class PlayGameComponent implements OnInit {
 
 
-
   constructor() { }
 
   ngOnInit(): void {
