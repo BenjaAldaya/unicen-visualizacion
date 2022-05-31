@@ -10,6 +10,16 @@ figure{
     margin: 0;
     height: 100%;
     width: 183px;
+    animation: joy 1.5s ease-in; 
+}
+@keyframes joy{
+    from {
+        opacity: 0;
+        transform: scale(0);
+    }
+    to{
+        transform: scale(1) rotateX(1080deg);
+    }
 }
 figure img {
     height: 350px;
@@ -27,6 +37,10 @@ figure img .joyderecho{
     border-color: #3F2E3E;
     border-style: solid;
     border-width: 10px 16px 10px 16px;
+    opacity: 0;
+    animation: drop 1.5s linear;
+    animation-delay: 3s;
+    animation-fill-mode: forwards;
 }
 .container-center{
     display: flex;
@@ -34,6 +48,19 @@ figure img .joyderecho{
     justify-items: center;
     flex-wrap: wrap;
 }
+
+
+@keyframes drop{
+    from{
+        opacity: 1;
+        transform:translateY(-200%);
+    }
+    to{
+        opacity: 1;
+        transform:translateY(0%);
+    }
+}
+   
 
 .container-center .tabs{
     display: flex;
