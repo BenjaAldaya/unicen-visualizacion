@@ -1,10 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Routes, RouterModule, ExtraOptions } from '@angular/router';
-import { HomeComponent } from './home/home.component';
-import { PlayGameComponent } from './play-game/play-game.component';
-import { AdvancedSearchComponent } from './advanced-search/advanced-search.component';
-import { ProfileComponent } from './profile/profile.component';
+import { HomeComponent } from './pages/home/home.component';
+import { PlayGameComponent } from './pages/play-game/play-game.component';
+import { AdvancedSearchComponent } from './pages/advanced-search/advanced-search.component';
+import { ProfileComponent } from './pages/profile/profile.component';
 
 const routes: Routes = [
   {path:"home", component:HomeComponent },

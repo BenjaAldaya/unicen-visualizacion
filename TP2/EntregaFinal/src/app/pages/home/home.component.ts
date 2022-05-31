@@ -1,6 +1,6 @@
 import { Component, HostListener, OnInit } from '@angular/core';
-import { Categorias } from '../category-array';
-import { Juegos } from '../games-array';
+import { Categorias } from '../../category-array';
+import { Juegos } from '../../games-array';
 
 
 @Component({

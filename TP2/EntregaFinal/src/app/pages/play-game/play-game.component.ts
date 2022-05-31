@@ -1,6 +1,6 @@
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
-import { Categorias } from '../category-array';
-import { Juegos } from '../games-array';
+import { Categorias } from '../../category-array';
+import { Juegos } from '../../games-array';
 
 @Component({
   selector: 'app-play-game',

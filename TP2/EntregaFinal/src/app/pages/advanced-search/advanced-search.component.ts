@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Categorias } from '../category-array';
+import { Categorias } from '../../category-array';
 
 @Component({
   selector: 'app-advanced-search',
