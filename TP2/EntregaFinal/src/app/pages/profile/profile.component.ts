@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Juegos } from 'src/app/games-array';
 
 @Component({
   selector: 'app-profile',
@@ -6,6 +7,8 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./profile.component.css']
 })
 export class ProfileComponent implements OnInit {
+  
+  juegos = Juegos;
 
   constructor() { }
 

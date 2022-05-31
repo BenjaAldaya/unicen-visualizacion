@@ -15,12 +15,9 @@
             </div>
             <div class="cont">
                 <div class="games">           
-                    <app-game-lg></app-game-lg>
-                    <app-game-lg></app-game-lg>
-                    <app-game-lg></app-game-lg>
-                    <app-game-lg></app-game-lg>
-                    <app-game-lg></app-game-lg>
-                    <app-game-lg></app-game-lg>
+                    <div *ngFor="let juego of juegos | slice:0:6;">
+                        <app-game-lg [juego]="juego" clase="sm"></app-game-lg>
+                    </div>
                 </div>
             </div>
         </section>

@@ -16,24 +16,9 @@
         </div>
     </section>
     <section class="cards-game">
-        <app-game-lg clase="lg"></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
-        <app-game-lg></app-game-lg>
+        <div *ngFor="let juego of juegos | slice:0:18;">
+            <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
+        </div>
     </section>
     <section class="nav-buttons">
         <div class="previous"> <button class="btn-primary"><p>Anterior</p></button> </div>
