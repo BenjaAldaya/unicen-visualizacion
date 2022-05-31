@@ -116,19 +116,19 @@
   }
 
 #facebook{
-    background-image: url(../../assets/images/facebook.png);
+    background-image: url(../../../assets/images/facebook.png);
     background-size: cover;
     border-radius: 50px;
 }
 
 #twitter{
-    background-image: url(../../assets/images/twitter.png);
+    background-image: url(../../../assets/images/twitter.png);
     background-size: cover;
     border-radius: 50px;
 }
 
 #youtube{
-    background-image: url(../../assets/images/youtube.png);
+    background-image: url(../../../assets/images/youtube.png);
     background-size: cover;
     border-radius: 50px;
 }

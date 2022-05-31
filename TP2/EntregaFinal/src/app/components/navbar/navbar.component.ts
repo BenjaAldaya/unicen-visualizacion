@@ -1,8 +1,8 @@
 import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
-import { Categorias } from '../../../category-array';
-import { Games } from '../../../games';
-import { filterGames } from '../../../filter-games';
-import { Juegos } from '../../../games-array';
+import { Categorias } from '../../category-array';
+import { Games } from '../../games';
+import { filterGames } from '../../filter-games';
+import { Juegos } from '../../games-array';
 
 
 @Component({
