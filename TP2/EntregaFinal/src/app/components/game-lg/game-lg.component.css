@@ -61,6 +61,7 @@
   height: 20%;
   align-items: center;
   justify-content: flex-end;
+  z-index: 1;
 }
 
 .gamecontainer figure a .capa button {

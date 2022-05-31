@@ -21,6 +21,8 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     this.innerwidth = window.innerWidth;
     this.numberGames();
+
+    console.log(this.innerwidth);
   }
   
   @HostListener('window:resize',['$event'])

@@ -14,6 +14,7 @@ import { PlayGameComponent } from './pages/play-game/play-game.component';
 import { AdvancedSearchComponent } from './pages/advanced-search/advanced-search.component';
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule } from '@angular/forms';
+import { SearchComponent } from './components/search/search.component';
 
 
 @NgModule({
@@ -28,7 +29,8 @@ import { FormsModule } from '@angular/forms';
     HomeComponent,
     PlayGameComponent,
     AdvancedSearchComponent,
-    ProfileComponent
+    ProfileComponent,
+    SearchComponent
   ],
   imports: [
     BrowserModule,
