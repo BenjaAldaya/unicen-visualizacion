@@ -127,7 +127,7 @@ nav a p {
 nav ul {
   position: relative;
   /* position:fixed */
-  display: block;
+  /* display: block; */
   list-style: none;
   display: inline-block;
   /* background: #464646; */
@@ -335,7 +335,6 @@ transform: rotate(-180deg);
   width: 40px;
   height: 40px;
   margin-right: 25px;
-  color: white;
 }
 
 .navloginR{
@@ -345,7 +344,50 @@ transform: rotate(-180deg);
   justify-content: flex-end;
 }
 
-.hmb {
+.navlogeado{
+  width: 100%;
+  display: inline-flex;
+  justify-content:flex-end;
+}
+
+.navlogeado img{
+  margin-left: 1rem;
+}
+
+/* --------------Barra RGB---------------- */
+.animate-bg:before, .animate-bg:after {
+	content: '';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	background: linear-gradient(120deg, #79fb00, #8d01a0, #031ba5,#ff004c,
+	#e6036d, #fb0094,#ff6600, #04c2e4,#adad02, #00c3ff);
+	background-size: 300%;
+	width: 100%;
+	height: 5px;
+	z-index: -1;
+	animation: BGgradient 15s ease infinite;
+}
+
+@keyframes BGgradient {
+	0% {
+		background-position: 0% 100%;
+	}
+    20%{
+        background-position: 100% 50%;
+    }
+	50% {
+		background-position: 50% 150%;
+	}
+	100% {
+		background-position: 0% 330%;
+	}
+}
+
+.animate-bg:after {
+	filter: brightness(1.4);
+	filter: drop-shadow(16px 16px 20px rgb(248, 220, 97));
+	filter: blur(15px);
   display: none;
 }
 

@@ -1,5 +1,5 @@
 .gamecontainer {
-    margin-bottom: 1.20rem;
+    /* margin-bottom: 1.20rem; */
     display: flex
 }
 .lg {
@@ -74,14 +74,20 @@
     border-style: solid;
     border-color: rgba(255, 255, 255, 0.3);
     border-width: 1px 0 1px 0;
+    overflow: hidden;
 }
 
 .gamecontainer figure a .capa p {
+    display: inline;
     width: 100%;
-    text-align: center;
+    /* text-align: center; */
     color: white;
     border: 25px white;
     opacity: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
 }
 
 

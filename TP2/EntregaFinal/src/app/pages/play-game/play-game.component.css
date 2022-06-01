@@ -4,12 +4,12 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 6.25rem;
+    padding-top: 4.25rem;
 }
 
 .game-desc-small{
     width: 1152px;
-    height: 50px;
+    height:120px;
     display: flex;
     background-color: rgba(0, 0, 0, 0.4);
     margin-bottom: 1.25rem ;
@@ -26,11 +26,12 @@
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-left: 1rem;
 }
 
 .game-info .game-photo img{
-    width: 70px;
-    height: 45px;
+    width: 120px;
+    height: 100px;
     border-radius: 5px;
 }
 
@@ -295,7 +296,7 @@ app-play-game app-category .card-category{
 /* Galeria de imagenes */
 
 .galeria {
-    height: 400px;
+    height: 200px;
     width: 400px;
     position:relative;
     display:inline-block;

@@ -1,4 +1,5 @@
 import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
+import { Juegos } from 'src/app/games-array';
 import { Categorias } from '../../category-array';
 
 
@@ -8,9 +9,10 @@ import { Categorias } from '../../category-array';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
+  login:boolean = false;
 
   search : string = '';
-
+  juegos=Juegos;
 
   constructor() { }
   categorias = Categorias
@@ -25,6 +27,10 @@ export class NavbarComponent implements OnInit {
     return this.show.emit('flex');
   }
 
+  Deslogear():void{
+    this.login = false;
+  }
+  
   showHmb():void{
     console.log('hola');
     if(document.getElementById('hmb')?.classList.contains('none')){

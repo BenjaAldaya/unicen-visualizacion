@@ -16,7 +16,7 @@
         </div>
     </section>
     <section class="cards-game">
-        <div *ngFor="let juego of juegos | slice:0:18;">
+        <div style="margin-bottom:1.2rem;" *ngFor="let juego of juegos | slice:0:18;">
             <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
         </div>
     </section>
