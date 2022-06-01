@@ -166,6 +166,12 @@
     margin-bottom: 13px;
 }
 
+#btn-play{
+    font-size: 5rem;
+    z-index: 1;
+    color: white;
+}
+
 app-play-game app-game-lg .gamecontainer {
     margin-bottom: 0 !important;
     margin-right: 0 !important;
@@ -182,8 +188,11 @@ app-play-game app-game-lg .gamecontainer {
 .game{
     /* width: 60%; */
     width: 800px ;
-    background: rgba(0, 0, 0, 1);
+    background-color: (0,0,0,0.1);
+    background-image: url(../../../assets/images/games/Minecraft.png);
+    background-size: cover;
     display: flex;
+    justify-content: center;
     align-items: center;
 }
 

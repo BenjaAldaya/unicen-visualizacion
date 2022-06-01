@@ -408,7 +408,7 @@ transform: rotate(-180deg);
 
   #hmb-icon{
     font-size: 2rem;
-    color:#ED6077;
+    color: white;
     cursor: pointer;
   }
 
@@ -419,7 +419,7 @@ transform: rotate(-180deg);
 
   #profile{
     font-size: 2rem;
-    color: #ED6077;
+    color: white;
   }
   nav {
     justify-content: space-between;
