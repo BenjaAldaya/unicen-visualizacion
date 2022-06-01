@@ -172,3 +172,15 @@
 	filter: drop-shadow(16px 16px 20px rgb(248, 220, 97));
 	filter: blur(15px);
 }
+
+@media screen and (max-width:1000px) {
+    .right{
+        display: none;
+    }
+    .left{
+        width: 100%;
+        justify-content: center;
+        float: none;
+    }
+    
+}

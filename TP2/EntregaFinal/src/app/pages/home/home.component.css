@@ -2,10 +2,13 @@
     width: 100%;
     padding-top: 6.25rem;
 }
+.contlg{
+    width: 100%;
+}
 
 .left{
-    margin-left:2.5%;
-    max-width: 84%;
+    margin-left:2%;
+    max-width: 85%;
     display: flex;
     float: left;
     flex-wrap: wrap;
@@ -45,3 +48,20 @@
 }
 
 /* Juegos promocionados */
+@media screen and (max-width:1022px) {
+    .right {display:none;}
+
+    .left{ width: 100%;
+        float: none;
+        margin: 0 auto;
+    justify-content: space-around;
+margin-bottom:3rem;}
+    
+    .left h2{
+        justify-content: center;
+    }
+    .more-category{
+        width: 100%;
+        justify-content: space-around;
+    }
+}

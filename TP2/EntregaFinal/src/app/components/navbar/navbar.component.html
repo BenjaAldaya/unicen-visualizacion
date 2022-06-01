@@ -1,4 +1,6 @@
-<nav>
+<nav>   <div class="toggle" style="width:100%;">
+          <a href=""> <button style="width:100% ;">Toggle</button></a>
+        </div>
         <div class="logo">
             <a href="#" role="button">
                 <figure>
@@ -11,6 +13,19 @@
                 </figure>
             </a>
         </div>
+        <div class="logoR">
+          <a href="#" role="button">
+              <figure>
+                  <img src="./assets/images/izq.png" alt="" height="45">
+              </figure>
+              <p id="brandswitch">SWITCH</p>
+              <p id="brandgames">GAMES</p>
+              <figure>
+                  <img src="./assets/images/der.png" alt="" height="45">
+              </figure>
+          </a>
+      </div>
+      <div class="menu">
         <app-search></app-search>
         <div class="navcat">
             <a id="catbutton" role="button"><p>CATEGORIAS</p><span>&#9660;</span></a>
@@ -22,8 +37,13 @@
             </li>
             </ul>
         </div>
+        <div class="allgames"><button>todos los juegos</button></div>
+      </div>
         <div class="navlogin">
             <button id="btnlogin" type="button" (click)="ShowLoginModal()">Iniciar Sesion / Registrarse</button>
         </div>
+        <div class="navloginR">
+          <a type="button"><img class="usericon" src="./assets/images/usericon.png" alt=""></a>
+      </div>
     <div class="animate-bg"></div>
 </nav>

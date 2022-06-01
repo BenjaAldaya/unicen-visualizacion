@@ -9,7 +9,7 @@ import { Juegos } from '../../games-array';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
-  
+  value:number=0
   innerwidth:number = 0;
   totaljuegos:number = 0;
   juegosgrandes:number = 0;
@@ -17,14 +17,14 @@ export class HomeComponent implements OnInit {
   categorias = Categorias;
 
   constructor() { }
-  
+
   ngOnInit(): void {
     this.innerwidth = window.innerWidth;
     this.numberGames();
 
     console.log(this.innerwidth);
   }
-  
+
   @HostListener('window:resize',['$event'])
   onResize(event:any){
     this.innerwidth = event.target.innerWidth;
@@ -35,12 +35,21 @@ export class HomeComponent implements OnInit {
     if (this.innerwidth >= 1920){
       this.totaljuegos= 18;
       this.juegosgrandes=7;
-    }else if(this.innerwidth >= 1368){
+    }else if(this.innerwidth >= 1366){
       this.totaljuegos = 13;
       this.juegosgrandes = 5;
-    }else{
+    }else if (this.innerwidth>=1200){
+      this.totaljuegos=11;
+      this.juegosgrandes=4;
+    }else if (this.innerwidth>=1000){
       this.totaljuegos=9;
       this.juegosgrandes=3;
+    }else if(this.innerwidth >=700){
+      this.totaljuegos=10;
+      this.juegosgrandes=2;
+    }else{
+      this.totaljuegos = 11;
+      this.juegosgrandes = 1;
     }
   }
 }
