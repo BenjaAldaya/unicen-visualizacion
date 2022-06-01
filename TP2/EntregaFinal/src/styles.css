@@ -1,11 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,700;1,900&display=swap');
-
+html{
+  background:scroll linear-gradient(180deg, rgba(21, 74, 91, 0.8) 17.71%, #3CC2EF 51.56%, rgba(21, 74, 91, 0.8) 80.73%);
+}
 body {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  background:fixed linear-gradient(180deg, #154A5B 17.71%, #3CC2EF 51.56%, #154A5B 80.73%);;
 }
 
 *{

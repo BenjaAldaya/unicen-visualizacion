@@ -16,6 +16,8 @@ import { AdvancedSearchComponent } from './pages/advanced-search/advanced-search
 import { ProfileComponent } from './pages/profile/profile.component';
 import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
+import { FavoritosComponent } from './components/favoritos/favoritos.component';
+import { LogeadoComponent } from './components/logeado/logeado.component';
 
 
 @NgModule({
@@ -31,7 +33,9 @@ import { SearchComponent } from './components/search/search.component';
     PlayGameComponent,
     AdvancedSearchComponent,
     ProfileComponent,
-    SearchComponent
+    SearchComponent,
+    FavoritosComponent,
+    LogeadoComponent
   ],
   imports: [
     BrowserModule,
