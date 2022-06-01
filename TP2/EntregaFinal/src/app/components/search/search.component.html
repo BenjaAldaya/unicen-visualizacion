@@ -9,7 +9,7 @@
         </li>
         <li [ngStyle]='{"visibility":notFound}'><p>No se encontraron juegos...</p></li>
         <li>
-            <a href="/search" id="allgames"><p>Todos los juegos</p></a>
+            <a [routerLink]="['/search']" id="allgames"><p>Todos los juegos</p></a>
         </li>
     </ul>
 </div>

@@ -1,6 +1,6 @@
 <article class="gamecontainer {{clase}}">
     <figure>
-        <a routerLink="/playgame/{{juego.link}}">
+        <a [routerLink]="['/playgame/{{juego.link}}']">
             <img src="{{juego.img}}" alt="" class="gameimage">
             <div class="capa">
                 <div class="favbuttondiv">
