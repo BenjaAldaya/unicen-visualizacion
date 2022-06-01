@@ -87,6 +87,11 @@
     align-items: center;
 }
 
+.game-user-buttons .star-fav .bi{
+    color: yellow;
+}
+
+
 .game-user-buttons .game-desc{
     width: 20%;
     height: 100%;
@@ -103,12 +108,67 @@
     align-items: center;
 }
 
+.game-user-buttons .game-share .bi{
+    color:#A04C59;
+}
+
 .game-user-buttons .game-rating{
     width: 20%;
     height: 100%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.game-user-buttons .game-rating .i{
+    width: 50px;
+    height: 50px;
+}
+
+.game-user-buttons .game-rating .up{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-share{
+    width: 50px;
+}
+
+.bounce-7 {
+    animation-name: bounce-7;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    transform-origin: bottom;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
+@keyframes bounce-7 {
+    0%   { transform: scale(1,1)      translateY(0); }
+    10%  { transform: scale(1.1,.9)   translateY(0); }
+    30%  { transform: scale(.9,1.1)   translateY(-100px); }
+    50%  { transform: scale(1.05,.95) translateY(0); }
+    57%  { transform: scale(1,1)      translateY(-7px); }
+    64%  { transform: scale(1,1)      translateY(0); }
+    100% { transform: scale(1,1)      translateY(0); }
+}
+
+.game-user-buttons .game-rating .up .bi{
+    color:green;
+}
+
+.game-user-buttons .game-rating .down{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-user-buttons .game-rating .down .bi{
+    color:red;
 }
 
 .playgame{
@@ -235,3 +295,44 @@ app-play-game app-game-lg .gamecontainer {
 app-play-game app-category .card-category{
     margin-right:0 !important;
 }
+
+/* Galeria de imagenes */
+
+.galeria {
+    height: calc( var(--h) + 3em);
+    width: var(--w);
+    margin:1em;
+    position:relative;
+    display:inline-block;
+  }
+  
+  .galeria img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 3s;
+  }
+  
+  .galeria input[type=radio] {
+    position: relative;
+    bottom: calc(-1 * var(--h) - 1.5em);
+    left: .5em;
+  }
+
+  
+  .galeria input[type=radio]:nth-of-type(1):checked ~ img:nth-of-type(1) {
+    opacity: 1;
+  }
+  
+  .galeria input[type=radio]:nth-of-type(2):checked ~ img:nth-of-type(2) {
+    opacity: 1;
+  }
+  
+  .galeria input[type=radio]:nth-of-type(3):checked ~ img:nth-of-type(3) {
+    opacity: 1;
+  }
+  
+  .galeria input[type=radio]:nth-of-type(4):checked ~ img:nth-of-type(4) {
+    opacity: 1;
+  }
