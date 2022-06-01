@@ -4,20 +4,20 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
-    padding-top: 3rem;
+    padding-top: 6.25rem;
 }
 
 .game-desc-small{
     width: 1152px;
-    height: 115px;
+    height: 50px;
     display: flex;
     background-color: rgba(0, 0, 0, 0.4);
-    /* margin-bottom: 1.25rem ; */
+    margin-bottom: 1.25rem ;
 }
 
 .game-info{
     display: flex;
-    width: 30%;
+    width: 50%;
 }
 
 .game-info .game-photo{
@@ -29,54 +29,33 @@
 }
 
 .game-info .game-photo img{
-    width: 94px;
-    height: 83px;
+    width: 70px;
+    height: 45px;
     border-radius: 5px;
 }
 
-.game-info .game-namecategory{
-    width: 70%;
+.game-info .game-name{
+    width: 100%;
     height: 100%;
-    display: block;
-}
-
-.game-info .game-namecategory .game-name{
-    width: 100%;
-    height: 50%;
     display: flex;
-    align-items: flex-end;
+    justify-content: center;
+    align-items: center;
 }
 
-.game-info .game-namecategory .game-name h1{
+
+.game-info .game-name h2{
     font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 38px;
-    line-height: 46px;
-    display: flex;
-    align-items: flex-end;
+    font-style:normal;
+    font-size: 30px;
+    line-height: 10px;
     color: #FFFFFF;
 }
 
-.game-info .game-namecategory .game-category{
-    width: 100%;
-    height: 50%;
-    display: flex;
-    align-items: flex-start;
-}
-
-.game-info .game-namecategory .game-category p{
-    font-family: 'Lato';
-    font-style: normal;
-    font-weight: 400;
-    font-size: 20px;
-    line-height: 24px;
-    color: #FFFFFF;
-}
 
 .game-user-buttons{
-    width: 70%;
+    width: 50%;
     display: flex;
+    justify-content: flex-end;
 }
 
 .game-user-buttons .star-fav{
@@ -134,7 +113,15 @@
 }
 
 #btn-share{
-    width: 50px;
+    font-size: 1.5em;
+}
+
+#btn-fav{
+    font-size: 1.5em;
+}
+
+#btn-hand-up{
+    font-size: 1.5em;
 }
 
 .bounce-7 {
@@ -146,13 +133,13 @@
 }
 
 @keyframes bounce-7 {
-    0%   { transform: scale(1,1)      translateY(0); }
-    10%  { transform: scale(1.1,.9)   translateY(0); }
-    30%  { transform: scale(.9,1.1)   translateY(-100px); }
-    50%  { transform: scale(1.05,.95) translateY(0); }
-    57%  { transform: scale(1,1)      translateY(-7px); }
-    64%  { transform: scale(1,1)      translateY(0); }
-    100% { transform: scale(1,1)      translateY(0); }
+    0%   { transform: scale(1,1)translateY(0); }
+    10%  { transform: scale(1.1,.9) translateY(-40px); }
+    30%  { transform: scale(.9,1.1) translateY(0); }
+    50%  { transform: scale(1.05,.95) translateY(-20px); }
+    57%  { transform: scale(1,1) translateY(0); }
+    64%  { transform: scale(1,1) translateY(20px); }
+    100% { transform: scale(1,1) translateY(0); }
 }
 
 .game-user-buttons .game-rating .up .bi{
@@ -299,9 +286,8 @@ app-play-game app-category .card-category{
 /* Galeria de imagenes */
 
 .galeria {
-    height: calc( var(--h) + 3em);
-    width: var(--w);
-    margin:1em;
+    height: 400px;
+    width: 400px;
     position:relative;
     display:inline-block;
   }
@@ -330,9 +316,5 @@ app-play-game app-category .card-category{
   }
   
   .galeria input[type=radio]:nth-of-type(3):checked ~ img:nth-of-type(3) {
-    opacity: 1;
-  }
-  
-  .galeria input[type=radio]:nth-of-type(4):checked ~ img:nth-of-type(4) {
     opacity: 1;
   }
