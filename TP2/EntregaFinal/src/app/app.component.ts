@@ -14,8 +14,16 @@ export class AppComponent implements OnInit {
 
   }
 
+  notFound : string = 'block';
+
   ngOnInit(): void {
-    
+      setTimeout(() => {
+        this.closeLoading();
+      }, 1000);
+  }
+
+  closeLoading():void{
+    this.notFound = 'none';
   }
 
   showlogin:string = 'none';
