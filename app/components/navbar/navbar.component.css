@@ -1,0 +1,305 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+nav {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 50px;
+  background-color: #464646;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  color: white;
+  height: 50px;
+  padding: 0px;
+  margin-left: 25px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ----------------------------- */
+
+
+/* ---------------------------- */
+nav a p {
+  font-style: normal;
+  cursor: pointer;
+}
+
+/* ---------------------------- */
+/* Estilo del Logo */
+#brandswitch {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 0px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 2px #35ABD2;
+}
+
+#brandgames {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  line-height: 0px;
+  display: flex;
+  align-self: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 2px #ED6077;
+}
+/* --------Categorias---------- */
+.navcat {
+  width: 200px;
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+
+.navcat a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+
+.navcat:hover{
+  background-color: #383838;
+  box-shadow: inset 1px 1px 2px;
+}
+
+.navcat:hover > #catbutton p{
+  text-shadow: 0px 6px 8px #35ABD2;
+}
+
+.navcat a span {
+  padding-top: auto;
+  padding-bottom: auto;
+  padding-left: 10px;
+  color: white;
+  font-size: 0.8rem;
+  font-variant: small-caps;
+  cursor: pointer;
+  display: block;
+}
+
+
+.navlogin {
+  margin-left: auto;
+  margin-right: 25px;
+  align-self: center;
+}
+
+nav ul {
+  position: relative;
+  /* position:fixed */
+  display: block;
+  list-style: none;
+  display: inline-block;
+  /* background: #464646; */
+  top: 0%;
+}
+
+nav ul li {
+  /* float: left; */
+  width: 200px;
+  /* height: 25%; */
+  line-height: 40px;
+}
+
+nav ul li a {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  /* align-self: center; */
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-top:3px inset #969696;
+  text-decoration: none;
+}
+
+nav ul li a .ellipse{
+  width: 30px;
+  height: 30px;
+  margin-left: 0.4rem;
+  background: rgba(162, 186, 185, 0.44);
+  border-radius: 50%;
+}
+
+.drop-menu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+
+
+ul.drop-menu {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  padding: 0;
+}
+
+ul.drop-menu li {
+  background: #464646;
+}
+
+ul.drop-menu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+
+.drop-menu li {
+  display: none;
+}
+
+.navcat:hover>.drop-menu li {
+  display: block;
+}
+
+/* .navcat:hover > .navcat a span{
+  -webkit-transform: rotate(-180deg);
+-moz-transform: rotate(-180deg);
+transform: rotate(-180deg);
+} */
+
+.navcat:hover>.drop-menu.cat {
+  perspective: 1000px
+}
+
+.navcat:hover>.drop-menu.cat li {
+  opacity: 0;
+  transform-origin: top center;
+  background-color: #383838;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(1) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: -100ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(2) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: -20ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(3) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 60ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(4) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 140ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(5) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 220ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(6) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(7) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 380ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(8) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 460ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+.navcat:hover>.drop-menu.cat li:nth-child(9) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 540ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+.navcat:hover>.drop-menu.cat li:nth-child(10) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 620ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 4px 4px 4px;
+}
+
+@keyframes dropcat {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+.drop-menu.cat img{
+  width:60%;
+  height: 60%;
+}
+
+/* --------------Login---------------- */
+#btnlogin {
+  background-color: #ED6077;
+  color: white;
+  font-size: 16px;
+  border: 0.3px solid #464646;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  cursor: pointer;
+}

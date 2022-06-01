@@ -1,0 +1,134 @@
+
+.footer{
+    width: 100%;
+    background-color: #032A59;
+    height: 140px;
+    display: flex;
+    flex-wrap: nowrap; 
+    margin-top: 1.25rem;
+    /* align-self: end; */
+}
+
+.footer a{
+    display: flex;
+    align-items: center;
+    color: white;
+    height: 50px;
+    padding:0px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+/* Derecha del footer */
+
+.right{
+    width: 80%;
+}
+.right div{
+    padding-top: 2rem;
+}
+.right p {
+    font-family: 'Lato';
+    font-style: normal;
+    font-size: 16px;
+    letter-spacing: 0.04em;
+    color: #FFFFFF;
+    text-align: center;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+}
+
+
+/* Izquierda del footer */
+.left{
+    width: 20%;
+}
+
+/* .left .center{
+    width: 100%;
+    justify-content: center;
+    align-items: center;
+} */
+
+/* Logo */
+
+.left .logo{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+}
+
+#brandswitch {
+    font-style: normal;
+    font-weight: 800;
+    font-size: 20px;
+    line-height: 0px;
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    text-transform: uppercase;
+    color: #FFFFFF;
+    text-shadow: 0px 2px 2px #35ABD2;
+  }
+  
+  #brandgames{
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  line-height: 0px;
+  display: flex;
+  align-self: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 2px #ED6077;
+  }
+
+
+/* Redes */
+
+  .left .redes{
+    width:100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1rem;
+  }
+  
+  .left .redes .center{
+    padding-left: 1rem;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  .left .redes .icon{
+      width: 30px;
+      height: 30px;
+      margin-right: 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+  }
+
+#facebook{
+    background-image: url(../../../assets/images/facebook.png);
+    background-size: cover;
+    border-radius: 50px;
+}
+
+#twitter{
+    background-image: url(../../../assets/images/twitter.png);
+    background-size: cover;
+    border-radius: 50px;
+}
+
+#youtube{
+    background-image: url(../../../assets/images/youtube.png);
+    background-size: cover;
+    border-radius: 50px;
+}
