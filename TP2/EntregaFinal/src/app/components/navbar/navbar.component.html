@@ -46,7 +46,7 @@
                 <a type="button"><p>Favoritos</p><i class="bi bi-star" style="margin-left:1rem;"></i></a>
                 <ul class="drop-menu cat">
                     <li *ngFor="let juego of juegos | slice:0:5;">
-                        <a href="playgame/{{juego.nombre}}">
+                        <a [routerLink]="['/search']">
                             <p>{{juego.nombre}}</p>
                             <figure><img src={{juego.img}} alt=""></figure>
                         </a>
