@@ -12,7 +12,6 @@ export class SearchComponent implements OnInit {
   juegosFiltrados: Games[] = [];
   search : string = '';
   juegos = Juegos ;
-  notFound : string = 'visible';
 
   constructor() { }
 
@@ -26,11 +25,6 @@ export class SearchComponent implements OnInit {
 
     if(this.search==''){
       this.juegosFiltrados = [];
-    }
-    if(this.juegosFiltrados.length == 0){ 
-      this.notFound = 'visible';
-    } else{
-      this.notFound = 'hidden';
     }
   }
 

@@ -7,7 +7,7 @@
                 <figure><img src={{juego.img}} alt=""></figure>
             </a>
         </li>
-        <li [ngStyle]='{"visibility":notFound}'><p>No se encontraron juegos...</p></li>
+        <li *ngIf="juegosFiltrados.length == 0" ><p>No se encontraron juegos...</p></li>
         <li>
             <a [routerLink]="['/search']" id="allgames"><p>Todos los juegos</p></a>
         </li>
