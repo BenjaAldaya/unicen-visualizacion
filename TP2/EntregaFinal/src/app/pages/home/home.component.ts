@@ -13,6 +13,7 @@ export class HomeComponent implements OnInit {
   innerwidth:number = 0;
   totaljuegos:number = 0;
   juegosgrandes:number = 0;
+  juegoschicos:number = 0;
   juegos = Juegos;
   categorias = Categorias;
 
@@ -52,4 +53,26 @@ export class HomeComponent implements OnInit {
       this.juegosgrandes = 1;
     }
   }
+
+  // numberGames():void{
+  //     if (this.innerwidth >= 1920){
+  //       this.juegoschicos= 11;
+  //       this.juegosgrandes=7;
+  //     }else if(this.innerwidth >= 1366){
+  //       this.juegoschicos = 8;
+  //       this.juegosgrandes = 5;
+  //     }else if (this.innerwidth>=1200){
+  //       this.juegoschicos=7;
+  //       this.juegosgrandes=4;
+  //     }else if (this.innerwidth>=1000){
+  //       this.juegoschicos=6;
+  //       this.juegosgrandes=3;
+  //     }else if(this.innerwidth >=700){
+  //       this.juegoschicos=8;
+  //       this.juegosgrandes=2;
+  //     }else{
+  //       this.juegoschicos = 10;
+  //       this.juegosgrandes = 1;
+  //     }
+  //   }
 }

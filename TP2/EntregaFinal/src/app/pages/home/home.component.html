@@ -6,23 +6,27 @@
     </aside>
     <section class="left animate-bg" let i = "index">
         <h2>JUEGOS POPULARES</h2>
-        <div *ngFor="let juego of juegos | slice:0:totaljuegos; let index = index"  >
-            <div class="contlg" *ngIf="index<juegosgrandes">
-                <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:0:juegosgrandes;">
+                    <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
             </div>
-            <div #ref class="contlg" *ngIf="index>=juegosgrandes">
+        </div>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:juegosgrandes:totaljuegos;">
                 <app-game-lg  [juego]="juego" clase="sm" ></app-game-lg>
             </div>
         </div>
     </section>
-    <section class="left" >
-        <h2 >JUEGOS NUEVOS </h2>
-        <div *ngFor="let juego of juegos | slice:0:totaljuegos;let index = index">
-            <div *ngIf="index<juegosgrandes">
-                <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
+    <section class="left animate-bg" let i = "index">
+        <h2>JUEGOS NUEVOS</h2>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:0:juegosgrandes;">
+                    <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
             </div>
-            <div *ngIf="index>=juegosgrandes">
-                <app-game-lg [juego]="juego" clase="sm"></app-game-lg>
+        </div>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:juegosgrandes:totaljuegos;">
+                <app-game-lg  [juego]="juego" clase="sm" ></app-game-lg>
             </div>
         </div>
     </section>
