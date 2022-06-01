@@ -398,7 +398,7 @@ transform: rotate(-180deg);
     margin: auto 0;}
   nav .navlogin{display:none;}
   .navloginR{display: flex;}
-
+    .navlogeado{display: none;}
   .menu{display:none;}
 
   .toggle{
