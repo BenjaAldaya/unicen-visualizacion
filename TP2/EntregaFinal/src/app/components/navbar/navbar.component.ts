@@ -25,6 +25,17 @@ export class NavbarComponent implements OnInit {
     return this.show.emit('flex');
   }
 
+  showHmb():void{
+    console.log('hola');
+    if(document.getElementById('hmb')?.classList.contains('none')){
+      document.getElementById('hmb')?.classList.remove('none');
+      document.getElementById('hmb')?.classList.add('display');
+    }else{
+      document.getElementById('hmb')?.classList.remove('display');
+      document.getElementById('hmb')?.classList.add('none');
+    }
+  }
+
 }
 
 

@@ -1,6 +1,7 @@
-<nav>   <div class="toggle" style="width:100%;">
-          <a href=""> <button style="width:100% ;">Toggle</button></a>
-        </div>
+<nav>   
+    <div class="toggle" style="width:100%;" (click)="showHmb()">
+        <i class="bi bi-list" id="hmb-icon"></i>
+    </div>
         <div class="logo">
             <a href="#" role="button">
                 <figure>
@@ -43,7 +44,24 @@
             <button id="btnlogin" type="button" (click)="ShowLoginModal()">Iniciar Sesion / Registrarse</button>
         </div>
         <div class="navloginR">
-          <a type="button"><img class="usericon" src="./assets/images/usericon.png" alt=""></a>
-      </div>
-    <div class="animate-bg"></div>
+            <i class="bi bi-person-circle" id="profile"></i>
+       </div>
 </nav>
+
+<section class="hmb none" id="hmb">
+    <div class="search">
+        <a href="/search"><p>TODOS LOS JUEGOS</p></a>
+    </div>
+        <div class="categorias">
+            <div class="navcat">
+            <a id="catbutton" role="button"><p>CATEGORIAS</p><span>&#9660;</span></a>
+            <ul class="drop-menu cat">
+                <li *ngFor="let categoria of categorias;">
+                <a [routerLink]="['/search']">{{categoria.name}}
+                    <figure class="ellipse"><img src={{categoria.icon}} alt=""></figure>
+                </a>
+            </li>
+            </ul>
+        </div>
+        </div>
+</section>
