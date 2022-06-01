@@ -1,6 +1,6 @@
 <header><app-navbar (show)="openLogin($event)"></app-navbar></header>
 <body>
-    <div class="contenedor-carga" [ngStyle]='{"visibility":notFound}' ><div class="preloader"></div></div>
+    <div class="contenedor-carga" [ngStyle]='{"display":notFound}'><div class="preloader"></div></div>
     <div class="modal" [ngStyle]="{'display':showlogin}">
         <div class="modalcontent">
           <app-login-register (close)="closeLogin($event)"></app-login-register>

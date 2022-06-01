@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit} from '@angular/core';
+import { timeout } from 'rxjs';
 
 @Component({
   selector: 'app-root',
@@ -14,12 +15,16 @@ export class AppComponent implements OnInit {
 
   }
 
-  notFound : string = 'visibility';
+  notFound : string = 'block';
 
   ngOnInit(): void {
-    window.onload = function(){
-      notFound = 'hidden';
-    }
+      setTimeout(() => {
+        this.closeLoading();
+      }, 500);
+  }
+
+  closeLoading():void{
+    this.notFound = 'none';
   }
 
   showlogin:string = 'none';
