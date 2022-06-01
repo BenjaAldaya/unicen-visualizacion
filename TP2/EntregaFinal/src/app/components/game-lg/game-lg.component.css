@@ -21,7 +21,7 @@
     display: flex;
     width: 100%;
     height: 100%;
-    border: 1px solid #000000;
+    border: 1px solid black;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
     border-radius: 5px;
     /* width: 228px;
@@ -135,3 +135,4 @@
         transform: scale(1) translate3d(0, 0, 0);
     }
 }
+

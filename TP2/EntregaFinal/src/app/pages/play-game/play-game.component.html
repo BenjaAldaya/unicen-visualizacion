@@ -4,14 +4,13 @@
             <div class="game-photo">
                 <img src="./assets/images/games/Among Us.png" alt="game-icon">
             </div>
-            <div class="game-namecategory">
-                <div class="game-name"><h1>Mario bros</h1></div>
-                <div class="game-category"><p>Juegos clásicos</p></div>
+            <div class="game-name">
+                <h2>Among Us</h2>
             </div>
         </article>
         <article class="game-user-buttons">
-            <div class="star-fav" (click)="starFill()">
-                <i class="bi bi-star " id="btn-fav"></i>
+            <div class="star-fav">
+                <i class="bi bi-star " id="btn-fav" (click)="starFill()"></i>
             </div>
             <div class="game-desc">
                 <a [routerLink]="['/playgame/']" fragment="description" >
@@ -55,8 +54,8 @@
         </article>
         <article class="howplay">
             <h1>Como jugar</h1>
-            <img src="../../../assets/images/Arrow_keys.png" alt="" width="360" height="200" >
-            <img src="../../../assets/images/wasd.png" alt="" width="360" height="200" >
+            <img src="../../../assets/images/Arrow_keys.png" alt="" width="300" height="200" >
+            <img src="../../../assets/images/wasd.png" alt="" width="300" height="200" >
         </article>
         <article class="gameplay">
             <h1>Gameplay</h1>
