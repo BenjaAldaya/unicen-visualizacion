@@ -10,10 +10,22 @@
             </div>
         </article>
         <article class="game-user-buttons">
-            <div class="star-fav"><i class="bi bi-star"></i></div>
-            <div class="game-desc"><a [routerLink]="['/playgame/']" fragment="description" ><p>¿Como jugar?</p></a></div>
-            <div class="game-share"><i class="bi bi-share"></i></div>
-            <div class="game-rating"><i class="bi bi-hand-thumbs-up"></i><i class="bi bi-hand-thumbs-down"></i></div>
+            <div class="star-fav" (click)="starFill()">
+                <i class="bi bi-star " id="btn-fav"></i>
+            </div>
+            <div class="game-desc">
+                <a [routerLink]="['/playgame/']" fragment="description" >
+                    <p>¿Como jugar?</p>
+                </a>
+            </div>
+            <div class="game-share" (click)="shareFill()">
+                <i class="bi success bi-share" id="btn-share"></i>
+            </div>
+            <div class="game-rating">
+                <div class="up" (click)="ratingFillUp()" >
+                    <i class="bi bi-hand-thumbs-up" id="btn-hand-up"></i>
+                </div>
+            </div>
         </article>
     </section>
 <!-- </div>
@@ -43,9 +55,18 @@
         </article>
         <article class="howplay">
             <h1>Como jugar</h1>
+            <img src="../../../assets/images/flechas.png" alt="" width="360" height="200" >
         </article>
         <article class="gameplay">
             <h1>Gameplay</h1>
+            <div class="galeria" style="--w: 360px; --h: 200px;">
+                <input type="radio" name="navigation2" id="_1" >
+                <input type="radio" name="navigation2" id="_2">
+                <input type="radio" name="navigation2" id="_3" checked>
+                <img src="../../../assets/images/gameplay1.png" width="360" height="200" alt="Galeria CSS 1" />
+                <img src="../../../assets/images/gameplay2.png" width="360" height="200" alt="Galeria CSS 2"  />
+                <img src="../../../assets/images/gameplay3.png" width="360" height="200" alt="Galeria CSS 3" />
+              </div>
         </article>
     </section>
     <section class="more-category">

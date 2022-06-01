@@ -13,8 +13,47 @@ export class PlayGameComponent implements OnInit {
 
   constructor() { }
 
-  ngOnInit(): void {
-  }
   juegos = Juegos;
   categorias = Categorias
+  star = document.getElementById('btn-fav');
+  share = document.getElementById('btn-share');
+  handUp = document.getElementById('btn-hand-up');
+  handDown = document.getElementById('btn-hand-down');
+
+  ngOnInit(): void {
+  }
+
+  starFill(): void{
+    if(document.getElementById('btn-fav')?.classList.contains('bi-star')){
+      document.getElementById('btn-fav')?.classList.remove('bi-star');
+      document.getElementById('btn-fav')?.classList.add('bi-star-fill');
+    } else {
+      document.getElementById('btn-fav')?.classList.remove('bi-star-fill');
+      document.getElementById('btn-fav')?.classList.add('bi-star');
+    }
+  }
+
+  shareFill(): void{
+    if(document.getElementById('btn-share')?.classList.contains('bi-share')){
+      document.getElementById('btn-share')?.classList.remove('bi-share');
+      document.getElementById('btn-share')?.classList.add('bi-share-fill');
+    } else{
+      document.getElementById('btn-share')?.classList.remove('bi-share-fill');
+      document.getElementById('btn-share')?.classList.add('bi-share');
+    }
+  }
+
+  ratingFillUp(): void{
+    if(document.getElementById('btn-hand-up')?.classList.contains('bi-hand-thumbs-up')){
+      document.getElementById('btn-hand-up')?.classList.remove('bi-hand-thumbs-up');
+      document.getElementById('btn-hand-up')?.classList.add('bi-hand-thumbs-up-fill');
+      document.getElementById('btn-hand-up')?.classList.add('bounce-7');
+    } else{
+      document.getElementById('btn-hand-up')?.classList.remove('bi-hand-thumbs-up-fill');
+      document.getElementById('btn-hand-up')?.classList.remove('bounce-7');
+      document.getElementById('btn-hand-up')?.classList.add('bi-hand-thumbs-up');
+    }
+  }
+
+
 }
