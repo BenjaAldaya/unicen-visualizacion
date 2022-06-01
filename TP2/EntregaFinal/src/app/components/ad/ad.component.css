@@ -4,3 +4,13 @@
     background-image: url(../../../assets/images/anuncio.png);
     background-size: cover;
 }
+@media screen and (max-width:1000px) {
+    .ads{
+        margin-top: 2rem;
+        width: 300px;
+        height: 60px;
+        background-image: url(../../../assets/images/anuncio2.png);
+        background-size: cover;
+        border-radius: 5px;
+    }
+}

@@ -52,6 +52,10 @@
   justify-content: space-between;
 }
 
+.adresponsive{
+    display: none;
+}
+
 /* Juegos promocionados */
 @media screen and (max-width: 1022px) {
   .right {
@@ -75,5 +79,9 @@
   .more-category {
     width: 100%;
     justify-content: space-around;
+  }
+
+  .adresponsive{
+      display: block;
   }
 }
