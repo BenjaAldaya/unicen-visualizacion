@@ -388,6 +388,7 @@ transform: rotate(-180deg);
 	filter: brightness(1.4);
 	filter: drop-shadow(16px 16px 20px rgb(248, 220, 97));
 	filter: blur(15px);
+  display: none;
 }
 
 
@@ -400,8 +401,27 @@ transform: rotate(-180deg);
 
   .menu{display:none;}
 
-  .toggle{display: flex;}
+  .toggle{
+    padding-top: 0.25rem;
+    display: flex;
+  }
 
+  #hmb-icon{
+    font-size: 2rem;
+    color:#ED6077;
+    cursor: pointer;
+  }
+
+  .navloginR{
+    width: 100%;
+    padding-top: 0.25rem;
+  }
+
+
+  #profile{
+    font-size: 2rem;
+    color: #ED6077;
+  }
   nav {
     justify-content: space-between;
   }
@@ -416,4 +436,124 @@ transform: rotate(-180deg);
     cursor: pointer;
   }
 
+  .hmb{
+    width: 200px;
+    height: 1000px;
+    background-color: #134252;
+    display: none;
+    flex-direction: column;
+    padding-top: 4rem;
+    z-index: 1;
+    position: fixed;
+  }
+
+  .hmb .search{
+    width: 100%;
+    height: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .hmb .categorias{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1rem;
+    justify-self: flex-start;
+  }
+
+  .none{
+    display: none;
+  }
+
+  .display{
+    display: flex;
+  }
+
+  /* --------Categorias---------- */
+.navcat{
+  z-index: 100;
+}
+
+.navcat {
+  width: 100%;
+  cursor: pointer;
+}
+
+.navcat a {
+  width: 100%;
+  margin: 0;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: block;
+}
+
+.navcat:hover{
+  background-color: #134252;
+  box-shadow: inset 1px 1px 2px;
+}
+
+.navcat:hover > #catbutton p{
+  text-shadow: 0px 2px 8px #35ABD2;
+}
+
+.navcat a span {
+  color: white;
+  font-size: 0.8rem;
+  font-variant: small-caps;
+  cursor: pointer;
+  display: block;
+}
+
+
+.navcat {
+  width: 100%;
+}
+
+.navcat ul {
+  position: relative;
+  /* position:fixed */
+  display: block;
+  list-style: none;
+  display: inline-block;
+  /* background: #464646; */
+  top: 0%;
+}
+
+.navcat ul li {
+  /* float: left; */
+  width: 100%;
+  /* height: 25%; */
+  line-height: 40px;
+}
+
+.navcat ul li a {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  /* align-self: center; */
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-top:2px inset #02264F;
+  text-decoration: none;
+  color: white;
+}
+
+.navcat ul li a .ellipse{
+  width: 30px;
+  height: 30px;
+  margin-left: 0.4rem;
+  background: rgba(162, 186, 185, 0.44);
+  border-radius: 50%;
+}
+
+
+  
 }
