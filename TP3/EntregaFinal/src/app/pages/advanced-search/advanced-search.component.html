@@ -1,0 +1,28 @@
+<div class="container">
+    <section class="head">
+        <div class="info"><h1>Todos los juegos</h1></div>
+        <article class="ads"></article>
+    </section>
+    <section class="search-filter">
+        <div class="filter" id="category"><p>Categorias</p></div>
+        <div class="filter"><p>Populares</p></div>
+        <div class="filter"><p>Nuevos</p></div>
+        <div class="filter"><p>Ascendente</p></div>
+        <div class="filter"><p>Descendente</p></div>
+    </section>
+    <section class="none" id="category2">
+        <div *ngFor="let categoria of categorias">
+            <app-category [categoria]="categoria"></app-category>
+        </div>
+    </section>
+    <section class="cards-game">
+        <div style="margin-bottom:1.2rem;" *ngFor="let juego of juegos | slice:0:18;">
+            <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
+        </div>
+    </section>
+    <section class="nav-buttons">
+        <div class="previous"> <button class="btn-primary"><p>Anterior</p></button> </div>
+        <div class="nav"> <button class="btn-primary" ><p>1</p></button><button class="btn-primary" ><p>2</p></button><button class="btn-primary" ><p>3</p></button></div>
+        <div class="next"> <button class="btn-primary"><p>Siguiente</p></button> </div>
+    </section>
+</div>

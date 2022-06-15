@@ -1,0 +1,330 @@
+.container{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    padding-top: 4.25rem;
+}
+
+.game-desc-small{
+    width: 1152px;
+    height:120px;
+    display: flex;
+    background-color: rgba(0, 0, 0, 0.4);
+    margin-bottom: 1.25rem ;
+}
+
+.game-info{
+    display: flex;
+    width: 50%;
+}
+
+.game-info .game-photo{
+    width: 30%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-left: 1rem;
+}
+
+.game-info .game-photo img{
+    width: 120px;
+    height: 100px;
+    border-radius: 5px;
+}
+
+.game-info .game-name{
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.game-info .game-name h2{
+    font-family: 'Lato';
+    font-style:normal;
+    font-size: 30px;
+    line-height: 10px;
+    color: #FFFFFF;
+}
+
+
+.game-user-buttons{
+    width: 50%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.game-user-buttons .star-fav{
+    width: 40%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-user-buttons .star-fav .bi{
+    color: yellow;
+}
+
+
+.game-user-buttons .game-desc{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-user-buttons .game-share{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-user-buttons .game-share .bi{
+    color:#A04C59;
+}
+
+.game-user-buttons .game-rating{
+    width: 20%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-user-buttons .game-rating .i{
+    width: 50px;
+    height: 50px;
+}
+
+.game-user-buttons .game-rating .up{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#btn-share{
+    font-size: 1.5em;
+}
+
+#btn-fav{
+    font-size: 1.5em;
+}
+
+#btn-hand-up{
+    font-size: 1.5em;
+}
+
+.bounce-7 {
+    animation-name: bounce-7;
+    animation-duration: 2s;
+    animation-iteration-count: 1;
+    transform-origin: bottom;
+    animation-timing-function: cubic-bezier(0.280, 0.840, 0.420, 1);
+}
+
+@keyframes bounce-7 {
+    0%   { transform: scale(1,1)translateY(0); }
+    10%  { transform: scale(1.1,.9) translateY(-40px); }
+    30%  { transform: scale(.9,1.1) translateY(0); }
+    50%  { transform: scale(1.05,.95) translateY(-20px); }
+    57%  { transform: scale(1,1) translateY(0); }
+    64%  { transform: scale(1,1) translateY(20px); }
+    100% { transform: scale(1,1) translateY(0); }
+}
+
+.game-user-buttons .game-rating .up .bi{
+    color:green;
+}
+
+.game-user-buttons .game-rating .down{
+    height: 100%;
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game-user-buttons .game-rating .down .bi{
+    color:red;
+}
+
+.playgame{
+    width: 1152px;
+    height: 600px;
+    display: flex;
+    margin-bottom: 13px;
+}
+
+#btn-play{
+    font-size: 5rem;
+    z-index: 1;
+    color: white;
+}
+
+app-play-game app-game-lg .gamecontainer {
+    margin-bottom: 0 !important;
+    margin-right: 0 !important;
+}
+
+.more-games-column{
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-content: space-between;
+}
+
+.game{
+    /* width: 60%; */
+    width: 800px ;
+    background-color: (0,0,0,0.1);
+    background-image: url(../../../assets/images/games/Minecraft.png);
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.game img{
+    width: 100%;
+    display: flex;
+    height: auto;
+    opacity: 0.4;
+    filter: blur(8px);
+}
+
+.ads{
+    width: 20%;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.more-games-maxwidth{
+    display: flex;
+    width: 1152px;
+    height: 140px;
+    margin-bottom: 1.25rem;
+    justify-content: space-between;
+}
+
+.game-desc-big{
+    width: 1152px;
+    height: 1095px;
+    background-color: rgba(0, 0, 0, 0.4);
+    /* opacity: 40%; */
+    display: block;
+    margin-bottom: 1.25rem ;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.game-desc-big h1{
+    padding-bottom: 1rem;
+    font-family: 'Lato';
+    font-style: normal;
+    font-weight: 800;
+    font-size: 38px;
+    line-height: 46px;
+    color: white;
+}
+
+.game-desc-big p{
+    font-family: 'Inter';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+    align-items: center;
+    /* text-align: center; */
+    color: white;
+}
+
+
+.game-desc-big article {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    padding-top: 5rem;
+    /* padding-bottom: 3rem; */
+}
+
+.game-desc-big article h1{
+    width: 80%;
+    display: flex;
+    justify-self: center;
+}
+.game-desc-big article p{
+    width: 80%;
+    display: flex;
+    justify-self:center;
+}
+
+/* .game-desc-big .howplay{
+    width: 100%;
+    height: 33%;
+}
+
+.game-desc-big .gameplay{
+    width: 100%;
+    height: 33%;
+} */
+
+.more-category{
+    width: 1152px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+app-play-game app-category .card-category{
+    margin-right:0 !important;
+}
+
+/* Galeria de imagenes */
+
+.galeria {
+    height: 200px;
+    width: 400px;
+    position:relative;
+    display:inline-block;
+  }
+  
+  .galeria img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    transition: opacity 3s;
+  }
+  
+  .galeria input[type=radio] {
+    position: relative;
+    bottom: calc(-1 * var(--h) - 1.5em);
+    left: .5em;
+  }
+
+  
+  .galeria input[type=radio]:nth-of-type(1):checked ~ img:nth-of-type(1) {
+    opacity: 1;
+  }
+  
+  .galeria input[type=radio]:nth-of-type(2):checked ~ img:nth-of-type(2) {
+    opacity: 1;
+  }
+  
+  .galeria input[type=radio]:nth-of-type(3):checked ~ img:nth-of-type(3) {
+    opacity: 1;
+  }

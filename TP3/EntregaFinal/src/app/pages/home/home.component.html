@@ -1,0 +1,46 @@
+
+
+<div class="container" (window.resize)="onResize($event)">
+    <aside class="right">
+        <app-ad></app-ad>
+    </aside>
+    <section class="left animate-bg" let i = "index">
+        <h2>JUEGOS POPULARES</h2>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:0:juegosgrandes;">
+                    <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
+            </div>
+        </div>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:juegosgrandes:totaljuegos;">
+                <app-game-lg  [juego]="juego" clase="sm" ></app-game-lg>
+            </div>
+        </div>
+    </section>
+    <section class="left animate-bg" let i = "index">
+        <h2>JUEGOS NUEVOS</h2>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:0:juegosgrandes;">
+                    <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
+            </div>
+        </div>
+        <div class="contlg">
+            <div *ngFor="let juego of juegos | slice:juegosgrandes:totaljuegos;">
+                <app-game-lg  [juego]="juego" clase="sm" ></app-game-lg>
+            </div>
+        </div>
+    </section>
+    <section class="categorys">
+        <div class="more-category">
+            <div *ngFor="let categoria of categorias">
+                <app-category [categoria]="categoria"></app-category>
+            </div>
+        </div>
+    </section>
+    <section class="left adresponsive">
+        <app-ad></app-ad>
+    </section>
+</div>
+
+
+

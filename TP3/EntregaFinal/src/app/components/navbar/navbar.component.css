@@ -1,0 +1,558 @@
+* {
+  padding: 0;
+  margin: 0;
+}
+
+nav {
+  display: flex;
+  position: fixed;
+  z-index: 100;
+  flex-wrap: nowrap;
+  width: 100%;
+  height: 50px;
+  background-color: #02264F;
+}
+
+nav a {
+  display: flex;
+  align-items: center;
+  color: white;
+  height: 50px;
+  padding: 0px;
+  margin-left: 25px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* ----------------------------- */
+
+
+/* ---------------------------- */
+nav a p {
+  font-style: normal;
+  cursor: pointer;
+}
+
+/* ---------------------------- */
+/* Estilo del Logo */
+#brandswitch {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  line-height: 0px;
+  display: flex;
+  align-self: center;
+  justify-content: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 2px #35ABD2;
+}
+
+#brandgames {
+  font-style: normal;
+  font-weight: 800;
+  font-size: 20px;
+  text-align: center;
+  line-height: 0px;
+  display: flex;
+  align-self: center;
+  text-transform: uppercase;
+  color: #FFFFFF;
+  text-shadow: 0px 2px 2px #ED6077;
+}
+
+.logoR{
+  display: flex;
+  width: 100%;
+  height: 20px;
+  justify-content: center;
+  align-content: center;
+  display: none;
+}
+
+.logoR figure img{
+  height: 30px;
+}
+
+.menu {
+  display: flex;
+  width: 100%;
+}
+
+.menu .allgames {
+  display: none;
+}
+/* --------Categorias---------- */
+.navcat {
+  width: 200px;
+  cursor: pointer;
+  margin-left: 1.5rem;
+}
+
+.navcat a {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  text-align: center;
+  margin: 0;
+}
+
+.navcat:hover{
+  background-color: #134252;
+  box-shadow: inset 1px 1px 2px;
+}
+
+.navcat:hover > #catbutton p{
+  text-shadow: 0px 2px 8px #35ABD2;
+}
+
+.navcat a span {
+  padding-top: auto;
+  padding-bottom: auto;
+  padding-left: 10px;
+  color: white;
+  font-size: 0.8rem;
+  font-variant: small-caps;
+  cursor: pointer;
+  display: block;
+}
+
+
+.navlogin {
+  /* justify-content: flex-end; */
+  width: 100%;
+  align-self: center;
+}
+
+nav ul {
+  position: relative;
+  /* position:fixed */
+  /* display: block; */
+  list-style: none;
+  display: inline-block;
+  /* background: #464646; */
+  top: 0%;
+}
+
+nav ul li {
+  /* float: left; */
+  width: 200px;
+  /* height: 25%; */
+  line-height: 40px;
+}
+
+nav ul li a {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  /* align-self: center; */
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-top:2px inset #02264F;
+  text-decoration: none;
+}
+
+nav ul li a .ellipse{
+  width: 30px;
+  height: 30px;
+  margin-left: 0.4rem;
+  background: rgba(162, 186, 185, 0.44);
+  border-radius: 50%;
+}
+
+.drop-menu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+
+
+ul.drop-menu {
+  position: absolute;
+  top: 100%;
+  left: 0%;
+  width: 100%;
+  padding: 0;
+}
+
+ul.drop-menu li {
+  background: #134252;
+}
+
+ul.drop-menu li:last-child {
+  border-radius: 0px 0px 5px 5px;
+}
+
+
+.drop-menu li {
+  display: none;
+}
+
+.navcat:hover>.drop-menu li {
+  display: block;
+}
+
+/* .navcat:hover > .navcat a span{
+  -webkit-transform: rotate(-180deg);
+-moz-transform: rotate(-180deg);
+transform: rotate(-180deg);
+} */
+
+.navcat:hover>.drop-menu.cat {
+  perspective: 1000px
+}
+
+.navcat:hover>.drop-menu.cat li {
+  opacity: 0;
+  transform-origin: top center;
+  background-color: #134252;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(1) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: -100ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(2) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: -20ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(3) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 60ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(4) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 140ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(5) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 220ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(6) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 300ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(7) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 380ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+
+.navcat:hover>.drop-menu.cat li:nth-child(8) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 460ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+.navcat:hover>.drop-menu.cat li:nth-child(9) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 540ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 0px 4px 4px;
+}
+.navcat:hover>.drop-menu.cat li:nth-child(10) {
+  animation-name: dropcat;
+  animation-duration: 300ms;
+  animation-delay: 620ms;
+  animation-timing-function: ease-in-out;
+  animation-fill-mode: forwards;
+  box-shadow: 4px 4px 4px;
+}
+
+@keyframes dropcat {
+  0% {
+    opacity: 0;
+    transform: rotateX(-90deg);
+  }
+
+  100% {
+    opacity: 1;
+    transform: rotateX(0deg);
+  }
+}
+.drop-menu.cat img{
+  width:60%;
+  height: 60%;
+}
+.toggle{
+  display: none;
+  font-size: 24px;
+  user-select: none;
+}
+/* --------------Login---------------- */
+#btnlogin {
+  background-color: #ED6077;
+  color: white;
+  border: 0.3px solid #464646;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 5px;
+  font-style: normal;
+  font-weight: 700;
+  font-size: 16px;
+  padding: 0.5rem 0.75rem 0.5rem 0.75rem;
+  cursor: pointer;
+  float: right;
+  margin-right: 20px;
+}
+.usericon{
+  width: 40px;
+  height: 40px;
+  margin-right: 25px;
+}
+
+.navloginR{
+  display: none;
+  width: 100%;
+  align-content: flex-end;
+  justify-content: flex-end;
+}
+
+.navlogeado{
+  width: 100%;
+  display: inline-flex;
+  justify-content:flex-end;
+}
+
+.navlogeado img{
+  margin-left: 1rem;
+}
+
+/* --------------Barra RGB---------------- */
+.animate-bg:before, .animate-bg:after {
+	content: '';
+  display: flex;
+  justify-content: center;
+  align-items: center;
+	background: linear-gradient(120deg, #79fb00, #8d01a0, #031ba5,#ff004c,
+	#e6036d, #fb0094,#ff6600, #04c2e4,#adad02, #00c3ff);
+	background-size: 300%;
+	width: 100%;
+	height: 5px;
+	z-index: -1;
+	animation: BGgradient 15s ease infinite;
+}
+
+@keyframes BGgradient {
+	0% {
+		background-position: 0% 100%;
+	}
+    20%{
+        background-position: 100% 50%;
+    }
+	50% {
+		background-position: 50% 150%;
+	}
+	100% {
+		background-position: 0% 330%;
+	}
+}
+
+.animate-bg:after {
+	filter: brightness(1.4);
+	filter: drop-shadow(16px 16px 20px rgb(248, 220, 97));
+	filter: blur(15px);
+  display: none;
+}
+
+
+@media screen and (max-width:1020px) {
+  nav .logo{display:none;}
+  nav .logoR{display: flex;
+    margin: auto 0;}
+  nav .navlogin{display:none;}
+  .navloginR{display: flex;}
+    .navlogeado{display: none;}
+  .menu{display:none;}
+
+  .toggle{
+    padding-top: 0.25rem;
+    display: flex;
+  }
+
+  #hmb-icon{
+    font-size: 2rem;
+    color: white;
+    cursor: pointer;
+  }
+
+  .navloginR{
+    width: 100%;
+    padding-top: 0.25rem;
+  }
+
+  #profile{
+    font-size: 2rem;
+    color: white;
+  }
+  nav {
+    justify-content: space-between;
+  }
+  nav a {
+    display: flex;
+    align-self: center;
+    justify-content: center;
+    margin-left: 0;
+    color: white;
+    padding: 0px;
+    text-decoration: none;
+    cursor: pointer;
+  }
+
+  .hmb{
+    width: 200px;
+    height: 1000px;
+    background-color: #134252;
+    display: none;
+    flex-direction: column;
+    padding-top: 4rem;
+    z-index: 1;
+    position: fixed;
+  }
+
+  .hmb .search{
+    width: 100%;
+    height: 10px;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+  }
+
+  .hmb .categorias{
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    padding-top: 1rem;
+    justify-self: flex-start;
+  }
+
+  .none{
+    display: none;
+  }
+
+  .display{
+    display: flex;
+  }
+
+  /* --------Categorias---------- */
+.navcat{
+  z-index: 100;
+}
+
+.navcat {
+  width: 100%;
+  cursor: pointer;
+}
+
+.navcat a {
+  width: 100%;
+  margin: 0;
+  color: white;
+  font-size: 0.8rem;
+  cursor: pointer;
+  display: block;
+}
+
+.navcat:hover{
+  background-color: #134252;
+  box-shadow: inset 1px 1px 2px;
+}
+
+.navcat:hover > #catbutton p{
+  text-shadow: 0px 2px 8px #35ABD2;
+}
+
+.navcat a span {
+  color: white;
+  font-size: 0.8rem;
+  font-variant: small-caps;
+  cursor: pointer;
+  display: block;
+}
+
+
+.navcat {
+  width: 100%;
+}
+
+.navcat ul {
+  position: relative;
+  /* position:fixed */
+  display: block;
+  list-style: none;
+  display: inline-block;
+  /* background: #464646; */
+  top: 0%;
+}
+
+.navcat ul li {
+  /* float: left; */
+  width: 100%;
+  /* height: 25%; */
+  line-height: 40px;
+}
+
+.navcat ul li a {
+  display: flex;
+  margin: 0;
+  justify-content: center;
+  /* align-self: center; */
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  border-top:2px inset #02264F;
+  text-decoration: none;
+  color: white;
+}
+
+.navcat ul li a .ellipse{
+  width: 30px;
+  height: 30px;
+  margin-left: 0.4rem;
+  background: rgba(162, 186, 185, 0.44);
+  border-radius: 50%;
+}
+
+
+  
+}

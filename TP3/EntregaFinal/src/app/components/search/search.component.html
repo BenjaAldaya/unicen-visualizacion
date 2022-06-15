@@ -1,0 +1,15 @@
+<div class="dropdown">
+    <input type="text" placeholder="Buscador" id="search" [(ngModel)]="search" (ngModelChange)="buscar($event)">
+    <ul class="dropdown-content">
+        <li *ngFor="let juego of juegosFiltrados | slice:0:6;">
+            <a href="playgame/{{juego.nombre}}">
+                <p>{{juego.nombre}}</p>
+                <figure><img src={{juego.img}} alt=""></figure>
+            </a>
+        </li>
+        <li *ngIf="juegosFiltrados.length == 0" ><p>No se encontraron juegos...</p></li>
+        <li>
+            <a [routerLink]="['/search']" id="allgames"><p>Todos los juegos</p></a>
+        </li>
+    </ul>
+</div>

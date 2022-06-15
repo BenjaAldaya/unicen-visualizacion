@@ -1,0 +1,179 @@
+.gamecontainer {
+    /* margin-bottom: 1.20rem; */
+    display: flex
+}
+.lg {
+  width: 228px;
+  height: 176px;
+}
+
+.sm{
+  width: 140px;
+  height: 140px;
+}
+
+.gamecontainer figure {
+    position: relative;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border: 1px solid black;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.6);
+    border-radius: 5px;
+}
+
+.gamecontainer figure img {
+  position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    transition: all 500ms ease-out;
+    border-radius: 5px;
+}
+
+.gamecontainer figure a .capa {
+    position: absolute;
+    display: flex;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    transition: all 500ms ease-out;
+    opacity: 0;
+    visibility: hidden;
+    text-align: center;
+}
+.gamecontainer figure a .capa .favbuttondiv {
+  display: flex;
+  z-index: 1;
+  width: 100%;
+  margin-top: 0.8rem;
+  margin-right: 0.8rem;
+  height: 20%;
+  align-items: center;
+  justify-content: flex-end;
+  z-index: 1;
+}
+
+.gamecontainer figure a .capa button {
+    display: flex;
+    height: 100%;
+}
+
+.gamecontainer figure a .capa .namebg {
+  position: absolute;
+    display: flex;
+    width: 100%;
+    height: 1rem;
+    align-self: flex-end;
+    justify-self: center;
+    align-items: center;
+    margin-bottom: 1.5rem;
+    padding: 0.5rem 0 0.5rem 0;
+    background-color: rgba(0, 0, 0, 0.7);
+    border-style: solid;
+    border-color: rgba(255, 255, 255, 0.3);
+    border-width: 1px 0 1px 0;
+    overflow: hidden;
+}
+
+.gamecontainer figure a .capa p {
+    display: inline;
+    width: 100%;
+    /* text-align: center; */
+    color: white;
+    border: 25px white;
+    opacity: 0;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    
+}
+
+
+
+@keyframes bounceIn {
+    0% {
+        opacity: 0;
+        transform: scale(0.3) translate3d(0, 0, 0);
+    }
+
+    50% {
+        opacity: 0.9;
+        transform: scale(1.1);
+    }
+
+    80% {
+        opacity: 1;
+        transform: scale(0.89);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) translate3d(0, 0, 0);
+    }
+}
+.gamecontainer figure a .capaR{
+    display: none;
+}
+
+@media screen and (max-width:1000px) {
+    .lg {width: 300px;
+        height: 200px;
+    }
+
+    .gamecontainer figure a .capaR {
+        position: absolute;
+        display: flex;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        text-align: center;
+    }
+
+    .gamecontainer figure a .capaR .namebg {
+        position: absolute;
+          display: flex;
+          width: 100%;
+          height: 1rem;
+          align-self: flex-end;
+          justify-self: center;
+          align-items: center;
+          margin-bottom: 1.5rem;
+          padding: 0.5rem 0 0.5rem 0;
+          background-color: rgba(0, 0, 0, 0.7);
+          border-style: solid;
+          border-color: rgba(255, 255, 255, 0.3);
+          border-width: 1px 0 1px 0;
+      }
+      .gamecontainer figure a .capaR p {
+        width: 100%;
+        text-align: center;
+        color: white;
+        border: 25px white;
+    }
+}
+
+@media screen and (min-width:1001px) {
+    .gamecontainer figure a:hover>.capa {
+        opacity: 1;
+        visibility: visible;
+    }
+    
+    .gamecontainer figure a:hover>.capa button {
+    
+        animation-name: bounceIn;
+        animation-duration: 500ms;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    }
+    
+    .gamecontainer figure a:hover>.capa p {
+        animation-name: bounceIn;
+        animation-duration: 500ms;
+        animation-timing-function: linear;
+        animation-fill-mode: forwards;
+    
+    }
+}
