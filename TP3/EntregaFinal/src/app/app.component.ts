@@ -1,4 +1,5 @@
 import { Component, HostListener, OnInit} from '@angular/core';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-root',
@@ -9,10 +10,12 @@ import { Component, HostListener, OnInit} from '@angular/core';
 
 
 export class AppComponent implements OnInit {
-  
+
   constructor(){
 
   }
+
+  subject = new Subject<string>();
 
   notFound : string = 'block';
 
@@ -30,12 +33,16 @@ export class AppComponent implements OnInit {
   openLogin(s:string):void{
     this.showlogin = s;
   }
-  
+
   closeLogin(c:string):void{
     this.showlogin = c;
   }
 
-  
+  closeLoginoutclick():void{
+    this.showlogin = "none"
+  }
 
-  
+
+
+
 }

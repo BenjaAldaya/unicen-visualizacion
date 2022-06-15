@@ -5,12 +5,17 @@
     justify-content: center;
     align-items: center;
 }
+.close{
+  display: flex;
+  align-items: center;
+  float: right;
+}
 figure{
     padding: 0;
     margin: 0;
     height: 100%;
     width: 183px;
-    animation: joy 3s ease-in; 
+    animation: joy 3s ease-in;
 }
 @keyframes joy{
     from {
@@ -59,7 +64,7 @@ figure img .joyderecho{
         transform:translateY(0%);
     }
 }
-   
+
 
 .container-center .tabs{
     display: flex;
@@ -74,11 +79,11 @@ figure img .joyderecho{
     width: 250px;
     background: #49CCF8;
     border: 1px solid #000000;
-    box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 3px 0px 0px 3px;
     padding :0.5rem 0 0.5rem 0;
     margin-top: 0.3rem;
-    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 75% 100%, 20% 100%);
+    /* clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 75% 100%, 20% 100%); */
     cursor: pointer;
 
     font-weight: 800;
@@ -86,16 +91,20 @@ figure img .joyderecho{
     line-height: 19px;
     color: white;
 }
-.container-center .tabs .loginbtn.active{  
-    background: #206D87;
-    border: 1px solid #000000;
-    box-shadow: inset 0px 4px 2px rgba(0, 0, 0, 0.5);
+.container-center .tabs .loginbtn.active{
+    background: none;
+    border: none;
+    /* border-right: 1px solid #000000; */
+    box-shadow: none;
+    /* box-shadow: inset 0px 4px 2px rgba(0, 0, 0, 0.5); */
 }
 
 .container-center .tabs .registerbtn.active{
-    background: #A04C59;
-    border: 1px solid #000000;
-    box-shadow: inset 0px 4px 2px rgba(0, 0, 0, 0.5);
+    background: none;
+    border: none;
+    /* border-left: 1px solid #000000; */
+    box-shadow: none;
+    /* box-shadow: inset 0px 4px 2px rgba(0, 0, 0, 0.5); */
 }
 
 .container-center .tabs .registerbtn{
@@ -104,11 +113,11 @@ figure img .joyderecho{
     width: 250px;
     background: #ED6077;
     border: 1px solid #000000;
-    box-shadow: 0px 4px 2px rgba(0, 0, 0, 0.5);
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
     border-radius: 0px 3px 3px 0px;
     padding: 0.5rem 0 0.5rem 0;
     margin-top: 0.3rem;
-    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 75% 100%, 0% 100%);
+    /* clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 75% 100%, 0% 100%); */
     cursor: pointer;
 
     font-weight: 800;
@@ -116,7 +125,6 @@ figure img .joyderecho{
     line-height: 19px;
     color: white;
 }
-
 
 .container-center form {
     width: 100%;
@@ -158,12 +166,16 @@ figure img .joyderecho{
     font-size: 10px;
     line-height: 12px;
 }
-
+  .container-center span{
+    font-size: 12px;
+  }
 .contenidoregister{
     display: none;
+    width: 250px;
 }
 .contenidologin{
     display: block;
+    width: 250px;
 }
 
 /*------------REGISTRO-------------*/

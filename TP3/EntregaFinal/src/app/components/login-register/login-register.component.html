@@ -1,3 +1,4 @@
+<button type="button" class="btn-primary close" (click)="closeLogin()">X</button>
 <div class="containermodal">
     <figure><img src="./assets/images/izq.png" alt=""></figure>
    <div class="bgcontainercenter">
@@ -5,7 +6,6 @@
             <div class="tabs">
                 <button [ngClass]="{'active':activelogin}" class="loginbtn" type="button" id="loginbtn" (click)="changeToLogin()">Iniciar Sesion</button>
                 <button [ngClass]="{'active':activeregister}" class="registerbtn" type="button" id="registerbtn" (click)="changeToRegister()"> Registrarse </button>
-                <button type="button" class="btn-primary" (click)="closeLogin()">X</button>
             </div>
             <div [ngStyle]="{'display':displaylogin}" class="contenidologin">
                 <form>
@@ -21,7 +21,7 @@
                         <a href="">Olvidaste tu contraseña?</a>
                     </div>
                     <div class="divbtnlogin">
-                        <button class="btn-secondary" type="submit">Iniciar Sesion</button>
+                        <button class="btn-secondary" type="submit" (click)="login">Iniciar Sesion</button>
                     </div>
                 </form>
             </div>
@@ -44,7 +44,7 @@
                         <span href="">Acepto los terminos y condiciones</span>
                     </div>
                     <div>
-                        <button class="btn-primary" type="submit">Registrarse</button>
+                        <button class="btn-primary" type="submit" (click)="login">Registrarse</button>
                     </div>
                 </form>
             </div>

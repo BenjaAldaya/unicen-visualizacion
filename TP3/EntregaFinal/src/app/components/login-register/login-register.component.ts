@@ -1,4 +1,5 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { Subject } from 'rxjs/internal/Subject';
 
 @Component({
   selector: 'app-login-register',
@@ -11,7 +12,7 @@ export class LoginRegisterComponent implements OnInit {
 
   ngOnInit(): void {
   }
-
+  // @Input() subject: Subject<string>;
   @Output() close = new EventEmitter<string>();
 
   activelogin:boolean = true;
@@ -19,6 +20,11 @@ export class LoginRegisterComponent implements OnInit {
   bgcolor:string="linear-gradient(180deg, #35ABD2 0%, #3CC2EF 51.56%, #154A5B 100%);"
   displaylogin:string="block";
   displayregister:string="none";
+
+
+  login():void{
+
+  }
 
   changeToRegister():void{
     this.activelogin = false;

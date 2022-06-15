@@ -43,8 +43,8 @@
         </article>
     </section>
     <section class="more-games-maxwidth">
-        <div *ngFor="let juego of juegos | slice:0:7;">
-            <app-game-lg [juego]="juego"></app-game-lg>
+        <div *ngFor="let juego of juegos | slice:0:5;">
+            <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
         </div>
     </section>
     <section class="game-desc-big">
