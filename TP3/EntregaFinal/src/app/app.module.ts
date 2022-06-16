@@ -18,6 +18,7 @@ import { FormsModule } from '@angular/forms';
 import { SearchComponent } from './components/search/search.component';
 import { FavoritosComponent } from './components/favoritos/favoritos.component';
 import { LogeadoComponent } from './components/logeado/logeado.component';
+import { CuatroenlineaComponent } from './cuatroenlinea/cuatroenlinea.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { LogeadoComponent } from './components/logeado/logeado.component';
     ProfileComponent,
     SearchComponent,
     FavoritosComponent,
-    LogeadoComponent
+    LogeadoComponent,
+    CuatroenlineaComponent
   ],
   imports: [
     BrowserModule,
