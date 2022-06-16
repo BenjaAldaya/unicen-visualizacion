@@ -1,10 +1,14 @@
 .container{
     width: 100%;
     display:flex;
-    justify-content: center;
+    /* justify-content: center; */
     padding-top: 6.25rem;
 }
-
+.content{
+  display: flex;
+  padding-left: 6rem;
+  margin: 0 auto;
+}
 .profile{
     width: 600px;
     height: 800px;
@@ -66,7 +70,7 @@
     background-color: rgba(0,0,0,0.5);
     padding-top: 3rem;
     padding-bottom: 6rem;
-    display: block;  
+    display: block;
 }
 
 .title{
