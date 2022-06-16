@@ -7,7 +7,14 @@ import { Tablero } from "./tablero";
 })
 
 export class Juego implements OnInit {
-  constructor(private ctx: CanvasRenderingContext2D){
+
+  w:number;
+  h:number;
+  margen:number = 10;
+
+  constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
+    this.w = canvas.nativeElement.width;
+    this.h =canvas.nativeElement.height;
   }
 
   ngOnInit(): void {
@@ -17,14 +24,12 @@ export class Juego implements OnInit {
 
   dibujarTablero() {
     this.ctx.fillStyle = 'red';
-    const tablero = new Tablero(this.ctx);
+    const tablero = new Tablero(this.ctx,this.w,this.h,this.margen);
     tablero.dibujar();
   }
 
   dibujarpanel(){
-    this.ctx.strokeRect(20,20,760,60);
-    var text1 = this.ctx.strokeText('Jugador 1',20,160,90);
-    var text2 = this.ctx.strokeText('Jugador 2',690,160,90);
+    this.ctx.strokeRect(this.margen,this.margen,this.w-this.margen*2,70);
   }
 
 }

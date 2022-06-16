@@ -40,7 +40,11 @@ setColor(color:string){
 dibujar(){
   this.ctx.beginPath();
         this.ctx.arc(this.x, this.y, this.radio, 0, 2 * Math.PI);
+        this.ctx.fillStyle = 'black';
+        this.ctx.lineWidth = 3;
+        this.ctx.stroke();
         this.ctx.fillStyle = this.color;
         this.ctx.fill();
+        this.ctx.lineWidth = 1;
 }
 }
