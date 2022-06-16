@@ -23,7 +23,6 @@ export class Juego implements OnInit {
 
 
   dibujarTablero() {
-    this.ctx.fillStyle = 'red';
     const tablero = new Tablero(this.ctx,this.w,this.h,this.margen);
     tablero.dibujar();
   }

@@ -8,6 +8,8 @@ export class Tablero {
   y:number = 6;
   //radio de los circulos
   radio:number = 15;
+  //donde inicia las secciones de fichas y tablero
+  inicioY:number=120;
   
   cantfichas:number;
   //margen vertical
@@ -15,9 +17,9 @@ export class Tablero {
   //total width y heigh del canvas
   totalW:number;
   totalH:number;
-  //tamaño seccion fichas
+  //ancho seccion fichas
   secW:number =120;
-  secH:number =400;
+
 
   constructor(private ctx:CanvasRenderingContext2D,w:number,h:number,m:number){
     this.totalW = w;
@@ -30,20 +32,19 @@ export class Tablero {
   }
 
   dibujar():void{
-    var x=this.x;
-    var y=this.y;
-    // var tabespacios = ((x+1) * 5);
-    this.seccionesfichas(this.secW,this.secH);
+    var y=this.inicioY;
+    var secH =this.totalH - this.margen - y;
+    this.seccionesfichas(this.secW,secH);
 
     //tablero
-    this.ctx.strokeRect((this.margen*2)+this.secW,180,520,400);
-    // this.ctx.fillRect(z * x, z * y, z, z);
+    this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
+    //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
   }
 
   seccionesfichas(w:number,h:number):void{
     var ctx=this.ctx;
     var x1 = this.margen;
-    var y = 180;
+    var y = this.inicioY;
     var x2 = this.totalW-this.margen-w;
     this.ctx.textAlign = "center";
     this.ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
@@ -62,7 +63,7 @@ export class Tablero {
     //margent interno
     var m = 5;
     for (var i =0 ; i < this.cantfichas; i++) {
-      //Math.floor(Math.random() * (max - min) + min;
+      //random utilizado abajo Math.floor(Math.random() * (max - min) + min;
       var fichaRojaX= Math.floor(Math.random() * ((w+x1-m-radio) - (x1+m+radio))) + (x1+m+radio);
       var fichasY = Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
       var fichaAzulX =Math.floor(Math.random() * ((w+x2-m-radio) - (x2+m+radio))) + (x2+m+radio);
@@ -72,8 +73,10 @@ export class Tablero {
 
       var ficharoja = new Fichas(fichaRojaX,fichasY,'#ff0000', radio,ctx);
       var fichaazul = new Fichas(fichaAzulX,fichasY ,'#0000ff', radio,ctx);
+
       fichaazul.dibujar();
       ficharoja.dibujar();
+
       this.fichasazules.push(fichaazul);
       this.fichasrojas.push(ficharoja);
     }
