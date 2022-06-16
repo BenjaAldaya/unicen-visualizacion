@@ -1,6 +1,8 @@
+import { ViewportScroller } from '@angular/common';
 import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Categorias } from '../../category-array';
 import { Juegos } from '../../games-array';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 
 @Component({
   selector: 'app-play-game',
@@ -11,7 +13,7 @@ import { Juegos } from '../../games-array';
 export class PlayGameComponent implements OnInit {
 
 
-  constructor() { }
+  constructor(private viewportScroller: ViewportScroller) { }
 
   juegos = Juegos;
   categorias = Categorias
@@ -21,6 +23,7 @@ export class PlayGameComponent implements OnInit {
   handDown = document.getElementById('btn-hand-down');
 
   ngOnInit(): void {
+
   }
 
   starFill(): void{
@@ -55,5 +58,7 @@ export class PlayGameComponent implements OnInit {
     }
   }
 
-
+  scroll(scrollid : string):void{
+    this.viewportScroller.scrollToAnchor(scrollid);
+  }
 }

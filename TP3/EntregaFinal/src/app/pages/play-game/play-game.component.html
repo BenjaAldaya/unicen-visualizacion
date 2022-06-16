@@ -13,7 +13,7 @@
                 <i class="bi bi-star " id="btn-fav" (click)="starFill()"></i>
             </div>
             <div class="game-desc">
-                <a [routerLink]="['/playgame/']" fragment="description" >
+                <a [routerLink]="['/playgame/']" fragment="description" (click)="scroll('howplay')" >
                     <p>¿Como jugar?</p>
                 </a>
             </div>
@@ -54,7 +54,7 @@
 
                 ¿Conseguirás completar tu misión e impedir que la nave mantenga su rumbo y sobreviva a todos tus saboteos? ¡Parece sencillo pero, cualquier movimiento en falso puede hacer que te juegues la vida! Disfruta de simpáticos gráficos muy coloridos y demuestra que eres el rey del sigilo. Buena suerte...</p>
         </article>
-        <article class="howplay">
+        <article class="howplay" id="howplay">
             <h1>Como jugar</h1>
             <img src="../../../assets/images/Arrow_keys.png" alt="" width="300" height="200" >
             <img src="../../../assets/images/wasd.png" alt="" width="300" height="200" >
