@@ -20,6 +20,8 @@ export class Tablero {
   //ancho seccion fichas
   secW:number =120;
 
+  radiotablero:number = this.radio+1;
+
 
   constructor(private ctx:CanvasRenderingContext2D,w:number,h:number,m:number){
     this.totalW = w;
@@ -35,10 +37,20 @@ export class Tablero {
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
     this.seccionesfichas(this.secW,secH);
-
+    var tableroX = (this.margen*2)+this.secW;
+    var tableroY = y;
+    var tableroWidth = this.totalW-(this.margen*4)-(this.secW*2);
+    var tableroHeight = secH;
     //tablero
-    this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
+    this.dibujartablero(tableroX,tableroY,tableroWidth,tableroHeight);
+    // this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
+  }
+
+  dibujartablero(x:number,y:number,w:number,h:number){
+    var ctx = this.ctx;
+    var radio = this.radiotablero;
+    ctx.strokeRect(x,y,w,h);
   }
 
   seccionesfichas(w:number,h:number):void{
@@ -46,9 +58,9 @@ export class Tablero {
     var x1 = this.margen;
     var y = this.inicioY;
     var x2 = this.totalW-this.margen-w;
-    this.ctx.textAlign = "center";
-    this.ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
-    this.ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
+    ctx.textAlign = "center";
+    ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
+    ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
     
      ctx.strokeRect(x1,y,w,h);
      ctx.strokeRect(x2,y,w,h);
