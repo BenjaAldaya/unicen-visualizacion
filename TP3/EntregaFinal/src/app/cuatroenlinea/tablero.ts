@@ -183,11 +183,7 @@ export class Tablero {
   }
 
   eliminarFicha(ficha:Fichas){
-    for (let i=0; i<this.fichas.length;i++){
-      if(this.fichas[i] === ficha){
-        this.fichas[i].
-      }
-    }
+    this.fichas.splice(ficha.id);
   }
 
   seccionesfichas(w:number,h:number):void{
