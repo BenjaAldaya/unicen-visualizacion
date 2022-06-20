@@ -62,7 +62,6 @@ export class Tablero {
 
   dibujartablero(x:number,y:number,w:number,h:number){
     var ctx = this.ctx;
-    var radio = this.radiotablero;
     ctx.strokeRect(x,y,w,h);
   }
 
@@ -153,6 +152,16 @@ export class Tablero {
           ctx.lineWidth = 1;
   }
 
+  colocar(color:string , x:number , y:number){
+    console.log("hola");
+    for(let i = 0; i < this.depositadores.length; i++){
+      let elem = this.depositadores[i];
+      if((x >= elem.minX && x <= (elem.minX + elem.ancho)) && (y >= elem.minY && y <= (elem.minY + elem.alto))){
+       this.colocarFicha(this.depositadores[i].columna, color);
+      }
+    }
+  }
+
   colocarFicha(columna:number, color:string){
     // Esta funcion encuentra una posicion del arreglo donde este desocupado y coloca la ficha del color que le pasaron.
 
@@ -216,7 +225,24 @@ export class Tablero {
     return {x:clickX , y:clickY};
   }
   
-  // devuelve true si clickeo una ficha false si no clickea
+  redibujar(ficha:Fichas,xficha:number,yficha:number){
+    this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH-this.inicioY)
+    var y=this.inicioY;
+    var secH =this.totalH - this.margen - y;
+    this.redibujarSecciones(this.secW,secH);
+    this.redibujarFichas();
+    var tableroX = (this.margen*2)+this.secW;
+    var tableroY = y;
+    var tableroWidth = this.totalW-(this.margen*4)-(this.secW*2);
+    var tableroHeight = secH;
+    //tablero
+    this.dibujartablero(tableroX,tableroY,tableroWidth,tableroHeight);
+    // this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
+    //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
+    this.dibujarPrincipal(tableroX,tableroY);
+    this.dibujarDepositadores();
+    ficha.setPosicion(xficha,yficha);
+  }
   
  // Logica para saber ganadores
 
@@ -306,5 +332,24 @@ hayEmpate() {
   }
   return true;
 }
+
+redibujarSecciones(w:number,h:number):void{
+    var ctx=this.ctx;
+    var x1 = this.margen;
+    var y = this.inicioY;
+    var x2 = this.totalW-this.margen-w;
+    ctx.textAlign = "center";
+    ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
+    ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
+    
+     ctx.strokeRect(x1,y,w,h);
+     ctx.strokeRect(x2,y,w,h);
+  }
+
+redibujarFichas(){
+    for (let i=0; i<this.fichas.length;i++){
+      this.fichas[i].dibujar();
+    }
+  }
 
 }
