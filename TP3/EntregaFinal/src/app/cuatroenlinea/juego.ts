@@ -11,10 +11,13 @@ export class Juego implements OnInit {
   w:number;
   h:number;
   margen:number = 10;
-
+  tablero:Tablero;
+  fichaselec:Fichas | undefined;
+  clickon:boolean;
   constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
+    this.tablero = new Tablero(this.ctx,this.w,this.h,this.margen);
   }
 
   ngOnInit(): void {
@@ -23,12 +26,41 @@ export class Juego implements OnInit {
 
 
   dibujarTablero() {
-    const tablero = new Tablero(this.ctx,this.w,this.h,this.margen);
-    tablero.dibujar();
+    
+    this.tablero.dibujar();
   }
 
   dibujarpanel(){
     this.ctx.strokeRect(this.margen,this.margen,this.w-this.margen*2,70);
   }
+  
+  mouseDown(event:MouseEvent){
+  var {x,y}= this.tablero.getMousePosicion(event);
+  this.setFichaSelect(x,y);
+  this.clickon = true;
+  }
 
+  mouseMove(event:MouseEvent):void{
+    if(this.fichaselec!=null){
+      var {x,y} = this.tablero.getMousePosicion(event);
+      if(this.clickon)
+      this.fichaselec.redibujar(x,y);
+    }
+  }
+
+  setFichaSelect(x:number,y:number):void{
+    for(var i=0; i<this.tablero.fichas.length ;i++){
+      if (this.tablero.fichas[i].clickeado(x,y)){
+        this.fichaselec = this.tablero.fichas[i];
+      }
+    }
+  }
+
+  mouseUp(event:MouseEvent){
+    if (this.fichaselec != undefined){
+      var x = this.fichaselec.getX();
+      var y = this.fichaselec.getY();
+      this.fichaselec = undefined;
+    }
+  }
 }
