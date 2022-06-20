@@ -24,6 +24,7 @@ export class Tablero {
 
   
   tablero : Array<any> = [];
+  depositadores : Array<any> = [];
   
 
 
@@ -51,6 +52,9 @@ export class Tablero {
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
     this.dibujarPrincipal(tableroX,tableroY);
     this.dibujarDepositadores();
+
+
+    console.log(this.depositadores);
   }
 
   dibujartablero(x:number,y:number,w:number,h:number){
@@ -112,9 +116,17 @@ export class Tablero {
     for(var i = 0; i < this.x; i++){
       var minX = this.tablero[0][i].posX - margen * 2.2;
       var minY = this.tablero[0][i].posY - this.radio - margen * 5;
-      var maxX = minX + ancho;
-      var maxY = minY + alto;
+
+      var tmp = {
+        x : minX,
+        y : minY,
+        ancho : ancho,
+        alto : alto,
+        columna : i
+      }
+
       this.ctx.strokeRect(minX,minY,ancho,alto);
+      this.depositadores.push(tmp);
     }
   }
 
