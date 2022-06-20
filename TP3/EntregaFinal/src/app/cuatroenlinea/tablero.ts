@@ -1,8 +1,7 @@
 import { Fichas } from "./fichas";
 
 export class Tablero {
-  fichasrojas:Array<Fichas> = [];
-  fichasazules:Array<Fichas> = [];
+  fichas:Array<Fichas> = [];
   //numero de filas y columnas que deberia tener la tabla (x se va a modificar para poder agregar mas columnas)
   x:number = 7;
   y:number = 6;
@@ -89,9 +88,19 @@ export class Tablero {
       fichaazul.dibujar();
       ficharoja.dibujar();
 
-      this.fichasazules.push(fichaazul);
-      this.fichasrojas.push(ficharoja);
+      this.fichas.push(fichaazul);
+      this.fichas.push(ficharoja);
     }
   }
+  //devuelve posicion del mouse
+  getMousePosicion(event: MouseEvent) : {x:number,y:number}{
+    var clickX =  Math.round(event.clientX - this.ctx.canvas.getBoundingClientRect().x);
+    var clickY = Math.round(event.clientY - this.ctx.canvas.getBoundingClientRect().y);    
+    return {x:clickX , y:clickY};
+  }
+  
+  // devuelve true si clickeo una ficha false si no clickea
+  
+
 
 }
