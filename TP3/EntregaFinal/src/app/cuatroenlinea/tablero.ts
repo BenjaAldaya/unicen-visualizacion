@@ -25,6 +25,10 @@ export class Tablero {
   
   tablero : Array<any> = [];
   depositadores : Array<any> = [];
+
+
+  //para saber si hay ganadores
+  connect = 4;
   
 
 
@@ -52,7 +56,6 @@ export class Tablero {
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
     this.dibujarPrincipal(tableroX,tableroY);
     this.dibujarDepositadores();
-
 
     console.log(this.depositadores);
   }
@@ -94,6 +97,7 @@ export class Tablero {
              ocupado: false,
              posX: calculoX,
              posY: calculoY,
+             color: 'none',
           }
           // console.log("X:"+calculoX+" Y:"+calculoY);
           //Ahora debera actualizar la posicion X en la proxima figura canvas
@@ -158,6 +162,7 @@ export class Tablero {
          if(this.tablero[i][columna].ocupado == false){
            this.dibujarOcupado(this.ctx, this.tablero[i][columna].posX , this.tablero[i][columna].posY, this.radio, color);
            this.tablero[i][columna].ocupado = true;
+           this.tablero[i][columna].color = color;
            return;
          }
       }
@@ -213,6 +218,93 @@ export class Tablero {
   
   // devuelve true si clickeo una ficha false si no clickea
   
+ // Logica para saber ganadores
 
+ cuentaArriba(x:number, y:number) {
+  let startY = (y - this.connect >= 0) ? y - this.connect + 1 : 0;
+  let counter = 0;
+  for (; startY <= y; startY++) {
+      if (this.tablero[startY][x].color == 'red') {
+          counter++;
+      } else {
+          counter = 0;
+      }
+  }
+  return counter;
+}
+
+cuentaDerecha(x:number, y:number) {
+  let endX = (x + this.connect < this.x) ? x + this.connect - 1 : this.x - 1;
+  let counter = 0;
+  for (; x <= endX; x++) {
+      if (this.tablero[y][x].color == 'red') {
+          counter++;
+      } else {
+          counter = 0;
+      }
+  }
+  return counter;
+}
+
+cuentaArribaDerecha(x:number, y:number) {
+  let endX = (x + this.connect < this.x) ? x + this.connect - 1 : this.x - 1;
+  let startY = (y - this.connect >= 0) ? y - this.connect + 1 : 0;
+  let counter = 0;
+  while (x <= endX && startY <= y) {
+      if (this.tablero[y][x].color == 'red') {
+          counter++;
+      } else {
+          counter = 0;
+      }
+      x++;
+      y--;
+  }
+  return counter;
+}
+
+cuentaAbajoDerecha(x:number, y:number) {
+  let endX = (x + this.connect < this.x) ? x + this.connect - 1 : this.x - 1;
+  let endY = (y + this.connect < this.y) ? y + this.connect - 1 : this.y - 1;
+  let counter = 0;
+  while (x <= endX && y <= endY) {
+      if (this.tablero[y][x].color == 'red') {
+          counter++;
+      } else {
+          counter = 0;
+      }
+      x++;
+      y++;
+  }
+  return counter;
+}
+
+hayGanador() {
+  for (let y = 0; y < this.y; y++) {
+      for (let x = 0; x < this.x; x++) {
+          let count = 0;
+          count = this.cuentaArriba(x, y);
+          if (count >= this.connect) return true;
+          count = this.cuentaDerecha(x, y);
+          if (count >= this.connect) return true;
+          count = this.cuentaArribaDerecha(x, y);
+          if (count >= this.connect) return true;
+          count = this.cuentaAbajoDerecha(x, y);
+          if (count >= this.connect) return true;
+      }
+  }
+  return false;
+}
+
+hayEmpate() {
+  for (let y = 0; y < this.y; y++) {
+      for (let x = 0; x < this.x; x++) {
+          const currentCell = this.tablero[y][x];
+          if (currentCell.color == 'none') {
+              return false;
+          }
+      }
+  }
+  return true;
+}
 
 }
