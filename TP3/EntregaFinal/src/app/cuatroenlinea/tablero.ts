@@ -110,13 +110,11 @@ export class Tablero {
     var alto = 30;
     var ancho = this.radio*2 + 5;
 
-    for(var i = 0; i <= this.x; i++){
+    for(var i = 0; i < this.x; i++){
       var minX = this.tablero[0][i].posX - margen * 2.2;
-      console.log(minX);
       var minY = this.tablero[0][i].posY - this.radio - margen * 5;
       var maxX = minX + ancho;
       var maxY = minY + alto;
-
       this.ctx.strokeRect(minX,minY,ancho,alto);
     }
   }
