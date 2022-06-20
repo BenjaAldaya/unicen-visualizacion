@@ -15,6 +15,7 @@ export class Juego implements OnInit {
   fichaselec:Fichas | undefined;
   fichaselecX:number;
   fichaselecY:number;
+  turno:number = 1;
   constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
@@ -66,15 +67,54 @@ export class Juego implements OnInit {
     if (this.fichaselec != undefined){
       var x = this.fichaselec.getX();
       var y = this.fichaselec.getY();
-      if(this.tablero.colocar(this.fichaselec, x, y)){
-        this.tablero.redibujar(null);
-        console.log(this.tablero.hayGanador(2));
-      }else{
-      this.fichaselec.setX(this.fichaselecX);
-      this.fichaselec.setY(this.fichaselecY);
-      this.tablero.redibujar(this.fichaselec);
+      // Sistema de turnos : Este sistema lee la constante this.turno, si no es divisible por dos es el turno del jugador 1
+      // Ahora, ademas debera leer si la ficha fue colocada con exito, si no la devolvera a su lugar de origen, antes de ser movida.
+      if(this.verificarGandor() == 0){
+        if((!(this.turno%2==0)) && (this.fichaselec.getJugador() == 1)){
+          if(this.tablero.colocar(this.fichaselec, x, y)){
+            this.tablero.redibujar(null);
+            this.turno++;
+          }else{
+          this.fichaselec.setX(this.fichaselecX);
+          this.fichaselec.setY(this.fichaselecY);
+          this.tablero.redibujar(this.fichaselec);
+          }
+        } else if (((this.turno%2==0)) && (this.fichaselec.getJugador() == 2)){
+          if(this.tablero.colocar(this.fichaselec, x, y)){
+            this.tablero.redibujar(null);
+            this.turno++;
+          } else{
+            this.fichaselec.setX(this.fichaselecX);
+            this.fichaselec.setY(this.fichaselecY);
+            this.tablero.redibujar(this.fichaselec);
+          }
+        } else {
+          this.fichaselec.setX(this.fichaselecX);
+          this.fichaselec.setY(this.fichaselecY);
+          this.tablero.redibujar(this.fichaselec);
+        }
+      } else {
+        this.fichaselec.setX(this.fichaselecX);
+        this.fichaselec.setY(this.fichaselecY);
+        this.tablero.redibujar(this.fichaselec);
       }
       this.fichaselec = undefined;
     }
   }
+
+
+  verificarGandor():number{
+  if (this.tablero.verificarGanador() == 1){
+    // Codigo de si jugador 1 es ganador
+    return 1;
+  } else if (this.tablero.verificarGanador() == 2){
+    // Codigo de si jugador 2 es ganador
+    return 2;
+  } else if (this.tablero.verificarGanador() == 3){
+    // Codigo de si hay empate
+    return 3;
+  }
+  return 0;
+}
+
 }

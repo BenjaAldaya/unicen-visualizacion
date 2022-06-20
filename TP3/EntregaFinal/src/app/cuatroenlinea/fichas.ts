@@ -4,13 +4,19 @@ export class Fichas {
   x:number;
   y:number;
   ctx:CanvasRenderingContext2D;
+  jugador:number;
 
-  constructor(x:number,y:number,color:string,radio:number,ctx:CanvasRenderingContext2D){
+  constructor(x:number,y:number,color:string,radio:number,ctx:CanvasRenderingContext2D, jugador:number){
     this.x=x;
     this.y=y;
     this.color=color;
     this.radio=radio;
     this.ctx=ctx;
+    this.jugador = jugador;
+  }
+
+  getJugador(){
+    return this.jugador;
   }
 
   getX(){

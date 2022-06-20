@@ -72,8 +72,8 @@ export class Tablero {
       // var fichaRojaY= Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
       // var fichaAzulY =Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
 
-      var ficharoja = new Fichas(fichaRojaX,fichasY,'red', radio,ctx);
-      var fichaazul = new Fichas(fichaAzulX,fichasY ,'blue', radio,ctx);
+      var ficharoja = new Fichas(fichaRojaX,fichasY,'red', radio,ctx,1);
+      var fichaazul = new Fichas(fichaAzulX,fichasY ,'blue', radio,ctx,2);
 
       fichaazul.dibujar();
       ficharoja.dibujar();
@@ -237,33 +237,35 @@ export class Tablero {
   colocar(ficha:Fichas , x:number , y:number) :boolean {
     for(var i = 0; i < this.depositadores.length; i++){
       var elem = this.depositadores[i];
+
       if(( (x >= elem.minX) && (x <= (elem.minX + elem.ancho)) ) && ( (y >= elem.minY ) && (y <= (elem.minY + elem.alto)))){
-       this.colocarFicha(this.depositadores[i].columna, ficha.color);
-       this.eliminarFicha(ficha);
-       return true;
+        
+        return this.colocarFicha(this.depositadores[i].columna, ficha);
       }
     }
     return false;
   }
 
-  colocarFicha(columna:number, color:string){
+  colocarFicha(columna:number, ficha:Fichas):boolean{
     // Esta funcion encuentra una posicion del arreglo donde este desocupado y coloca la ficha del color que le pasaron.
 
     var maxH = this.y - 1;
     if(columna<=this.x){
       for(let i = maxH ; i >= 0; i--){
          if(this.tablero[i][columna].ocupado == false){
-           this.dibujarOcupado(this.ctx, this.tablero[i][columna].posX , this.tablero[i][columna].posY, this.radio, color);
+           this.dibujarOcupado(this.ctx, this.tablero[i][columna].posX , this.tablero[i][columna].posY, this.radio, ficha.color);
            this.tablero[i][columna].ocupado = true;
-           if(color == 'red'){
+           if(ficha.jugador == 1){
             this.tablero[i][columna].numero = 1;
            } else {
             this.tablero[i][columna].numero = 2;
            }
-           return;
+           this.eliminarFicha(ficha);
+           return true;
          }
       }
     }
+    return false;
   }
 
   eliminarFicha(ficha:Fichas){
@@ -359,6 +361,18 @@ cuentaAbajoDerecha(x:number, y:number, jugador:number) {
   return counter;
 }
 
+verificarGanador():number{
+  if(this.hayGanador(1)){
+    return 1;
+  }
+  else if(this.hayGanador(2)){
+    return 2;
+  } else if(this.hayEmpate()){
+    return 3;
+  }
+return 0;
+}
+
 hayGanador(jugador:number) : boolean {
   for (let y = 0; y < this.y; y++) {
       for (let x = 0; x < this.x; x++) {
@@ -380,7 +394,7 @@ hayEmpate() {
   for (let y = 0; y < this.y; y++) {
       for (let x = 0; x < this.x; x++) {
           const currentCell = this.tablero[y][x];
-          if (currentCell.numero == 0) {
+          if (currentCell.jugador == 0) {
               return false;
           }
       }
