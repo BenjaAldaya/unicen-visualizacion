@@ -16,6 +16,8 @@ export class Juego implements OnInit {
   fichaselecX:number;
   fichaselecY:number;
   turno:number = 1;
+
+  
   constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
@@ -28,7 +30,6 @@ export class Juego implements OnInit {
 
 
   dibujarTablero() {
-    
     this.tablero.dibujar();
   }
 
@@ -50,6 +51,10 @@ export class Juego implements OnInit {
         this.tablero.redibujar(this.fichaselec);
       }
     }
+  }
+
+  redibujar(){
+    this.tablero.redibujar(null);
   }
 
   setFichaSelect(x:number,y:number):void{

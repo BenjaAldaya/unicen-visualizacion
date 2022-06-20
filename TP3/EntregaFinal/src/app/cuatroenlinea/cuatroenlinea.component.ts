@@ -26,9 +26,17 @@ export class CuatroenlineaComponent implements OnInit {
   }
 
   empezarjuego(){
-    this.juego=new Juego(this.ctx,this.canvas);
+    this.juego = new Juego(this.ctx,this.canvas);
     this.juego.dibujarTablero();
     this.juego.dibujarpanel();
   }
+
+  reiniciarjuego(){
+    this.ctx.clearRect(0,0,800,600);
+    this.juego = new Juego(this.ctx,this.canvas);
+    this.juego.dibujarTablero();
+    this.juego.dibujarpanel();
+  }
+
 
 }
