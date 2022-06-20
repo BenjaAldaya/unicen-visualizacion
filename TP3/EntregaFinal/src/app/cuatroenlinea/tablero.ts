@@ -210,10 +210,12 @@ export class Tablero {
     return {x:clickX , y:clickY};
   }
   
-  redibujar(ficha:Fichas,x:number,y:number){
+  redibujar(ficha:Fichas,xficha:number,yficha:number){
+    this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH-this.inicioY)
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
     this.redibujarSecciones(this.secW,secH);
+    this.redibujarFichas();
     var tableroX = (this.margen*2)+this.secW;
     var tableroY = y;
     var tableroWidth = this.totalW-(this.margen*4)-(this.secW*2);
@@ -224,7 +226,7 @@ export class Tablero {
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
     this.dibujarPrincipal(tableroX,tableroY);
     this.dibujarDepositadores();
-    ficha.setPosicion(x,y);
+    ficha.setPosicion(xficha,yficha);
   }
   
   redibujarSecciones(w:number,h:number):void{
@@ -239,8 +241,8 @@ export class Tablero {
      ctx.strokeRect(x1,y,w,h);
      ctx.strokeRect(x2,y,w,h);
   }
-  redibjarFichas(){
-    for (let i=0; i<=this.fichas.length;i++){
+  redibujarFichas(){
+    for (let i=0; i<this.fichas.length;i++){
       this.fichas[i].dibujar();
     }
   }
