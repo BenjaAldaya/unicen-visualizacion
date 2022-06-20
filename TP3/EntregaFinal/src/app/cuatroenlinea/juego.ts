@@ -13,7 +13,6 @@ export class Juego implements OnInit {
   margen:number = 10;
   tablero:Tablero;
   fichaselec:Fichas | undefined;
-  clickon:boolean;
   constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
@@ -37,14 +36,14 @@ export class Juego implements OnInit {
   mouseDown(event:MouseEvent){
   var {x,y}= this.tablero.getMousePosicion(event);
   this.setFichaSelect(x,y);
-  this.clickon = true;
   }
 
-  mouseMove(event:MouseEvent):void{
+  mouseMove(event:MouseEvent){
     if(this.fichaselec!=null){
       var {x,y} = this.tablero.getMousePosicion(event);
-      if(this.clickon)
-      this.fichaselec.redibujar(x,y);
+      if(y>this.tablero.inicioY+this.tablero.radio && (this.w-this.margen-this.tablero.secW-this.tablero.radio)>x && x>this.margen){
+        this.tablero.redibujar(this.fichaselec,x,y);
+      }
     }
   }
 

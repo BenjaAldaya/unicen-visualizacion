@@ -60,8 +60,4 @@ export class Fichas {
     return Math.sqrt(Math.pow(dx,2)+Math.pow(dy,2))<this.radio;
   }
   
-  redibujar(x:number,y:number){
-    // this.ctx.clearRect(this.getX()-this.radio-3,this.getY()-this.radio-3,this.radio*2,this.radio*2);
-    this.setPosicion(x,y);
-  }
 }
