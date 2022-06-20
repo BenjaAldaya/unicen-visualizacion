@@ -6,7 +6,7 @@ export class Tablero {
   x:number = 7;
   y:number = 6;
   //radio de los circulos
-  radio:number = 15;
+  radio:number = 20;
   //donde inicia las secciones de fichas y tablero
   inicioY:number=120;
   
@@ -20,6 +20,11 @@ export class Tablero {
   secW:number =120;
 
   radiotablero:number = this.radio+1;
+
+
+  
+  tablero : Array<any> = [];
+  
 
 
   constructor(private ctx:CanvasRenderingContext2D,w:number,h:number,m:number){
@@ -44,12 +49,109 @@ export class Tablero {
     this.dibujartablero(tableroX,tableroY,tableroWidth,tableroHeight);
     // this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
+    this.dibujarPrincipal(tableroX,tableroY);
+    this.dibujarDepositadores();
   }
 
   dibujartablero(x:number,y:number,w:number,h:number){
     var ctx = this.ctx;
     var radio = this.radiotablero;
     ctx.strokeRect(x,y,w,h);
+  }
+
+
+  dibujarPrincipal(x:number,y:number){
+    var ctx = this.ctx;
+    var radio = this.radiotablero;
+
+    var margen = 10;
+    var origenX = x + margen *10;
+    var origenY = y + margen *10;
+
+
+    var calculoX : number = origenX;
+    // Calculo X va a ser la posicion X donde se esta creando la ficha del tablero desocupado, y lo quiero guardar ya que en mi matriz logica voy a guardar los datos asi son mas facil de dibujar luego
+    // CalculoX = OrigenX + margen + radio/2;
+    var calculoY : number = origenY;
+    // CalculoY = OrigenY + margen + altura/2;
+    
+
+     for(var i = 0; i < this.y ; i++){
+       // por cada fila de la matriz
+       // debera modificar calculoY para que se use en toda la generacion de espacios desocupados
+       calculoX = origenX;
+       let columna : Array<any> = new Array();
+         for(var j = 0; j < this.x ; j++){
+           // por cada espacio de la columna
+           // Aca debera crear una figura de canvas desocupada en el tablero y guardar la posicion X, posicion Y en la matriz logica.
+          this.dibujarDesocupado(ctx, calculoX, calculoY, radio);
+
+          var tmp = {
+             ocupado: false,
+             posX: calculoX,
+             posY: calculoY,
+          }
+          // console.log("X:"+calculoX+" Y:"+calculoY);
+          //Ahora debera actualizar la posicion X en la proxima figura canvas
+          calculoX += margen + (radio*2);
+          columna.push(tmp);
+
+         }
+
+         //Ahora debera actualizar la posicion Y para la proxima fila
+        calculoY += margen + (radio*2);
+        this.tablero.push(columna);
+     }
+  }
+
+  dibujarDepositadores(){
+    var margen = 10 ;
+    var alto = 30;
+    var ancho = this.radio*2 + 5;
+
+    for(var i = 0; i <= this.x; i++){
+      var minX = this.tablero[0][i].posX - margen * 2.2;
+      console.log(minX);
+      var minY = this.tablero[0][i].posY - this.radio - margen * 5;
+      var maxX = minX + ancho;
+      var maxY = minY + alto;
+
+      this.ctx.strokeRect(minX,minY,ancho,alto);
+    }
+  }
+
+  dibujarDesocupado(ctx:any, x:number, y:number, radio:number){
+    ctx.beginPath();
+          ctx.arc(x, y, radio, 0, 2 * Math.PI);
+          ctx.lineWidth = 3;
+          ctx.stroke();
+          ctx.lineWidth = 1;
+  }
+
+  dibujarOcupado(ctx:any, x:number, y:number, radio:number, color:string){
+    ctx.beginPath();
+          ctx.arc(x, y, radio, 0, 2 * Math.PI);
+          ctx.fillStyle = 'black';
+          ctx.lineWidth = 3;
+          ctx.stroke();
+          ctx.fillStyle = color;
+          ctx.fill();
+          ctx.lineWidth = 1;
+  }
+
+  colocarFicha(columna:number, color:string){
+    // Esta funcion encuentra una posicion del arreglo donde este desocupado y coloca la ficha del color que le pasaron.
+
+    var maxH = this.y - 1;
+    if(columna<=this.x){
+      for(let i = maxH ; i >= 0; i--){
+         if(this.tablero[i][columna].ocupado == false){
+           this.dibujarOcupado(this.ctx, this.tablero[i][columna].posX , this.tablero[i][columna].posY, this.radio, color);
+           this.tablero[i][columna].ocupado = true;
+           return;
+         }
+      }
+    }
   }
 
   seccionesfichas(w:number,h:number):void{
