@@ -57,13 +57,14 @@ export class Tablero {
     this.dibujarPrincipal(tableroX,tableroY);
     this.dibujarDepositadores();
 
-    console.log(this.depositadores);
+
+    console.log(this.fichas);
   }
 
   dibujartablero(x:number,y:number,w:number,h:number){
     var ctx = this.ctx;
     ctx.strokeRect(x,y,w,h);
-  }
+  }  
 
 
   dibujarPrincipal(x:number,y:number){
@@ -121,8 +122,8 @@ export class Tablero {
       var minY = this.tablero[0][i].posY - this.radio - margen * 5;
 
       var tmp = {
-        x : minX,
-        y : minY,
+        minX : minX,
+        minY : minY,
         ancho : ancho,
         alto : alto,
         columna : i
@@ -133,7 +134,7 @@ export class Tablero {
     }
   }
 
-  dibujarDesocupado(ctx:any, x:number, y:number, radio:number){
+  dibujarDesocupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number){
     ctx.beginPath();
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
           ctx.lineWidth = 3;
@@ -141,7 +142,7 @@ export class Tablero {
           ctx.lineWidth = 1;
   }
 
-  dibujarOcupado(ctx:any, x:number, y:number, radio:number, color:string){
+  dibujarOcupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number, color:string){
     ctx.beginPath();
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
           ctx.fillStyle = 'black';
@@ -152,14 +153,17 @@ export class Tablero {
           ctx.lineWidth = 1;
   }
 
-  colocar(color:string , x:number , y:number){
-    console.log("hola");
-    for(let i = 0; i < this.depositadores.length; i++){
-      let elem = this.depositadores[i];
-      if((x >= elem.minX && x <= (elem.minX + elem.ancho)) && (y >= elem.minY && y <= (elem.minY + elem.alto))){
-       this.colocarFicha(this.depositadores[i].columna, color);
+  colocar(ficha:Fichas , x:number , y:number) :boolean {
+    for(var i = 0; i < this.depositadores.length; i++){
+      var elem = this.depositadores[i];
+      console.log("x"+x+"y"+y+"elem min x"+ elem.minX+"elem min y"+elem.minY)
+      if(( (x >= elem.minX) && (x <= (elem.minX + elem.ancho)) ) && ( (y >= elem.minY ) && (y <= (elem.minY + elem.alto)))){
+       this.colocarFicha(this.depositadores[i].columna, ficha.color);
+       this.eliminarFicha(ficha);
+       return true;
       }
     }
+    return false;
   }
 
   colocarFicha(columna:number, color:string){
@@ -174,6 +178,14 @@ export class Tablero {
            this.tablero[i][columna].color = color;
            return;
          }
+      }
+    }
+  }
+
+  eliminarFicha(ficha:Fichas){
+    for (let i=0; i<this.fichas.length;i++){
+      if(this.fichas[i] === ficha){
+        this.fichas[i].
       }
     }
   }
@@ -225,7 +237,7 @@ export class Tablero {
     return {x:clickX , y:clickY};
   }
   
-  redibujar(ficha:Fichas,xficha:number,yficha:number){
+  redibujar(ficha:Fichas){
     this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH-this.inicioY)
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
@@ -241,7 +253,7 @@ export class Tablero {
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
     this.dibujarPrincipal(tableroX,tableroY);
     this.dibujarDepositadores();
-    ficha.setPosicion(xficha,yficha);
+    ficha.dibujar();
   }
   
  // Logica para saber ganadores

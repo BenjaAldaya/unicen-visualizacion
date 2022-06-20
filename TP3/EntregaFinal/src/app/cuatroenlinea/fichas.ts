@@ -48,11 +48,6 @@ export class Fichas {
           this.ctx.lineWidth = 1;
   }
   
-  setPosicion(x:number,y:number){
-    this.setX(x);
-    this.setY(y);
-    this.dibujar();
-  }
 
   clickeado(x:number,y:number):boolean{
     var dx = this.getX() - x;
