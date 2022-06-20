@@ -42,6 +42,47 @@ export class Tablero {
     this.cantfichas = (this.x*this.y)/2;
   }
 
+  seccionesfichas(w:number,h:number):void{
+    var ctx=this.ctx;
+    var x1 = this.margen;
+    var y = this.inicioY;
+    var x2 = this.totalW-this.margen-w;
+    ctx.textAlign = "center";
+    ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
+    ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
+    
+     ctx.strokeRect(x1,y,w,h);
+     ctx.strokeRect(x2,y,w,h);
+     this.cargarfichas(w,h,x1,x2,y);
+  }
+
+  cargarfichas(w:number,h:number,x1:number,x2:number,y:number):void{
+    this.calcularfichas();
+    var ctx = this.ctx;
+    //radio de las fichas
+    var radio = this.radio;
+    //margent interno
+    var m = 5;
+    for (var i =0 ; i < this.cantfichas; i++) {
+      //random utilizado abajo Math.floor(Math.random() * (max - min) + min;
+      var fichaRojaX= Math.floor(Math.random() * ((w+x1-m-radio) - (x1+m+radio))) + (x1+m+radio);
+      var fichasY = Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
+      var fichaAzulX =Math.floor(Math.random() * ((w+x2-m-radio) - (x2+m+radio))) + (x2+m+radio);
+      //solo se utilizan en caso de que las secciones sean distintas en altura o posicion de Y; 
+      // var fichaRojaY= Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
+      // var fichaAzulY =Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
+
+      var ficharoja = new Fichas(fichaRojaX,fichasY,'red', radio,ctx);
+      var fichaazul = new Fichas(fichaAzulX,fichasY ,'blue', radio,ctx);
+
+      fichaazul.dibujar();
+      ficharoja.dibujar();
+
+      this.fichas.push(fichaazul);
+      this.fichas.push(ficharoja);
+    }
+  }
+
   dibujar():void{
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
@@ -97,7 +138,7 @@ export class Tablero {
              ocupado: false,
              posX: calculoX,
              posY: calculoY,
-             color: 'none',
+             jugador: 0,
           }
           // console.log("X:"+calculoX+" Y:"+calculoY);
           //Ahora debera actualizar la posicion X en la proxima figura canvas
@@ -110,6 +151,46 @@ export class Tablero {
         calculoY += margen + (radio*2);
         this.tablero.push(columna);
      }
+  }
+
+  reDibujarPrincipal(x:number,y:number){
+    var ctx = this.ctx;
+    var radio = this.radiotablero;
+
+    var margen = 10;
+    var origenX = x + margen *10;
+    var origenY = y + margen *10;
+
+
+    var calculoX : number = origenX;
+    // Calculo X va a ser la posicion X donde se esta creando la ficha del tablero desocupado, y lo quiero guardar ya que en mi matriz logica voy a guardar los datos asi son mas facil de dibujar luego
+    // CalculoX = OrigenX + margen + radio/2;
+    var calculoY : number = origenY;
+    for(var i = 0; i < this.y ; i++){
+      // por cada fila de la matriz
+      // debera modificar calculoY para que se use en toda la generacion de espacios desocupados
+      calculoX = origenX;
+      let columna : Array<any> = new Array();
+        for(var j = 0; j < this.x ; j++){
+          // por cada espacio de la columna
+          // Aca debera crear una figura de canvas desocupada en el tablero y guardar la posicion X, posicion Y en la matriz logica.
+        if(this.tablero[i][j].ocupado == false){
+          this.dibujarDesocupado(ctx, calculoX, calculoY, radio);
+        }
+        else if(this.tablero[i][j].numero == 1){
+          this.dibujarOcupado(ctx, calculoX, calculoY, radio, 'red');
+        } else {
+          this.dibujarOcupado(ctx, calculoX, calculoY, radio, 'blue');
+        }
+         // console.log("X:"+calculoX+" Y:"+calculoY);
+         //Ahora debera actualizar la posicion X en la proxima figura canvas
+         calculoX += margen + (radio*2);
+
+        }
+
+        //Ahora debera actualizar la posicion Y para la proxima fila
+       calculoY += margen + (radio*2);
+    }
   }
 
   dibujarDepositadores(){
@@ -156,7 +237,6 @@ export class Tablero {
   colocar(ficha:Fichas , x:number , y:number) :boolean {
     for(var i = 0; i < this.depositadores.length; i++){
       var elem = this.depositadores[i];
-      console.log("x"+x+"y"+y+"elem min x"+ elem.minX+"elem min y"+elem.minY)
       if(( (x >= elem.minX) && (x <= (elem.minX + elem.ancho)) ) && ( (y >= elem.minY ) && (y <= (elem.minY + elem.alto)))){
        this.colocarFicha(this.depositadores[i].columna, ficha.color);
        this.eliminarFicha(ficha);
@@ -175,7 +255,11 @@ export class Tablero {
          if(this.tablero[i][columna].ocupado == false){
            this.dibujarOcupado(this.ctx, this.tablero[i][columna].posX , this.tablero[i][columna].posY, this.radio, color);
            this.tablero[i][columna].ocupado = true;
-           this.tablero[i][columna].color = color;
+           if(color == 'red'){
+            this.tablero[i][columna].numero = 1;
+           } else {
+            this.tablero[i][columna].numero = 2;
+           }
            return;
          }
       }
@@ -183,49 +267,11 @@ export class Tablero {
   }
 
   eliminarFicha(ficha:Fichas){
-    this.fichas.splice(ficha.id);
+    var index = this.fichas.indexOf(ficha);
+    this.fichas.splice(index,1);
   }
 
-  seccionesfichas(w:number,h:number):void{
-    var ctx=this.ctx;
-    var x1 = this.margen;
-    var y = this.inicioY;
-    var x2 = this.totalW-this.margen-w;
-    ctx.textAlign = "center";
-    ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
-    ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
-    
-     ctx.strokeRect(x1,y,w,h);
-     ctx.strokeRect(x2,y,w,h);
-     this.cargarfichas(w,h,x1,x2,y);
-  }
 
-  cargarfichas(w:number,h:number,x1:number,x2:number,y:number):void{
-    this.calcularfichas();
-    var ctx = this.ctx;
-    //radio de las fichas
-    var radio = this.radio;
-    //margent interno
-    var m = 5;
-    for (var i =0 ; i < this.cantfichas; i++) {
-      //random utilizado abajo Math.floor(Math.random() * (max - min) + min;
-      var fichaRojaX= Math.floor(Math.random() * ((w+x1-m-radio) - (x1+m+radio))) + (x1+m+radio);
-      var fichasY = Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
-      var fichaAzulX =Math.floor(Math.random() * ((w+x2-m-radio) - (x2+m+radio))) + (x2+m+radio);
-      //solo se utilizan en caso de que las secciones sean distintas en altura o posicion de Y; 
-      // var fichaRojaY= Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
-      // var fichaAzulY =Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
-
-      var ficharoja = new Fichas(i,fichaRojaX,fichasY,'#ff0000', radio,ctx);
-      var fichaazul = new Fichas(i+this.cantfichas,fichaAzulX,fichasY ,'#0000ff', radio,ctx);
-
-      fichaazul.dibujar();
-      ficharoja.dibujar();
-
-      this.fichas.push(fichaazul);
-      this.fichas.push(ficharoja);
-    }
-  }
   //devuelve posicion del mouse
   getMousePosicion(event: MouseEvent) : {x:number,y:number}{
     var clickX =  Math.round(event.clientX - this.ctx.canvas.getBoundingClientRect().x);
@@ -233,7 +279,7 @@ export class Tablero {
     return {x:clickX , y:clickY};
   }
   
-  redibujar(ficha:Fichas){
+  redibujar(ficha:Fichas | null){
     this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH)
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
@@ -247,18 +293,19 @@ export class Tablero {
     this.dibujartablero(tableroX,tableroY,tableroWidth,tableroHeight);
     // this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
-    this.dibujarPrincipal(tableroX,tableroY);
+    this.reDibujarPrincipal(tableroX,tableroY);
     this.dibujarDepositadores();
-    ficha.dibujar();
+    if(ficha!=null)
+      ficha.dibujar();
   }
   
  // Logica para saber ganadores
 
- cuentaArriba(x:number, y:number) {
+ cuentaArriba(x:number, y:number, jugador:number) {
   let startY = (y - this.connect >= 0) ? y - this.connect + 1 : 0;
   let counter = 0;
   for (; startY <= y; startY++) {
-      if (this.tablero[startY][x].color == 'red') {
+      if (this.tablero[startY][x].numero == jugador) {
           counter++;
       } else {
           counter = 0;
@@ -267,11 +314,11 @@ export class Tablero {
   return counter;
 }
 
-cuentaDerecha(x:number, y:number) {
+cuentaDerecha(x:number, y:number, jugador:number) {
   let endX = (x + this.connect < this.x) ? x + this.connect - 1 : this.x - 1;
   let counter = 0;
   for (; x <= endX; x++) {
-      if (this.tablero[y][x].color == 'red') {
+      if (this.tablero[y][x].numero == jugador) {
           counter++;
       } else {
           counter = 0;
@@ -280,12 +327,12 @@ cuentaDerecha(x:number, y:number) {
   return counter;
 }
 
-cuentaArribaDerecha(x:number, y:number) {
+cuentaArribaDerecha(x:number, y:number, jugador:number) {
   let endX = (x + this.connect < this.x) ? x + this.connect - 1 : this.x - 1;
   let startY = (y - this.connect >= 0) ? y - this.connect + 1 : 0;
   let counter = 0;
   while (x <= endX && startY <= y) {
-      if (this.tablero[y][x].color == 'red') {
+      if (this.tablero[y][x].numero == jugador) {
           counter++;
       } else {
           counter = 0;
@@ -296,12 +343,12 @@ cuentaArribaDerecha(x:number, y:number) {
   return counter;
 }
 
-cuentaAbajoDerecha(x:number, y:number) {
+cuentaAbajoDerecha(x:number, y:number, jugador:number) {
   let endX = (x + this.connect < this.x) ? x + this.connect - 1 : this.x - 1;
   let endY = (y + this.connect < this.y) ? y + this.connect - 1 : this.y - 1;
   let counter = 0;
   while (x <= endX && y <= endY) {
-      if (this.tablero[y][x].color == 'red') {
+      if (this.tablero[y][x].numero == jugador) {
           counter++;
       } else {
           counter = 0;
@@ -312,17 +359,17 @@ cuentaAbajoDerecha(x:number, y:number) {
   return counter;
 }
 
-hayGanador() {
+hayGanador(jugador:number) : boolean {
   for (let y = 0; y < this.y; y++) {
       for (let x = 0; x < this.x; x++) {
           let count = 0;
-          count = this.cuentaArriba(x, y);
+          count = this.cuentaArriba(x, y, jugador);
           if (count >= this.connect) return true;
-          count = this.cuentaDerecha(x, y);
+          count = this.cuentaDerecha(x, y, jugador);
           if (count >= this.connect) return true;
-          count = this.cuentaArribaDerecha(x, y);
+          count = this.cuentaArribaDerecha(x, y, jugador);
           if (count >= this.connect) return true;
-          count = this.cuentaAbajoDerecha(x, y);
+          count = this.cuentaAbajoDerecha(x, y, jugador);
           if (count >= this.connect) return true;
       }
   }
@@ -333,7 +380,7 @@ hayEmpate() {
   for (let y = 0; y < this.y; y++) {
       for (let x = 0; x < this.x; x++) {
           const currentCell = this.tablero[y][x];
-          if (currentCell.color == 'none') {
+          if (currentCell.numero == 0) {
               return false;
           }
       }

@@ -1,13 +1,11 @@
 export class Fichas {
-  id:number;
   radio:number;
   color:string;
   x:number;
   y:number;
   ctx:CanvasRenderingContext2D;
 
-  constructor(id:number,x:number,y:number,color:string,radio:number,ctx:CanvasRenderingContext2D){
-    this.id = id;
+  constructor(x:number,y:number,color:string,radio:number,ctx:CanvasRenderingContext2D){
     this.x=x;
     this.y=y;
     this.color=color;

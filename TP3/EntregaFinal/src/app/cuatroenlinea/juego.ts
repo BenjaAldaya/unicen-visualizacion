@@ -67,7 +67,8 @@ export class Juego implements OnInit {
       var x = this.fichaselec.getX();
       var y = this.fichaselec.getY();
       if(this.tablero.colocar(this.fichaselec, x, y)){
-
+        this.tablero.redibujar(null);
+        console.log(this.tablero.hayGanador(2));
       }else{
       this.fichaselec.setX(this.fichaselecX);
       this.fichaselec.setY(this.fichaselecY);
