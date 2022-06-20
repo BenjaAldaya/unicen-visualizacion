@@ -216,8 +216,8 @@ export class Tablero {
       // var fichaRojaY= Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
       // var fichaAzulY =Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
 
-      var ficharoja = new Fichas(fichaRojaX,fichasY,'#ff0000', radio,ctx);
-      var fichaazul = new Fichas(fichaAzulX,fichasY ,'#0000ff', radio,ctx);
+      var ficharoja = new Fichas(i,fichaRojaX,fichasY,'#ff0000', radio,ctx);
+      var fichaazul = new Fichas(i+this.cantfichas,fichaAzulX,fichasY ,'#0000ff', radio,ctx);
 
       fichaazul.dibujar();
       ficharoja.dibujar();
@@ -234,7 +234,7 @@ export class Tablero {
   }
   
   redibujar(ficha:Fichas){
-    this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH-this.inicioY)
+    this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH)
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
     this.redibujarSecciones(this.secW,secH);
