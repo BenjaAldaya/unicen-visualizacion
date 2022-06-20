@@ -13,6 +13,8 @@ export class Juego implements OnInit {
   margen:number = 10;
   tablero:Tablero;
   fichaselec:Fichas | undefined;
+  fichaselecX:number;
+  fichaselecY:number;
   constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
@@ -41,8 +43,10 @@ export class Juego implements OnInit {
   mouseMove(event:MouseEvent){
     if(this.fichaselec!=null){
       var {x,y} = this.tablero.getMousePosicion(event);
-      if((y>this.tablero.inicioY+this.tablero.radio) && ((this.w-this.margen-this.tablero.secW-this.tablero.radio)>x) && (x>this.margen)){
-        this.tablero.redibujar(this.fichaselec,x,y);
+      if(y>this.tablero.inicioY+this.tablero.radio){
+        this.fichaselec.setX(x);
+        this.fichaselec.setY(y);
+        this.tablero.redibujar(this.fichaselec);
       }
     }
   }
@@ -51,6 +55,8 @@ export class Juego implements OnInit {
     for(var i=0; i<this.tablero.fichas.length ;i++){
       if (this.tablero.fichas[i].clickeado(x,y)){
         this.fichaselec = this.tablero.fichas[i];
+        this.fichaselecX = this.fichaselec.getX();
+        this.fichaselecY = this.fichaselec.getY();
         console.log(i);
       }
     }
@@ -60,6 +66,14 @@ export class Juego implements OnInit {
     if (this.fichaselec != undefined){
       var x = this.fichaselec.getX();
       var y = this.fichaselec.getY();
+      //if(cae en rectangulo){
+      //
+      //
+      //}else{
+      this.fichaselec.setX(this.fichaselecX);
+      this.fichaselec.setY(this.fichaselecY);
+      this.tablero.redibujar(this.fichaselec);
+      //}
       this.fichaselec = undefined;
     }
   }

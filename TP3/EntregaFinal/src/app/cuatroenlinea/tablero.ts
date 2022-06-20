@@ -54,13 +54,13 @@ export class Tablero {
     this.dibujarDepositadores();
 
 
-    console.log(this.depositadores);
+    console.log(this.fichas);
   }
 
   dibujartablero(x:number,y:number,w:number,h:number){
     var ctx = this.ctx;
     ctx.strokeRect(x,y,w,h);
-  }
+  }  
 
 
   dibujarPrincipal(x:number,y:number){
@@ -210,7 +210,7 @@ export class Tablero {
     return {x:clickX , y:clickY};
   }
   
-  redibujar(ficha:Fichas,xficha:number,yficha:number){
+  redibujar(ficha:Fichas){
     this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH-this.inicioY)
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
@@ -226,7 +226,7 @@ export class Tablero {
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
     this.dibujarPrincipal(tableroX,tableroY);
     this.dibujarDepositadores();
-    ficha.setPosicion(xficha,yficha);
+    ficha.dibujar();
   }
   
   redibujarSecciones(w:number,h:number):void{
