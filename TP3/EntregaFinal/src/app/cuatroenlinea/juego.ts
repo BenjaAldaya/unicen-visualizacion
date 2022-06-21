@@ -31,8 +31,6 @@ export class Juego implements OnInit {
   ngOnInit(): void {
   }
 
-
-
   dibujarTablero() {
     this.tablero.dibujar();
   }
@@ -62,12 +60,13 @@ export class Juego implements OnInit {
   }
 
   setFichaSelect(x:number,y:number):void{
+  // Esta funcion recorre 
     for(var i=0; i<this.tablero.fichas.length ;i++){
       if (this.tablero.fichas[i].clickeado(x,y)){
         this.fichaselec = this.tablero.fichas[i];
         this.fichaselecX = this.fichaselec.getX();
         this.fichaselecY = this.fichaselec.getY();
-        console.log(i);
+        // console.log(i);
       }
     }
   }

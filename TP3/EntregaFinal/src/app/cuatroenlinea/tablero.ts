@@ -1,6 +1,12 @@
 import { Fichas } from "./fichas";
 
 export class Tablero {
+
+ /// TODO LIST
+ // - Privatizar atributos y obtenerlos mediante metodos, proteger encapsulamiento
+ // 
+
+
   fichas:Array<Fichas> = [];
   //numero de filas y columnas que deberia tener la tabla (x se va a modificar para poder agregar mas columnas)
   x:number = 7;
@@ -18,7 +24,6 @@ export class Tablero {
   totalH:number;
   //ancho seccion fichas
   secW:number =120;
-
   radiotablero:number = this.radio+1;
 
 
@@ -38,23 +43,8 @@ export class Tablero {
     this.margen = m;
   }
 
-  calcularfichas():void{
-    this.cantfichas = (this.x*this.y)/2;
-  }
+  getFichas(){}
 
-  seccionesfichas(w:number,h:number):void{
-    var ctx=this.ctx;
-    var x1 = this.margen;
-    var y = this.inicioY;
-    var x2 = this.totalW-this.margen-w;
-    ctx.textAlign = "center";
-    ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
-    ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
-    
-     ctx.strokeRect(x1,y,w,h);
-     ctx.strokeRect(x2,y,w,h);
-     this.cargarfichas(w,h,x1,x2,y);
-  }
 
   cargarfichas(w:number,h:number,x1:number,x2:number,y:number):void{
     this.calcularfichas();
@@ -83,6 +73,28 @@ export class Tablero {
     }
   }
 
+
+  calcularfichas():void{
+    this.cantfichas = (this.x*this.y)/2;
+  }
+
+  seccionesfichas(w:number,h:number):void{
+    var ctx=this.ctx;
+    var x1 = this.margen;
+    var y = this.inicioY;
+    var x2 = this.totalW-this.margen-w;
+    ctx.textAlign = "center";
+    ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
+    ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
+    
+     ctx.strokeRect(x1,y,w,h);
+     ctx.strokeRect(x2,y,w,h);
+     this.cargarfichas(w,h,x1,x2,y);
+  }
+
+
+
+
   dibujar():void{
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
@@ -109,6 +121,8 @@ export class Tablero {
 
 
   dibujarPrincipal(x:number,y:number){
+    // Este dibujar, se lo hace por primera vez ya que crea un tablero de juego y guarda sus posiciones en otro arreglo para poder dibujar y utilizar canvas
+
     var ctx = this.ctx;
     var radio = this.radiotablero;
 
@@ -154,6 +168,7 @@ export class Tablero {
   }
 
   reDibujarPrincipal(x:number,y:number){
+    // En este redibujar decidimos que no era necesario volver a crear los arreglos, mucha memoria por cada redibujado cuando se hace drag&drop
     var ctx = this.ctx;
     var radio = this.radiotablero;
 
