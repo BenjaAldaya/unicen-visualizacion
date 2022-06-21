@@ -230,7 +230,7 @@ export class Tablero {
         columna : i
       }
 
-      // this.ctx.strokeRect(minX,minY,ancho,alto);
+      this.ctx.strokeRect(minX,minY,ancho,alto);
       this.depositadores.push(tmp);
     }
   }

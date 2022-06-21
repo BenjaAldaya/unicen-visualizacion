@@ -51,10 +51,16 @@ export class Juego implements OnInit {
   mouseMove(event:MouseEvent){
     if(this.fichaselec!=null){
       var {x,y} = this.tablero.getMousePosicion(event);
-      if(y>this.tablero.inicioY+this.tablero.radio){
+      if(y>this.tablero.inicioY+this.tablero.radio && x<this.w-this.tablero.radio){
         this.fichaselec.setX(x);
         this.fichaselec.setY(y);
         this.tablero.redibujar(this.fichaselec);
+        console.log(this.w);
+      }else if (y<=this.tablero.inicioY || x>=this.w-10) {
+        this.fichaselec.setX(this.fichaselecX);
+        this.fichaselec.setY(this.fichaselecY);
+        this.tablero.redibujar(this.fichaselec);
+        this.fichaselec = undefined;
       }
     }
   }
