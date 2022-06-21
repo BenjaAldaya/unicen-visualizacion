@@ -1,5 +1,5 @@
-import { ViewChild, ElementRef, OnInit, Component, NgModule, Input } from "@angular/core";
-import { NgModel } from "@angular/forms";
+import { Inject } from "@angular/core";
+import {ElementRef, OnInit, Component} from "@angular/core";
 import { Fichas } from "./fichas";
 import { Tablero } from "./tablero";
 
@@ -17,28 +17,30 @@ export class Juego implements OnInit {
   fichaselecX:number;
   fichaselecY:number;
   turno:number = 1;
-
+  modojuego:number = 10;
   pointsj1: number = 0;
   pointsj2: number = 0;
 
-
-  constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
+  constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>,@Inject('modojuego') private mj:number){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
-    this.tablero = new Tablero(this.ctx,this.w,this.h,this.margen);
+    this.modojuego = mj;
+    this.tablero = new Tablero(this.ctx,this.w,this.h,this.margen,this.modojuego);
   }
 
   ngOnInit(): void {
   }
 
   dibujarTablero() {
+    this.ctx.fillStyle = "white";
+    this.ctx.fillRect(0,0,800,600);
     this.tablero.dibujar();
   }
 
   dibujarpanel(){
     this.ctx.strokeRect(this.margen,this.margen,this.w-this.margen*2,70);
   }
-  
+
   mouseDown(event:MouseEvent){
   var {x,y}= this.tablero.getMousePosicion(event);
   this.setFichaSelect(x,y);
@@ -66,7 +68,6 @@ export class Juego implements OnInit {
         this.fichaselec = this.tablero.fichas[i];
         this.fichaselecX = this.fichaselec.getX();
         this.fichaselecY = this.fichaselec.getY();
-        // console.log(i);
       }
     }
   }
@@ -137,5 +138,7 @@ reiniciarJuego(){
   this.dibujarTablero();
   this.dibujarpanel();
 }
-
+limpiarAll(){
+ this.ctx.clearRect(0,0,800,600);
+}
 }

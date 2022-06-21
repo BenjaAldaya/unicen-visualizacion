@@ -1,11 +1,24 @@
-<button id="btnReiniciar" class="btn-primary" (click)="reiniciarjuego()">Reiniciar</button>
+
 <div class="container">
+  <div>
+    <label for="modojuego">Modo de juego: </label>
+    <select [(ngModel)]="modojuego" (change)="setColumnas()">
+      <option value="7" selected >4 en linea</option>
+      <option value="8">5 en linea</option>
+      <option value="9">6 en linea</option>
+      <option value="10">7 en linea</option>
+    </select>
+  </div>
+  <div>
     <p>
         Jugador 1 : <span id="pointsj1">0</span>
     </p>
     <p>
         Jugador 2 : <span id="pointsj2">0</span>
     </p>
+  </div>
+  <div><h3>TURNO DEL JUGADOR 1</h3></div>
+  <button id="btnReiniciar" class="btn-primary" (click)="reiniciarjuego()">Reiniciar</button>
 </div>
 
 <canvas #4enlinea width="800px" height="600px" style="border: 2px solid black;" (mousedown)="juego.mouseDown($event)" (mousemove)="juego.mouseMove($event)" (mouseup)="juego.mouseUp($event)"></canvas>
