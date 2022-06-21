@@ -1,6 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Juego } from './juego';
-import { Tablero } from './tablero';
 
 @Component({
   selector: 'app-cuatroenlinea',
@@ -14,7 +13,7 @@ export class CuatroenlineaComponent implements OnInit {
   juego:Juego;
   width:number;
   heigth:number;
-
+  modojuego:number = 0;
   @Input() pointsj1:number;
   @Input() pointsj2:number;
 
@@ -29,7 +28,7 @@ export class CuatroenlineaComponent implements OnInit {
   }
 
   empezarjuego(){
-    this.juego = new Juego(this.ctx,this.canvas);
+    this.juego = new Juego(this.ctx,this.canvas,this.modojuego);
     this.juego.dibujarTablero();
     this.juego.dibujarpanel();
   }
@@ -38,5 +37,9 @@ export class CuatroenlineaComponent implements OnInit {
     this.juego.reiniciarJuego();
   }
 
+  setColumnas(){
+    this.juego.limpiarAll();
+    this.empezarjuego();
+  }
 
 }
