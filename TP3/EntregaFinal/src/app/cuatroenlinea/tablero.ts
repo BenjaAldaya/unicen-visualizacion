@@ -110,8 +110,8 @@ export class Tablero {
     this.seccionesfichas(this.secW,secH);
     var tableroX = (this.margen*2)+this.secW;
     var tableroY = y;
-    var tableroWidth = this.totalW-(this.margen*4)-(this.secW*2);
-    var tableroHeight = secH;
+    // var tableroWidth = this.totalW-(this.margen*4)-(this.secW*2);
+    // var tableroHeight = secH;
     //tablero
     // this.dibujartablero(tableroX,tableroY,tableroWidth,tableroHeight);
     // this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
@@ -302,10 +302,11 @@ export class Tablero {
   }
 
   redibujar(ficha:Fichas | null){
-    this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH)
+    this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH);
+    this.ctx.fillStyle = "#ffffff"
+    this.ctx.fillRect(0,this.inicioY-20,this.totalW,this.totalH);
     var y=this.inicioY;
-    // var secH =this.totalH - this.margen - y;
-    var secH =this.totalH - this.margen - y*2;
+    var secH =this.totalH - this.margen - y;
     this.redibujarSecciones(this.secW,secH);
     this.redibujarFichas();
     var tableroX = (this.margen*2)+this.secW;
@@ -431,9 +432,12 @@ redibujarSecciones(w:number,h:number):void{
     ctx.textAlign = "center";
     ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
     ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
-
+    
      ctx.strokeRect(x1,y,w,h);
      ctx.strokeRect(x2,y,w,h);
+     ctx.fillStyle = "#9B9A9A"
+     ctx.fillRect(x1,y,w,h);
+     ctx.fillRect(x2,y,w,h);
   }
 
 redibujarFichas(){
