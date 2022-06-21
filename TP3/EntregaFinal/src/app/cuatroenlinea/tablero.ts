@@ -170,7 +170,6 @@ export class Tablero {
       // por cada fila de la matriz
       // debera modificar calculoY para que se use en toda la generacion de espacios desocupados
       calculoX = origenX;
-      let columna : Array<any> = new Array();
         for(var j = 0; j < this.x ; j++){
           // por cada espacio de la columna
           // Aca debera crear una figura de canvas desocupada en el tablero y guardar la posicion X, posicion Y en la matriz logica.

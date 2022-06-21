@@ -1,6 +1,5 @@
 import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Juego } from './juego';
-import { Tablero } from './tablero';
 
 @Component({
   selector: 'app-cuatroenlinea',
