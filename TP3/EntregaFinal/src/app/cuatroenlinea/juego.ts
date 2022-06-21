@@ -1,4 +1,5 @@
-import { ViewChild, ElementRef, OnInit, Component } from "@angular/core";
+import { ViewChild, ElementRef, OnInit, Component, NgModule, Input } from "@angular/core";
+import { NgModel } from "@angular/forms";
 import { Fichas } from "./fichas";
 import { Tablero } from "./tablero";
 
@@ -17,7 +18,10 @@ export class Juego implements OnInit {
   fichaselecY:number;
   turno:number = 1;
 
-  
+  pointsj1: number = 0;
+  pointsj2: number = 0;
+
+
   constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
@@ -110,16 +114,29 @@ export class Juego implements OnInit {
 
   verificarGandor():number{
   if (this.tablero.verificarGanador() == 1){
-    // Codigo de si jugador 1 es ganador
+    this.pointsj1 += 1;
+    console.log("Puntos del jugador 1: "+ this.pointsj1);
+    console.log("Puntos del jugador 2: "+ this.pointsj2);
+    this.reiniciarJuego();
     return 1;
   } else if (this.tablero.verificarGanador() == 2){
-    // Codigo de si jugador 2 es ganador
+    this.pointsj2 += 1;
+    console.log("Puntos del jugador 1: "+ this.pointsj1);
+    console.log("Puntos del jugador 2: "+ this.pointsj2);
+    this.reiniciarJuego();
     return 2;
   } else if (this.tablero.verificarGanador() == 3){
     // Codigo de si hay empate
     return 3;
   }
   return 0;
+}
+
+reiniciarJuego(){
+  this.ctx.clearRect(0,0,800,600);
+  this.tablero.reiniciar();
+  this.dibujarTablero();
+  this.dibujarpanel();
 }
 
 }

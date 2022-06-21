@@ -1,4 +1,4 @@
-import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
+import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
 import { Juego } from './juego';
 import { Tablero } from './tablero';
 
@@ -14,6 +14,9 @@ export class CuatroenlineaComponent implements OnInit {
   juego:Juego;
   width:number;
   heigth:number;
+
+  @Input() pointsj1:number;
+  @Input() pointsj2:number;
 
   constructor() {
   }
@@ -32,10 +35,7 @@ export class CuatroenlineaComponent implements OnInit {
   }
 
   reiniciarjuego(){
-    this.ctx.clearRect(0,0,800,600);
-    this.juego = new Juego(this.ctx,this.canvas);
-    this.juego.dibujarTablero();
-    this.juego.dibujarpanel();
+    this.juego.reiniciarJuego();
   }
 
 

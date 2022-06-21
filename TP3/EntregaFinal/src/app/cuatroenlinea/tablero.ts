@@ -421,4 +421,10 @@ redibujarFichas(){
     }
   }
 
+reiniciar(){
+  this.fichas = [];
+  this.tablero = [];
+  this.depositadores = [];
+}
+
 }
