@@ -18,6 +18,13 @@
     background-color: rgba(108,53,2,0.75);
 }
 
+h3{
+  color: white;
+}
+
+label{
+  color: white;
+}
 .points{
   color: white;
 
