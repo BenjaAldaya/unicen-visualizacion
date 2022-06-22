@@ -6,19 +6,14 @@ export class Fichas {
   jugador:number;
   img:HTMLImageElement;
 
-  constructor(x:number,y:number,radio:number,ctx:CanvasRenderingContext2D, jugador:number){
+  constructor(x:number,y:number,radio:number,ctx:CanvasRenderingContext2D, jugador:number, src:string){
     this.x=x;
     this.y=y;
     this.radio=radio;
     this.ctx=ctx;
     this.jugador = jugador;
     this.img = new Image();
-    if(this.jugador == 1){
-      this.img.src = './assets/images/games/cuatroenlinea/ficha1.png';
-    }else{
-      this.img.src = './assets/images/games/cuatroenlinea/ficha2.png';
-    }
-
+    this.img.src = src;
   }
 
   getJugador(){
