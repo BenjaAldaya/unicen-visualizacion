@@ -1,18 +1,24 @@
 export class Fichas {
   radio:number;
-  color:string;
   x:number;
   y:number;
   ctx:CanvasRenderingContext2D;
   jugador:number;
+  img:HTMLImageElement;
 
-  constructor(x:number,y:number,color:string,radio:number,ctx:CanvasRenderingContext2D, jugador:number){
+  constructor(x:number,y:number,radio:number,ctx:CanvasRenderingContext2D, jugador:number){
     this.x=x;
     this.y=y;
-    this.color=color;
     this.radio=radio;
     this.ctx=ctx;
     this.jugador = jugador;
+    this.img = new Image();
+    if(this.jugador == 1){
+      this.img.src = './assets/images/games/cuatroenlinea/ficha1.png';
+    }else{
+      this.img.src = './assets/images/games/cuatroenlinea/ficha2.png';
+    }
+
   }
 
   getJugador(){
@@ -35,23 +41,31 @@ export class Fichas {
       this.y = y;
   }
   
-  getColor(){
-      return this.color;
-  }
+  // getColor(){
+  //     return this.color;
+  // }
   
-  setColor(color:string){
-      this.color = color;
-  }
+  // setColor(color:string){
+  //     this.color = color;
+  // }
   
   dibujar(){
     this.ctx.beginPath();
-          this.ctx.arc(this.x, this.y, this.radio, 0, 2 * Math.PI);
-          this.ctx.fillStyle = 'black';
-          this.ctx.lineWidth = 3;
-          this.ctx.stroke();
-          this.ctx.fillStyle = this.color;
-          this.ctx.fill();
-          this.ctx.lineWidth = 1;
+    this.ctx.arc(this.x, this.y, this.radio, 0, 2 * Math.PI);
+    this.img.onload = ()=> {
+      this.ctx.drawImage(this.img,this.x-this.radio,this.y-this.radio,this.radio*2,this.radio*2);
+      this.ctx.fillStyle = 'black';
+      this.ctx.lineWidth = 3;
+      this.ctx.stroke();
+      this.ctx.lineWidth = 1;
+    }
+    this.ctx.drawImage(this.img,this.x-this.radio,this.y-this.radio,this.radio*2,this.radio*2);
+    this.ctx.fillStyle = 'black';
+    this.ctx.lineWidth = 3;
+    this.ctx.stroke();
+    // this.ctx.fillStyle = this.color;
+    // this.ctx.fill();
+    this.ctx.lineWidth = 1;
   }
   
 

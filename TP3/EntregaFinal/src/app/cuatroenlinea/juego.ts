@@ -55,7 +55,6 @@ export class Juego implements OnInit {
         this.fichaselec.setX(x);
         this.fichaselec.setY(y);
         this.tablero.redibujar(this.fichaselec);
-        console.log(this.w);
       }else if (y<=this.tablero.inicioY || x>=this.w-10) {
         this.fichaselec.setX(this.fichaselecX);
         this.fichaselec.setY(this.fichaselecY);
