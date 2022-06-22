@@ -38,6 +38,10 @@ export class CuatroenlineaComponent implements OnInit {
     this.juego.nuevoJuego();
   }
 
+  continuarJuego(){
+    this.juego.reiniciarJuego();
+  }
+
   setColumnas(){
     this.juego.limpiarAll();
     this.empezarjuego();
