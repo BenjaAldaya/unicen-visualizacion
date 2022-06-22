@@ -8,9 +8,33 @@
     position: absolute;
     width: 780px;
     height: 70px;
-    top: 10px;
-    left: 10px;
+    /* top: 10px;
+    left: 10px; */
+    margin-top: 10px;
+    margin-left: 10px;
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
+}
+
+.points{
+  color: black;
+
+}
+.puntos{
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.puntos p {
+  width: max-content;
+  justify-content: start;
+}
+
+.timer{
+  padding: 1rem;
+  color: white;
+  background-color: black;
 }

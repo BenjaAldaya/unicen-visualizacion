@@ -348,7 +348,6 @@ transform: rotate(-180deg);
   width: 100%;
   display: inline-flex;
   justify-content:flex-end;
-  display: none;
 }
 
 .navlogeado img{

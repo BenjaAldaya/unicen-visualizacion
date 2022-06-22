@@ -21,7 +21,7 @@
                         <a href="">Olvidaste tu contraseña?</a>
                     </div>
                     <div class="divbtnlogin">
-                        <button class="btn-secondary" type="submit" (click)="login">Iniciar Sesion</button>
+                        <button class="btn-secondary" type="submit" (click)="login();closeLogin()">Iniciar Sesion</button>
                     </div>
                 </form>
             </div>
@@ -44,7 +44,7 @@
                         <span href="">Acepto los terminos y condiciones</span>
                     </div>
                     <div>
-                        <button class="btn-primary" type="submit" (click)="login">Registrarse</button>
+                        <button class="btn-primary" type="submit" (click)="login();closeLogin()">Registrarse</button>
                     </div>
                 </form>
             </div>
