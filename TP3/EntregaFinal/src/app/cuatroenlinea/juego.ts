@@ -20,6 +20,7 @@ export class Juego implements OnInit {
   modojuego:number = 10;
   pointsj1: number = 0;
   pointsj2: number = 0;
+  ganador: number = 0;
 
   constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>,@Inject('modojuego') private mj:number){
     this.w = canvas.nativeElement.width;
@@ -42,7 +43,7 @@ export class Juego implements OnInit {
   }
 
   mouseDown(event:MouseEvent){
-    if(this.verificarGanador() == 0){
+    if(this.ganador == 0){
       var {x,y}= this.tablero.getMousePosicion(event);
       this.setFichaSelect(x,y);
     }
@@ -86,7 +87,7 @@ export class Juego implements OnInit {
       var y = this.fichaselec.getY();
       // Sistema de turnos : Este sistema lee la constante this.turno, si no es divisible por dos es el turno del jugador 1
       // Ahora, ademas debera leer si la ficha fue colocada con exito, si no la devolvera a su lugar de origen, antes de ser movida.
-      if(this.verificarGanador() == 0){
+      if(this.ganador == 0){
         if((!(this.turno%2==0)) && (this.fichaselec.getJugador() == 1)){
           // console.log(this.turno);
           if(this.tablero.colocar(this.fichaselec, x, y)){
@@ -128,24 +129,29 @@ export class Juego implements OnInit {
   }
 
 
-  verificarGanador():number{
+  verificarGanador(): number{
   if (this.tablero.verificarGanador() == 1){
     // this.pointsj1 += 1;
     // this.reiniciarJuego();
+    this.ganador = 1;
     return 1;
   } else if (this.tablero.verificarGanador() == 2){
     // this.pointsj2 += 1;
     // this.reiniciarJuego();
+    this.ganador = 2;
     return 2;
   } else if (this.tablero.verificarGanador() == 3){
     // Codigo de si hay empate
+    this.ganador = 3;
     return 3;
   }else{
+    this.ganador = 0;
     return 0;
   }
 }
 
 reiniciarJuego(){
+  this.ganador = 0;
   this.ctx.clearRect(0,0,800,600);
   this.tablero.reiniciar();
   this.dibujarTablero();
@@ -153,6 +159,7 @@ reiniciarJuego(){
 }
 
 nuevoJuego(){
+  this.ganador = 0;
   this.ctx.clearRect(0,0,800,600);
   this.tablero.reiniciar();
   this.dibujarTablero();
