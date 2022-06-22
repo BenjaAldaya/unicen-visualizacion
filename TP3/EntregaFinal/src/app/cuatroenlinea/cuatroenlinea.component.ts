@@ -15,15 +15,16 @@ export class CuatroenlineaComponent implements OnInit {
   juego:Juego;
   width:number;
   heigth:number;
-  modojuego:number = 0;
-  tiempoJuego:number = 2;
+  modojuego:number;
   juegoiniciado:boolean=false;
   @Input() pointsj1:number;
   @Input() pointsj2:number;
-  timerId = setInterval(() => this.tick(), 10000);
+  fondo:HTMLImageElement;
+  minutos:number=0;
+  segundos:number=0;
+  tiempoJuego:number=2;
+  timerId = setInterval(() => this.tick(), 100000);
 
-  minutos : number;
-  segundos : number;
 
   constructor() {
     this.minutos = 1;
@@ -34,11 +35,21 @@ export class CuatroenlineaComponent implements OnInit {
     this.width = this.canvas.nativeElement.width;
     this.heigth = this.canvas.nativeElement.height;
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
+    this.fondo = new Image();
+    this.fondo.src = '../assets/images/games/cuatroenlinea/madera.jpg';
+    this.fondo.onload = ()=>{
+      this.ctx.drawImage(this.fondo,0,0,800,600);
+      this.ctx.font= "bold italic 50px Lato"; 
+      this.ctx.lineWidth = 3;
+      this.ctx.strokeText('ELIJA UN MODO DE JUEGO',this.width/2,this.heigth/2,400);
+      this.ctx.fillStyle= "white";
+      this.ctx.fillText('ELIJA UN MODO DE JUEGO',this.width/2,this.heigth/2,400);
+    }
     this.empezarjuego();
   }
 
   tick(): void{
-    if(--this.segundos < 0){
+    if(this.juego.ganador == 0 && --this.segundos < 0){
       this.segundos = 59;
       if(--this.minutos < 0){
         clearInterval(this.timerId);
@@ -66,9 +77,9 @@ export class CuatroenlineaComponent implements OnInit {
   }
 
   empezarjuego(){
-    this.juego = new Juego(this.ctx,this.canvas,this.modojuego);
+    
+    this.juego = new Juego(this.ctx,this.canvas,this.modojuego,this.fondo);
     this.juego.dibujarTablero();
-    this.juego.dibujarpanel();
   }
 
   reiniciarjuego(){

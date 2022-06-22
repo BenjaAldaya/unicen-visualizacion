@@ -24,9 +24,9 @@ export class Tablero {
   totalH:number;
   //ancho seccion fichas
   secW:number =120;
-  radiotablero:number = this.radio+1;
-
-
+  radiotablero:number = this.radio+1;  
+  
+  fondo:HTMLImageElement;
 
   tablero : Array<any> = [];
   depositadores : Array<any> = [];
@@ -38,11 +38,12 @@ export class Tablero {
   origenX:number
 
 
-  constructor(private ctx:CanvasRenderingContext2D,w:number,h:number,m:number,columnas:number){
+  constructor(private ctx:CanvasRenderingContext2D,w:number,h:number,m:number,columnas:number,fondo:HTMLImageElement){
     this.totalW = w;
     this.totalH = h;
     this.margen = m;
     this.x = columnas;
+    this.fondo = fondo;
   }
 
   getFichas(){}
@@ -69,14 +70,21 @@ export class Tablero {
     var y = this.inicioY;
     var x2 = this.totalW-this.margen-w;
     ctx.textAlign = "center";
+    ctx.font= "bold italic 25px Lato"; 
+    ctx.lineWidth = 1;
     ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
     ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
-    ctx.fillStyle = "#9B9A9A"
+    ctx.fillStyle = 'white'
+    ctx.fillText('Jugador 1',x1+w/2,y-this.margen,w);
+    ctx.fillText('Jugador 2',x2+w/2,y-this.margen,w);
+    ctx.fillStyle = "rgba(108,53,2,0.8)";
+    ctx.lineWidth = 3;
     ctx.strokeRect(x1,y,w,h);
     ctx.fillRect(x1,y,w,h);
     ctx.strokeRect(x2,y,w,h);
     ctx.fillRect(x2,y,w,h);
     this.cargarfichas(w,h,x1,x2,y);
+    ctx.lineWidth = 1;
   }
 
   cargarfichas(w:number,h:number,x1:number,x2:number,y:number):void{
@@ -265,7 +273,8 @@ export class Tablero {
 
   dibujarDesocupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number){
     ctx.beginPath();
-          // ctx.fillRect(x-radio-this.margen,y-radio-this.margen,radio*2+this.margen*2,radio*2+this.margen*2);
+          ctx.fillStyle = "rgba(108,53,2,0.6)";
+          ctx.fillRect(x-radio-this.margen/2,y-radio-this.margen/2,(radio*2+this.margen),radio*2+this.margen);
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
           ctx.lineWidth = 3;
           ctx.stroke();
@@ -280,9 +289,11 @@ export class Tablero {
       img.src = './assets/images/games/cuatroenlinea/ficha2.png';
     }
     ctx.beginPath();
+          ctx.fillStyle = "rgba(108,53,2,0.6)";
+          ctx.fillRect(x-radio-this.margen/2,y-radio-this.margen/2,(radio*2+this.margen),radio*2+this.margen);
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
           ctx.drawImage(img,x-radio,y-radio,radio*2,radio*2);
-          ctx.fillStyle = 'black';
+          // ctx.fillStyle = 'black';
           ctx.lineWidth = 3;
           ctx.stroke();
           // ctx.fillStyle = color;
@@ -338,9 +349,10 @@ export class Tablero {
   }
 
   redibujar(ficha:Fichas | null){
-    this.ctx.clearRect(0,this.inicioY-20,this.totalW,this.totalH);
-    this.ctx.fillStyle = "#ffffff"
-    this.ctx.fillRect(0,this.inicioY-20,this.totalW,this.totalH);
+    this.ctx.clearRect(0,0,this.totalW,this.totalH);
+    this.ctx.drawImage(this.fondo,0,0,800,600);
+    // this.ctx.fillStyle = "#ffffff"
+    // this.ctx.fillRect(0,this.inicioY-20,this.totalW,this.totalH);
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;
     this.redibujarSecciones(this.secW,secH);
@@ -359,16 +371,21 @@ export class Tablero {
       ficha.dibujar();
   }
   
-  redibujarDepositadores(){
+  borrarDepositadores(){
+    var y=this.inicioY;
+    var secH =this.totalH - this.margen - y;
     var margen = 10 ;
-    var alto = this.radio*2+margen;
-    var ancho = this.radio*2 + 5;
+    var tableroX = (this.margen*2)+this.secW;
+    var tableroY = y;
     for(var i = 0; i < this.x; i++){
       var minX = this.tablero[0][i].posX - margen * 2.2;
       var minY = this.tablero[0][i].posY - this.radio*4;
-      this.ctx.clearRect(minX-3,minY-3,ancho+6,alto+6);
-      this.ctx.fillStyle = "white";
-      this.ctx.fillRect(minX-4,minY-3,ancho+7,alto+6);
+      this.ctx.clearRect(0,0,800,600);      
+      this.ctx.drawImage(this.fondo,0,0,800,600);
+      this.redibujarSecciones(this.secW,secH);
+      this.redibujarFichas();
+      this.reDibujarPrincipal(tableroX,tableroY);
+    
     }
   }
  // Logica para saber ganadores
@@ -478,14 +495,20 @@ redibujarSecciones(w:number,h:number):void{
     var y = this.inicioY;
     var x2 = this.totalW-this.margen-w;
     ctx.textAlign = "center";
+    ctx.font= "bold italic 25px Lato"; 
+    ctx.lineWidth = 1;
     ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
     ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
-
+    ctx.fillStyle = 'white'
+    ctx.fillText('Jugador 1',x1+w/2,y-this.margen,w);
+    ctx.fillText('Jugador 2',x2+w/2,y-this.margen,w);
+    ctx.lineWidth = 3;
      ctx.strokeRect(x1,y,w,h);
      ctx.strokeRect(x2,y,w,h);
-     ctx.fillStyle = "#9B9A9A"
+     ctx.fillStyle = "rgba(108,53,2,0.8)";
      ctx.fillRect(x1,y,w,h);
      ctx.fillRect(x2,y,w,h);
+     ctx.lineWidth = 1;
   }
 
 redibujarFichas(){

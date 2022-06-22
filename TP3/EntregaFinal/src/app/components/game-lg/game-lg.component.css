@@ -55,7 +55,7 @@
   z-index: 1;
 }
 
-.gamecontainer figure a .capa button {
+.gamecontainer figure a .capa i {
     display: flex;
     height: 100%;
 }

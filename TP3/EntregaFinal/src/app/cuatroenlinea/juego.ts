@@ -17,29 +17,34 @@ export class Juego implements OnInit {
   fichaselecX:number;
   fichaselecY:number;
   turno:number = 1;
-  modojuego:number = 10;
+  modojuego:number;
   pointsj1: number = 0;
   pointsj2: number = 0;
   ganador: number = 0;
+  fondo:HTMLImageElement;
 
-  constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>,@Inject('modojuego') private mj:number){
+  constructor(private ctx: CanvasRenderingContext2D ,private canvas:ElementRef<HTMLCanvasElement>,@Inject('modojuego') private mj:number,fondo:HTMLImageElement){
     this.w = canvas.nativeElement.width;
     this.h =canvas.nativeElement.height;
     this.modojuego = mj;
-    this.tablero = new Tablero(this.ctx,this.w,this.h,this.margen,this.modojuego);
+    this.fondo =fondo;
+    this.tablero = new Tablero(this.ctx,this.w,this.h,this.margen,this.modojuego,this.fondo);
+    // fondo = ctx.createPattern()
   }
 
   ngOnInit(): void {
   }
 
   dibujarTablero() {
-    this.ctx.fillStyle = "white";
-    this.ctx.fillRect(0,0,800,600);
-    this.tablero.dibujar();
+    this.ctx.drawImage(this.fondo,0,0,800,600);
+    // this.ctx.fillRect(0,0,800,600);
+      this.tablero.dibujar();
   }
 
   dibujarpanel(){
+    this.ctx.fillStyle = "rgba(108,53,2,0.8)";
     this.ctx.strokeRect(this.margen,this.margen,this.w-this.margen*2,70);
+    this.ctx.fillRect(this.margen,this.margen,this.w-this.margen*2,70);
   }
 
   mouseDown(event:MouseEvent){
@@ -117,7 +122,7 @@ export class Juego implements OnInit {
         this.devolverFicha(this.fichaselec);
         this.fichaselec = undefined;
       }
-      this.tablero.redibujarDepositadores();
+      this.tablero.borrarDepositadores();
       this.fichaselec = undefined;
     }
   }

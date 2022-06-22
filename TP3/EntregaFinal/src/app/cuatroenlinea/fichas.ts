@@ -60,12 +60,12 @@ export class Fichas {
       this.ctx.lineWidth = 1;
     }
     this.ctx.drawImage(this.img,this.x-this.radio,this.y-this.radio,this.radio*2,this.radio*2);
-    this.ctx.fillStyle = 'black';
-    this.ctx.lineWidth = 3;
-    this.ctx.stroke();
-    // this.ctx.fillStyle = this.color;
-    // this.ctx.fill();
-    this.ctx.lineWidth = 1;
+    // this.ctx.fillStyle = 'black';
+    // this.ctx.lineWidth = 3;
+    // this.ctx.stroke();
+    // // this.ctx.fillStyle = this.color;
+    // // this.ctx.fill();
+    // this.ctx.lineWidth = 1;
   }
   
 
