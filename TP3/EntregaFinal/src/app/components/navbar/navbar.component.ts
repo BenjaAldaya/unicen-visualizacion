@@ -1,6 +1,8 @@
 import { Component, EventEmitter, NgModule, OnInit, Output } from '@angular/core';
 import { Juegos } from 'src/app/games-array';
+import { LoginService } from 'src/app/login.service';
 import { Categorias } from '../../category-array';
+import { Observable } from 'rxjs';
 
 
 @Component({
@@ -9,12 +11,16 @@ import { Categorias } from '../../category-array';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent implements OnInit {
-  login:boolean = false;
+  estaLogueado: boolean;
 
   search : string = '';
   juegos=Juegos;
 
-  constructor() { }
+  constructor(public loginService: LoginService) {
+    loginService.getEstado().subscribe((estado: boolean) => {
+      this.estaLogueado = estado;
+    })
+   }
   categorias = Categorias
 
   ngOnInit(): void {
@@ -23,12 +29,12 @@ export class NavbarComponent implements OnInit {
 
   @Output() show = new EventEmitter<string>();
   
-  ShowLoginModal():void{
+  showLoginModal():void{
     return this.show.emit('flex');
   }
 
-  Deslogear():void{
-    this.login = false;
+  deslogear():void{
+    this.loginService.desloguear();
   }
   
   showHmb():void{

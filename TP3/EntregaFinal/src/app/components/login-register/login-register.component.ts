@@ -1,5 +1,6 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Subject } from 'rxjs/internal/Subject';
+import { LoginService } from 'src/app/login.service';
 
 @Component({
   selector: 'app-login-register',
@@ -8,7 +9,7 @@ import { Subject } from 'rxjs/internal/Subject';
 })
 export class LoginRegisterComponent implements OnInit {
 
-  constructor() { }
+  constructor(private loginService: LoginService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,7 @@ export class LoginRegisterComponent implements OnInit {
 
 
   login():void{
-
+    this.loginService.loguear();
   }
 
   changeToRegister():void{

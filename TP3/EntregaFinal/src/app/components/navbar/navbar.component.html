@@ -1,28 +1,28 @@
 <nav>
-  <div class="toggle" style="width:100%;" (click)="showHmb()">
+  <div class="toggle" style="width: 100%" (click)="showHmb()">
     <i class="bi bi-list" id="hmb-icon"></i>
   </div>
   <div class="logo">
     <a href="#" role="button">
       <figure>
-        <img src="./assets/images/izq.png" alt="" height="45">
+        <img src="./assets/images/izq.png" alt="" height="45" />
       </figure>
       <p id="brandswitch">SWITCH</p>
       <p id="brandgames">games</p>
       <figure>
-        <img src="./assets/images/der.png" alt="" height="45">
+        <img src="./assets/images/der.png" alt="" height="45" />
       </figure>
     </a>
   </div>
   <div class="logoR">
     <a href="#" role="button">
       <figure>
-        <img src="./assets/images/izq.png" alt="" height="45">
+        <img src="./assets/images/izq.png" alt="" height="45" />
       </figure>
       <p id="brandswitch">SWITCH</p>
       <p id="brandgames">GAMES</p>
       <figure>
-        <img src="./assets/images/der.png" alt="" height="45">
+        <img src="./assets/images/der.png" alt="" height="45" />
       </figure>
     </a>
   </div>
@@ -30,12 +30,16 @@
     <app-search></app-search>
     <div class="navcat">
       <a id="catbutton" role="button">
-        <p>CATEGORIAS</p><span>&#9660;</span>
+        <p>CATEGORIAS</p>
+        <span>&#9660;</span>
       </a>
       <ul class="drop-menu cat">
-        <li *ngFor="let categoria of categorias;">
-          <a [routerLink]="['/search']">{{categoria.name}}
-            <figure class="ellipse"><img src={{categoria.icon}} alt=""></figure>
+        <li *ngFor="let categoria of categorias">
+          <a [routerLink]="['/search']"
+            >{{ categoria.name }}
+            <figure class="ellipse">
+              <img src="{{ categoria.icon }}" alt="" />
+            </figure>
           </a>
         </li>
       </ul>
@@ -43,16 +47,17 @@
     <div class="allgames"><button>todos los juegos</button></div>
   </div>
 
-  <div class="navlogeado">
+  <div class="navlogeado" *ngIf="estaLogueado">
     <div class="navcat">
       <a type="button">
-        <p>Favoritos</p><i class="bi bi-star" style="margin-left:1rem;"></i>
+        <p>Favoritos</p>
+        <i class="bi bi-star" style="margin-left: 1rem"></i>
       </a>
       <ul class="drop-menu cat">
-        <li *ngFor="let juego of juegos | slice:0:5;">
+        <li *ngFor="let juego of juegos | slice: 0:5">
           <a [routerLink]="['/search']">
-            <p>{{juego.nombre}}</p>
-            <figure><img src={{juego.img}} alt=""></figure>
+            <p>{{ juego.nombre }}</p>
+            <figure><img src="{{ juego.img }}" alt="" /></figure>
           </a>
         </li>
         <li>
@@ -63,21 +68,25 @@
       </ul>
     </div>
     <div class="navcat">
-      <a type="button">
-        <p>SHARKL</p><i class="bi bi-person-circle"></i>
+        <a type="button">
+          <p>SHARKL</p> 
+          <i class="bi bi-person-circle"></i>
+        </a>
         <ul class="drop-menu cat">
           <li>
             <a [routerLink]="['/profile']" type="button">Mi Perfil</a>
           </li>
           <li>
-            <a [routerLink]="['/home']" (click)="Deslogear()">Cerrar Session</a>
+            <a [routerLink]="['/home']" (click)="deslogear()">Cerrar Session</a>
           </li>
         </ul>
-      </a>
     </div>
   </div>
-  <div class="navlogin">
-    <button id="btnlogin" type="button" (click)="ShowLoginModal()">Iniciar Sesion / Registrarse</button>
+  <!-- [ngClass]="estaLogueado ? 'navlogeado' : 'navlogin'" -->
+  <div class="navlogin" *ngIf="!estaLogueado">
+    <button id="btnlogin" type="button" (click)="showLoginModal()">
+      Iniciar Sesion / Registrarse
+    </button>
   </div>
   <div class="navloginR">
     <a href="#/profile"><i class="bi bi-person-circle" id="profile"></i></a>
@@ -95,8 +104,13 @@
       <p>CATEGORIAS</p>
     </div>
     <ul class="catmlist">
-      <li *ngFor="let categoria of categorias;">
-        <a [routerLink]="['/search']"><figure class="ellipse"><img src={{categoria.icon}} alt=""></figure><p>{{categoria.name}}</p></a>
+      <li *ngFor="let categoria of categorias">
+        <a [routerLink]="['/search']"
+          ><figure class="ellipse">
+            <img src="{{ categoria.icon }}" alt="" />
+          </figure>
+          <p>{{ categoria.name }}</p></a
+        >
       </li>
     </ul>
   </div>

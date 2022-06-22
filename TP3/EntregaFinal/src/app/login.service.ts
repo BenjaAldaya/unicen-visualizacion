@@ -7,32 +7,35 @@ import { BehaviorSubject, Observable, Subject } from 'rxjs';
 export class LoginService {
 
   constructor() { }
-  private logueado:boolean = false;
+  private logueado = new BehaviorSubject<boolean>(this.estaLogueado());
   private user:string = 'none';
 
+
+  private estaLogueado():boolean{
+    return !!localStorage.getItem('login');
+  }
+
   loguear(){
-    if(this.logueado==false){
-      this.logueado = true;
-    }
+    localStorage.setItem('login', 'true')
+    this.logueado.next(true);
   }
 
   desloguear(){
-    if(this.logueado==true){
-      this.logueado=false;
-    }
+    localStorage.removeItem('login');
+    this.logueado.next(false);
   }
 
-  getEstado(){
-    return this.logueado;
+  getEstado(): Observable<boolean>{
+    return this.logueado.asObservable();
   }
 
-  mostraruser():string{
-    if (this.logueado != false){
-      this.user='none'
-    }else{
-      this.user='block'
-    }
-    return this.user;
-}
+//   mostraruser():string{
+//     if (this.logueado != false){
+//       this.user='none'
+//     }else{
+//       this.user='block'
+//     }
+//     return this.user;
+// }
 }
 
