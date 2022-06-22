@@ -48,3 +48,11 @@ label{
   color: white;
   background-color: rgba(108,53,2,0.9);;
 }
+
+.turnojugador #txtp1{
+  color: red;
+}
+
+.turnojugador #txtp2{
+  color: blue;
+}

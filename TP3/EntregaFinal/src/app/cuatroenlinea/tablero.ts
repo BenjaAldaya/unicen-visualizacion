@@ -374,6 +374,7 @@ export class Tablero {
     if(ficha!=null)
       ficha.dibujar();
   }
+  
   borrarDepositadores(){
     var y=this.inicioY;
     var secH =this.totalH - this.margen - y;

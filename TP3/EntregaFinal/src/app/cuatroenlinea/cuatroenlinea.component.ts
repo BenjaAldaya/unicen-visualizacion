@@ -6,6 +6,8 @@ import { Juego } from './juego';
   templateUrl: './cuatroenlinea.component.html',
   styleUrls: ['./cuatroenlinea.component.css']
 })
+
+
 export class CuatroenlineaComponent implements OnInit {
   @ViewChild('4enlinea', { static: true })
   canvas: ElementRef<HTMLCanvasElement>;
@@ -18,8 +20,15 @@ export class CuatroenlineaComponent implements OnInit {
   @Input() pointsj1:number;
   @Input() pointsj2:number;
   fondo:HTMLImageElement;
+  minutos:number=0;
+  segundos:number=0;
+  tiempoJuego:number=2;
+  timerId = setInterval(() => this.tick(), 100000);
+
 
   constructor() {
+    this.minutos = 1;
+    this.segundos = 59;
   }
 
   ngOnInit(): void {
@@ -39,6 +48,34 @@ export class CuatroenlineaComponent implements OnInit {
     this.empezarjuego();
   }
 
+  tick(): void{
+    if(this.juego.ganador == 0 && --this.segundos < 0){
+      this.segundos = 59;
+      if(--this.minutos < 0){
+        clearInterval(this.timerId);
+        this.juego.ganador = 3;
+      }
+    }
+  }
+
+  empezarContador(){
+    clearInterval(this.timerId);
+    if(this.tiempoJuego==1){
+      this.minutos = 0
+      this.segundos = 59
+    } else if(this.tiempoJuego==2){
+      this.minutos = 1
+      this.segundos = 59
+    } else if(this.tiempoJuego==3){
+      this.minutos = 4
+      this.segundos = 59
+    } else if(this.tiempoJuego==4){
+      this.minutos = 9
+      this.segundos = 59
+    }
+    this.timerId = setInterval(() => this.tick(), 1000);
+  }
+
   empezarjuego(){
     
     this.juego = new Juego(this.ctx,this.canvas,this.modojuego,this.fondo);
@@ -47,16 +84,20 @@ export class CuatroenlineaComponent implements OnInit {
 
   reiniciarjuego(){
     this.juego.nuevoJuego();
+    this.empezarContador();
   }
 
   continuarJuego(){
     this.juego.reiniciarJuego();
+    this.empezarContador();
   }
 
   setColumnas(){
     this.juego.limpiarAll();
     this.empezarjuego();
     this.juegoiniciado = true;
+
+    this.empezarContador();
   }
 
 }
