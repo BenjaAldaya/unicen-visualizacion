@@ -31,8 +31,6 @@ export class Juego implements OnInit {
   ngOnInit(): void {
   }
 
-
-
   dibujarTablero() {
     this.ctx.fillStyle = "white";
     this.ctx.fillRect(0,0,800,600);
@@ -55,6 +53,7 @@ export class Juego implements OnInit {
         this.fichaselec.setX(x);
         this.fichaselec.setY(y);
         this.tablero.redibujar(this.fichaselec);
+        // console.log(this.w);
       }else if (y<=this.tablero.inicioY || x>=this.w-10) {
         this.fichaselec.setX(this.fichaselecX);
         this.fichaselec.setY(this.fichaselecY);
@@ -69,6 +68,7 @@ export class Juego implements OnInit {
   }
 
   setFichaSelect(x:number,y:number):void{
+  // Esta funcion recorre 
     for(var i=0; i<this.tablero.fichas.length ;i++){
       if (this.tablero.fichas[i].clickeado(x,y)){
         this.fichaselec = this.tablero.fichas[i];
@@ -84,31 +84,34 @@ export class Juego implements OnInit {
       var y = this.fichaselec.getY();
       // Sistema de turnos : Este sistema lee la constante this.turno, si no es divisible por dos es el turno del jugador 1
       // Ahora, ademas debera leer si la ficha fue colocada con exito, si no la devolvera a su lugar de origen, antes de ser movida.
-      if(this.verificarGandor() == 0){
+      if(this.verificarGanador() == 0){
         if((!(this.turno%2==0)) && (this.fichaselec.getJugador() == 1)){
+          // console.log(this.turno);
           if(this.tablero.colocar(this.fichaselec, x, y)){
             this.tablero.redibujar(null);
             this.turno++;
+            if(this.verificarGanador() == 1){
+              this.pointsj1 += 1;
+            }
           }else{
-          this.fichaselec.setX(this.fichaselecX);
-          this.fichaselec.setY(this.fichaselecY);
-          this.tablero.redibujar(this.fichaselec);
+          this.devolverFicha(this.fichaselec);
           }
         } else if (((this.turno%2==0)) && (this.fichaselec.getJugador() == 2)){
           if(this.tablero.colocar(this.fichaselec, x, y)){
             this.tablero.redibujar(null);
             this.turno++;
+            if(this.verificarGanador() == 2){
+              this.pointsj2 += 1;
+            }
           } else{
-            this.fichaselec.setX(this.fichaselecX);
-            this.fichaselec.setY(this.fichaselecY);
-            this.tablero.redibujar(this.fichaselec);
+            this.devolverFicha(this.fichaselec);
           }
+        } else {
+          this.devolverFicha(this.fichaselec);
+          this.fichaselec = undefined;
         }
-      }
-      else {
-        this.fichaselec.setX(this.fichaselecX);
-        this.fichaselec.setY(this.fichaselecY);
-        this.tablero.redibujar(this.fichaselec);
+      } else {
+        this.devolverFicha(this.fichaselec);
         this.fichaselec = undefined;
       }
       this.tablero.redibujarDepositadores();
@@ -116,15 +119,21 @@ export class Juego implements OnInit {
     }
   }
 
+  devolverFicha(ficha:Fichas){
+    ficha.setX(this.fichaselecX);
+    ficha.setY(this.fichaselecY);
+    this.tablero.redibujar(ficha);
+  }
 
-  verificarGandor():number{
+
+  verificarGanador():number{
   if (this.tablero.verificarGanador() == 1){
-    this.pointsj1 += 1;
-    this.reiniciarJuego();
+    // this.pointsj1 += 1;
+    // this.reiniciarJuego();
     return 1;
   } else if (this.tablero.verificarGanador() == 2){
-    this.pointsj2 += 1;
-    this.reiniciarJuego();
+    // this.pointsj2 += 1;
+    // this.reiniciarJuego();
     return 2;
   } else if (this.tablero.verificarGanador() == 3){
     // Codigo de si hay empate
@@ -138,6 +147,7 @@ reiniciarJuego(){
   this.ctx.clearRect(0,0,800,600);
   this.tablero.reiniciar();
   this.dibujarTablero();
+  this.dibujarpanel();
 }
 
 nuevoJuego(){
@@ -148,6 +158,7 @@ nuevoJuego(){
   this.pointsj1 = 0;
   this.pointsj2 = 0;
 }
+
 limpiarAll(){
  this.ctx.clearRect(0,0,800,600);
 }
