@@ -350,6 +350,7 @@ export class Tablero {
     if(ficha!=null)
       ficha.dibujar();
   }
+  
   redibujarDepositadores(){
     var margen = 10 ;
     var alto = this.radio*2+margen;

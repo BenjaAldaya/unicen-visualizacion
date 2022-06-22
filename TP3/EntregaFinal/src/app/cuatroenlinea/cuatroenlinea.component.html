@@ -21,14 +21,14 @@
     <h4>00:00</h4>
   </div>
   <div class="turnojugador"*ngIf="juego.verificarGanador()==0 && juegoiniciado == true">
-    <h3 *ngIf="juego.turno % 2 == 1">TURNO DEL JUGADOR 1</h3>
-    <h3 *ngIf="juego.turno % 2 == 0">TURNO DEL JUGADOR 2</h3>
+    <h3 id="txtp1" *ngIf="juego.turno % 2 == 1">TURNO DEL JUGADOR 1</h3>
+    <h3 id="txtp2" *ngIf="juego.turno % 2 == 0">TURNO DEL JUGADOR 2</h3>
   </div>
   <div class="turnojugador"*ngIf="juego.verificarGanador()==1 && juegoiniciado == true">
-    <h3>EL GANADOR ES EL JUGADOR 1</h3>
+    <h3 id="txtp1">EL GANADOR ES EL JUGADOR 1</h3>
   </div>
   <div class="turnojugador"*ngIf="juego.verificarGanador()==2 && juegoiniciado == true">
-    <h3>EL GANADOR ES EL JUGADOR 2</h3>
+    <h3 id="txtp2">EL GANADOR ES EL JUGADOR 2</h3>
   </div>
   <div class="turnojugador"*ngIf="juego.verificarGanador()==3 && juegoiniciado == true">
     <h3>ES UN EMPATE!</h3>

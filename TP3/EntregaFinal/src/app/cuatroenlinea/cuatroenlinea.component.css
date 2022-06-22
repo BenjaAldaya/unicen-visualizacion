@@ -38,3 +38,11 @@
   color: white;
   background-color: black;
 }
+
+.turnojugador #txtp1{
+  color: red;
+}
+
+.turnojugador #txtp2{
+  color: blue;
+}

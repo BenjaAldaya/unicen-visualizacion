@@ -42,8 +42,10 @@ export class Juego implements OnInit {
   }
 
   mouseDown(event:MouseEvent){
-  var {x,y}= this.tablero.getMousePosicion(event);
-  this.setFichaSelect(x,y);
+    if(this.verificarGanador() == 0){
+      var {x,y}= this.tablero.getMousePosicion(event);
+      this.setFichaSelect(x,y);
+    }
   }
 
   mouseMove(event:MouseEvent){
@@ -94,7 +96,7 @@ export class Juego implements OnInit {
               this.pointsj1 += 1;
             }
           }else{
-          this.devolverFicha(this.fichaselec);
+            this.devolverFicha(this.fichaselec);
           }
         } else if (((this.turno%2==0)) && (this.fichaselec.getJugador() == 2)){
           if(this.tablero.colocar(this.fichaselec, x, y)){
