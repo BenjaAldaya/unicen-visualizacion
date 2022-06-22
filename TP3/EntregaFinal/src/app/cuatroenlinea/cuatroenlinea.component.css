@@ -15,10 +15,11 @@
     display: inline-flex;
     justify-content: space-around;
     align-items: center;
+    background-color: rgba(108,53,2,0.75);
 }
 
 .points{
-  color: black;
+  color: white;
 
 }
 .puntos{
@@ -36,5 +37,5 @@
 .timer{
   padding: 1rem;
   color: white;
-  background-color: black;
+  background-color: rgba(108,53,2,0.9);;
 }

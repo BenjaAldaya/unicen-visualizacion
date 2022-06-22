@@ -13,10 +13,11 @@ export class CuatroenlineaComponent implements OnInit {
   juego:Juego;
   width:number;
   heigth:number;
-  modojuego:number = 0;
+  modojuego:number;
   juegoiniciado:boolean=false;
   @Input() pointsj1:number;
   @Input() pointsj2:number;
+  fondo:HTMLImageElement;
 
   constructor() {
   }
@@ -25,13 +26,23 @@ export class CuatroenlineaComponent implements OnInit {
     this.width = this.canvas.nativeElement.width;
     this.heigth = this.canvas.nativeElement.height;
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
+    this.fondo = new Image();
+    this.fondo.src = '../assets/images/games/cuatroenlinea/madera.jpg';
+    this.fondo.onload = ()=>{
+      this.ctx.drawImage(this.fondo,0,0,800,600);
+      this.ctx.font= "bold italic 50px Lato"; 
+      this.ctx.lineWidth = 3;
+      this.ctx.strokeText('ELIJA UN MODO DE JUEGO',this.width/2,this.heigth/2,400);
+      this.ctx.fillStyle= "white";
+      this.ctx.fillText('ELIJA UN MODO DE JUEGO',this.width/2,this.heigth/2,400);
+    }
     this.empezarjuego();
   }
 
   empezarjuego(){
-    this.juego = new Juego(this.ctx,this.canvas,this.modojuego);
+    
+    this.juego = new Juego(this.ctx,this.canvas,this.modojuego,this.fondo);
     this.juego.dibujarTablero();
-    this.juego.dibujarpanel();
   }
 
   reiniciarjuego(){
