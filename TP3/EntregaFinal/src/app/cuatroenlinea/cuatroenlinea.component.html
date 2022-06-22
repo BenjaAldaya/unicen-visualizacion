@@ -9,16 +9,36 @@
       <option value="10">7 en linea</option>
     </select>
   </div>
-  <div>
-    <p>
-        Jugador 1 : <span id="pointsj1">0</span>
+  <div class="puntos">
+    <p class="points" id="pointsj1">
+        Jugador 1: {{juego.pointsj1}}
     </p>
-    <p>
-        Jugador 2 : <span id="pointsj2">0</span>
+    <p class="points" id="pointsj2">
+        Jugador 2: {{juego.pointsj2}}
     </p>
   </div>
-  <div><h3>TURNO DEL JUGADOR 1</h3></div>
-  <button id="btnReiniciar" class="btn-primary" (click)="reiniciarjuego()">Reiniciar</button>
+  <div class="timer">
+    <h4>00:00</h4>
+  </div>
+  <div class="turnojugador"*ngIf="juego.verificarGandor()==0 && juegoiniciado == true">
+    <h3 *ngIf="juego.turno % 2 == 1">TURNO DEL JUGADOR 1</h3>
+    <h3 *ngIf="juego.turno % 2 == 0">TURNO DEL JUGADOR 2</h3>
+  </div>
+  <div class="turnojugador"*ngIf="juego.verificarGandor()==1 && juegoiniciado == true">
+    <h3>EL GANADOR ES EL JUGADOR 1</h3>
+  </div>
+  <div class="turnojugador"*ngIf="juego.verificarGandor()==2 && juegoiniciado == true">
+    <h3>EL GANADOR ES EL JUGADOR 2</h3>
+  </div>
+  <div class="turnojugador"*ngIf="juego.verificarGandor()==3 && juegoiniciado == true">
+    <h3>ES UN EMPATE!</h3>
+  </div>
+  <div class="turnojugado" *ngIf="juegoiniciado == false">
+    <h3>-------------------------</h3>
+  </div>
+  <div>
+    <button id="btnReiniciar" class="btn-primary" (click)="reiniciarjuego()">Reiniciar</button>
+  </div>
 </div>
 
 <canvas #4enlinea width="800px" height="600px" style="border: 2px solid black;" (mousedown)="juego.mouseDown($event)" (mousemove)="juego.mouseMove($event)" (mouseup)="juego.mouseUp($event)"></canvas>

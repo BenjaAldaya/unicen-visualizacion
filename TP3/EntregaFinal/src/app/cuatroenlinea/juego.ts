@@ -104,16 +104,15 @@ export class Juego implements OnInit {
             this.fichaselec.setY(this.fichaselecY);
             this.tablero.redibujar(this.fichaselec);
           }
-        } else {
-          this.fichaselec.setX(this.fichaselecX);
-          this.fichaselec.setY(this.fichaselecY);
-          this.tablero.redibujar(this.fichaselec);
         }
-      } else {
+      }
+      else {
         this.fichaselec.setX(this.fichaselecX);
         this.fichaselec.setY(this.fichaselecY);
         this.tablero.redibujar(this.fichaselec);
+        this.fichaselec = undefined;
       }
+      this.tablero.redibujarDepositadores();
       this.fichaselec = undefined;
     }
   }
@@ -122,28 +121,33 @@ export class Juego implements OnInit {
   verificarGandor():number{
   if (this.tablero.verificarGanador() == 1){
     this.pointsj1 += 1;
-    console.log("Puntos del jugador 1: "+ this.pointsj1);
-    console.log("Puntos del jugador 2: "+ this.pointsj2);
     this.reiniciarJuego();
     return 1;
   } else if (this.tablero.verificarGanador() == 2){
     this.pointsj2 += 1;
-    console.log("Puntos del jugador 1: "+ this.pointsj1);
-    console.log("Puntos del jugador 2: "+ this.pointsj2);
     this.reiniciarJuego();
     return 2;
   } else if (this.tablero.verificarGanador() == 3){
     // Codigo de si hay empate
     return 3;
+  }else{
+    return 0;
   }
-  return 0;
 }
 
 reiniciarJuego(){
   this.ctx.clearRect(0,0,800,600);
   this.tablero.reiniciar();
   this.dibujarTablero();
+}
+
+nuevoJuego(){
+  this.ctx.clearRect(0,0,800,600);
+  this.tablero.reiniciar();
+  this.dibujarTablero();
   this.dibujarpanel();
+  this.pointsj1 = 0;
+  this.pointsj2 = 0;
 }
 limpiarAll(){
  this.ctx.clearRect(0,0,800,600);

@@ -117,7 +117,7 @@ export class Tablero {
     // this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
     //continuar codeo de tablero de izquierda a derecha en lo posible por columnas
     this.dibujarPrincipal(tableroX,tableroY);
-    this.dibujarDepositadores();
+    // this.dibujarDepositadores();
   }
 
   dibujartablero(x:number,y:number,w:number,h:number){
@@ -134,7 +134,7 @@ export class Tablero {
     // var origenX = x + margen *10;
     var origenX = this.origenX;
     // var origenY = y + margen *10;
-    var origenY =this.inicioY + radio*3;
+    var origenY =this.inicioY + radio*4;
 
 
     var calculoX : number = origenX;
@@ -181,7 +181,7 @@ export class Tablero {
     // var origenX = x + margen *10;
     var origenX = this.origenX;
     // var origenY = y + margen *10;
-    var origenY =this.inicioY + radio*3;
+    var origenY =this.inicioY + radio*4;
 
     var calculoX : number = origenX;
     // Calculo X va a ser la posicion X donde se esta creando la ficha del tablero desocupado, y lo quiero guardar ya que en mi matriz logica voy a guardar los datos asi son mas facil de dibujar luego
@@ -311,8 +311,8 @@ export class Tablero {
     this.redibujarFichas();
     var tableroX = (this.margen*2)+this.secW;
     var tableroY = y;
-    var tableroWidth = this.totalW-(this.margen*4)-(this.secW*2);
-    var tableroHeight = secH;
+    // var tableroWidth = this.totalW-(this.margen*4)-(this.secW*2);
+    // var tableroHeight = secH;
     //tablero
     // this.dibujartablero(tableroX,tableroY,tableroWidth,tableroHeight);
     // this.ctx.strokeRect((this.margen*2)+this.secW,y,this.totalW-(this.margen*4)-(this.secW*2),secH);
@@ -322,7 +322,18 @@ export class Tablero {
     if(ficha!=null)
       ficha.dibujar();
   }
-
+  redibujarDepositadores(){
+    var margen = 10 ;
+    var alto = this.radio*2+margen;
+    var ancho = this.radio*2 + 5;
+    for(var i = 0; i < this.x; i++){
+      var minX = this.tablero[0][i].posX - margen * 2.2;
+      var minY = this.tablero[0][i].posY - this.radio*4;
+      this.ctx.clearRect(minX-3,minY-3,ancho+6,alto+6);
+      this.ctx.fillStyle = "white";
+      this.ctx.fillRect(minX-3,minY-3,ancho+6,alto+6);
+    }
+  }
  // Logica para saber ganadores
 
  cuentaArriba(x:number, y:number, jugador:number) {
@@ -432,7 +443,7 @@ redibujarSecciones(w:number,h:number):void{
     ctx.textAlign = "center";
     ctx.strokeText('Jugador 1',x1+w/2,y-this.margen,w);
     ctx.strokeText('Jugador 2',x2+w/2,y-this.margen,w);
-    
+
      ctx.strokeRect(x1,y,w,h);
      ctx.strokeRect(x2,y,w,h);
      ctx.fillStyle = "#9B9A9A"

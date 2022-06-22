@@ -16,3 +16,25 @@
     justify-content: space-around;
     align-items: center;
 }
+
+.points{
+  color: black;
+
+}
+.puntos{
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.puntos p {
+  width: max-content;
+  justify-content: start;
+}
+
+.timer{
+  padding: 1rem;
+  color: white;
+  background-color: black;
+}

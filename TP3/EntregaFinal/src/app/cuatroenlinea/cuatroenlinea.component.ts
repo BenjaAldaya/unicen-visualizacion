@@ -14,6 +14,7 @@ export class CuatroenlineaComponent implements OnInit {
   width:number;
   heigth:number;
   modojuego:number = 0;
+  juegoiniciado:boolean=false;
   @Input() pointsj1:number;
   @Input() pointsj2:number;
 
@@ -34,12 +35,13 @@ export class CuatroenlineaComponent implements OnInit {
   }
 
   reiniciarjuego(){
-    this.juego.reiniciarJuego();
+    this.juego.nuevoJuego();
   }
 
   setColumnas(){
     this.juego.limpiarAll();
     this.empezarjuego();
+    this.juegoiniciado = true;
   }
 
 }
