@@ -265,15 +265,18 @@ export class Tablero {
         alto : alto,
         columna : i
       }
-
+      
       this.ctx.strokeRect(minX,minY,ancho,alto);
+      this.ctx.fillStyle = "rgba(42, 0, 0, 0.5)";
+      this.ctx.fillRect(minX,minY,ancho,alto);
       this.depositadores.push(tmp);
     }
   }
 
   dibujarDesocupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number){
     ctx.beginPath();
-          ctx.fillStyle = "rgba(108,53,2,0.6)";
+          // ctx.fillStyle = "rgba(108,53,2,0.6)";
+          ctx.fillStyle = "rgba(42, 0, 0, 0.5)";
           ctx.fillRect(x-radio-this.margen/2,y-radio-this.margen/2,(radio*2+this.margen),radio*2+this.margen);
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
           ctx.lineWidth = 3;
@@ -289,7 +292,8 @@ export class Tablero {
       img.src = './assets/images/games/cuatroenlinea/ficha2.png';
     }
     ctx.beginPath();
-          ctx.fillStyle = "rgba(108,53,2,0.6)";
+          // ctx.fillStyle = "rgba(108,53,2,0.6)";
+          ctx.fillStyle = "rgba(42, 0, 0, 0.5)";
           ctx.fillRect(x-radio-this.margen/2,y-radio-this.margen/2,(radio*2+this.margen),radio*2+this.margen);
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
           ctx.drawImage(img,x-radio,y-radio,radio*2,radio*2);

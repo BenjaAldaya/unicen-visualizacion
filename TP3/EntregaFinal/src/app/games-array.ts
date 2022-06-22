@@ -4,6 +4,17 @@ import { Games } from "./games";
 
 export const Juegos : Games [] = [
     {
+        nombre:'4 En Linea',
+        categoria:'Multijugador',
+        categoria2:'Estrategia',
+        img:'./assets/images/games/cuatroenlinea.png',
+        clicks:999,
+        link:'4-en-linea',
+        descripcion:'empty',
+        fecha:new Date(2022,5,30),
+        valoracion:4
+    },
+    {
         nombre:'Among Us',
         categoria:'Multijugador',
         categoria2:'Terror',

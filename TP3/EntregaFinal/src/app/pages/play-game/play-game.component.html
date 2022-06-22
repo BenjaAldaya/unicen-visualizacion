@@ -36,8 +36,11 @@
             </div>
         </article>
         <article class="game">
-            <!-- <i class="bi bi-play-circle" id="btn-play"></i> -->
-            <app-cuatroenlinea></app-cuatroenlinea>
+            <div class="gameinc" *ngIf="juegoiniciado == false">
+                <img src="../../../assets/images/games/cuatroenlinea.png">
+                <a role="button"><i class="bi bi-play-circle" id="btn-play" (click)="empezarjuego()"></i></a>
+            </div>
+            <app-cuatroenlinea *ngIf="juegoiniciado==true"></app-cuatroenlinea>
         </article>
         <article class="ads">
             <app-ad></app-ad>
