@@ -96,8 +96,8 @@ export class Tablero {
       // var fichaRojaY= Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
       // var fichaAzulY =Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
 
-      var ficharoja = new Fichas(fichaRojaX,fichasY,'red', radio,ctx,1);
-      var fichaazul = new Fichas(fichaAzulX,fichasY ,'blue', radio,ctx,2);
+      var ficharoja = new Fichas(fichaRojaX,fichasY,radio,ctx,1);
+      var fichaazul = new Fichas(fichaAzulX,fichasY,radio,ctx,2);
 
       fichaazul.dibujar();
       ficharoja.dibujar();
@@ -226,9 +226,9 @@ export class Tablero {
           this.dibujarDesocupado(ctx, calculoX, calculoY, radio);
         }
         else if(this.tablero[i][j].numero == 1){
-          this.dibujarOcupado(ctx, calculoX, calculoY, radio, 'red');
+          this.dibujarOcupado(ctx, calculoX, calculoY, radio, 1);
         } else {
-          this.dibujarOcupado(ctx, calculoX, calculoY, radio, 'blue');
+          this.dibujarOcupado(ctx, calculoX, calculoY, radio, 2);
         }
          // console.log("X:"+calculoX+" Y:"+calculoY);
          //Ahora debera actualizar la posicion X en la proxima figura canvas
@@ -265,20 +265,28 @@ export class Tablero {
 
   dibujarDesocupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number){
     ctx.beginPath();
+          // ctx.fillRect(x-radio-this.margen,y-radio-this.margen,radio*2+this.margen*2,radio*2+this.margen*2);
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
           ctx.lineWidth = 3;
           ctx.stroke();
           ctx.lineWidth = 1;
   }
 
-  dibujarOcupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number, color:string){
+  dibujarOcupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number, jugador:number){
+    var img:HTMLImageElement =  new Image();
+    if(jugador == 1){
+      img.src = './assets/images/games/cuatroenlinea/ficha1.png';
+    }else{
+      img.src = './assets/images/games/cuatroenlinea/ficha2.png';
+    }
     ctx.beginPath();
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
+          ctx.drawImage(img,x-radio,y-radio,radio*2,radio*2);
           ctx.fillStyle = 'black';
           ctx.lineWidth = 3;
           ctx.stroke();
-          ctx.fillStyle = color;
-          ctx.fill();
+          // ctx.fillStyle = color;
+          // ctx.fill();
           ctx.lineWidth = 1;
   }
 
@@ -301,7 +309,7 @@ export class Tablero {
     if(columna<=this.x){
       for(let i = maxH ; i >= 0; i--){
          if(this.tablero[i][columna].ocupado == false){
-           this.dibujarOcupado(this.ctx, this.tablero[i][columna].posX , this.tablero[i][columna].posY, this.radio, ficha.color);
+           this.dibujarOcupado(this.ctx, this.tablero[i][columna].posX , this.tablero[i][columna].posY, this.radio, ficha.jugador);
            this.tablero[i][columna].ocupado = true;
            if(ficha.jugador == 1){
             this.tablero[i][columna].numero = 1;
@@ -360,7 +368,7 @@ export class Tablero {
       var minY = this.tablero[0][i].posY - this.radio*4;
       this.ctx.clearRect(minX-3,minY-3,ancho+6,alto+6);
       this.ctx.fillStyle = "white";
-      this.ctx.fillRect(minX-3,minY-3,ancho+6,alto+6);
+      this.ctx.fillRect(minX-4,minY-3,ancho+7,alto+6);
     }
   }
  // Logica para saber ganadores
