@@ -36,6 +36,8 @@ export class Tablero {
   connect = 4;
 
   origenX:number
+  imgp1:HTMLImageElement;
+  imgp2:HTMLImageElement;
 
 
   constructor(private ctx:CanvasRenderingContext2D,w:number,h:number,m:number,columnas:number,fondo:HTMLImageElement){
@@ -44,9 +46,20 @@ export class Tablero {
     this.margen = m;
     this.x = columnas;
     this.fondo = fondo;
+    this.imgp1 =  new Image();
+    this.imgp1.src = "";
+    this.imgp1.src = './assets/images/games/cuatroenlinea/ficha1.png';
+    this.imgp2 =  new Image();
+    this.imgp2.src = './assets/images/games/cuatroenlinea/ficha2.png';
   }
 
-  getFichas(){}
+  setFichaP1(src:string){
+    this.imgp1.src = src;
+  }
+
+  setFichaP2(src:string){
+    this.imgp2.src = src;
+  }
 
   calcularOrigenX(){
     if (this.x ==7) {
@@ -104,8 +117,8 @@ export class Tablero {
       // var fichaRojaY= Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
       // var fichaAzulY =Math.floor(Math.random() * ((h+y-m-radio) - (y+m+radio))) + (y+m+radio);
 
-      var ficharoja = new Fichas(fichaRojaX,fichasY,radio,ctx,1);
-      var fichaazul = new Fichas(fichaAzulX,fichasY,radio,ctx,2);
+      var ficharoja = new Fichas(fichaRojaX,fichasY,radio,ctx,1,this.imgp1.src);
+      var fichaazul = new Fichas(fichaAzulX,fichasY,radio,ctx,2,this.imgp2.src);
 
       fichaazul.dibujar();
       ficharoja.dibujar();
@@ -282,17 +295,14 @@ export class Tablero {
   }
 
   dibujarOcupado(ctx:CanvasRenderingContext2D, x:number, y:number, radio:number, jugador:number){
-    var img:HTMLImageElement =  new Image();
-    if(jugador == 1){
-      img.src = './assets/images/games/cuatroenlinea/ficha1.png';
-    }else{
-      img.src = './assets/images/games/cuatroenlinea/ficha2.png';
-    }
     ctx.beginPath();
           ctx.fillStyle = "rgba(108,53,2,0.6)";
           ctx.fillRect(x-radio-this.margen/2,y-radio-this.margen/2,(radio*2+this.margen),radio*2+this.margen);
           ctx.arc(x, y, radio, 0, 2 * Math.PI);
-          ctx.drawImage(img,x-radio,y-radio,radio*2,radio*2);
+          if(jugador ==1)
+            ctx.drawImage(this.imgp1,x-radio,y-radio,radio*2,radio*2);
+          else
+            ctx.drawImage(this.imgp2,x-radio,y-radio,radio*2,radio*2);
           // ctx.fillStyle = 'black';
           ctx.lineWidth = 3;
           ctx.stroke();

@@ -32,6 +32,11 @@ export class Juego implements OnInit {
     // fondo = ctx.createPattern()
   }
 
+  cambiarFichas(ficha1:string, ficha2:string){
+    this.tablero.setFichaP1(ficha1);
+    this.tablero.setFichaP2(ficha2);
+  }
+
   ngOnInit(): void {
   }
 
