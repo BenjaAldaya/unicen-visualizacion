@@ -4,12 +4,12 @@ import { Games } from "./games";
 
 export const Juegos : Games [] = [
     {
-        nombre:'4 En Linea',
+        nombre:'Conecta 4',
         categoria:'Multijugador',
         categoria2:'Estrategia',
-        img:'./assets/images/games/cuatroenlinea.png',
+        img:'./assets/images/games/conecta4.jpg',
         clicks:999,
-        link:'4-en-linea',
+        link:'conecta-4',
         descripcion:'empty',
         fecha:new Date(2022,5,30),
         valoracion:4
