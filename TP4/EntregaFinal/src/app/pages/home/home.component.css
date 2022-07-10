@@ -1,0 +1,87 @@
+.container {
+  width: 100%;
+  padding-top: 6.25rem;
+}
+.contlg {
+  width: 100%;
+  display: flex;
+  float: left;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+
+.left {
+  margin-left: 2%;
+  max-width: 85%;
+  display: flex;
+  float: left;
+  flex-wrap: wrap;
+  margin-bottom: 2rem;
+  justify-content: space-between;
+}
+
+.left h2 {
+  width: 100%;
+  display: flex;
+  margin: 0;
+  text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.5);
+  -webkit-text-stroke-width: 0.1px;
+  -webkit-text-stroke-color: #000000;
+  /* margin-left: ; */
+}
+.right {
+  margin-top: 36px;
+  display: flex;
+  float: right;
+  width: 120px;
+  margin-right: 1%;
+}
+
+.categorys {
+  width: 100%;
+  display: flex;
+  margin: 0 auto;
+  justify-content: center;
+}
+
+.more-category {
+  width: 1152px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.adresponsive{
+    display: none;
+}
+
+/* Juegos promocionados */
+@media screen and (max-width: 1022px) {
+  .right {
+    display: none;
+  }
+
+  .left {
+    width: 100%;
+    float: none;
+    margin: 0 auto;
+    justify-content: space-around;
+    margin-bottom: 3rem;
+  }
+  .contlg {
+    float: none;
+    justify-content: space-around;
+  }
+  .left h2 {
+    justify-content: center;
+  }
+  .more-category {
+    width: 100%;
+    justify-content: space-around;
+  }
+
+  .adresponsive{
+      display: block;
+  }
+}

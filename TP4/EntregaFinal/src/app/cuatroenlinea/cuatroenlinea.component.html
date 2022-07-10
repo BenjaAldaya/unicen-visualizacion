@@ -1,0 +1,58 @@
+
+<div class="container">
+  <div>
+    <div>
+      <label for="modojuego">Modo de juego: </label>
+      <select [(ngModel)]="modojuego" (change)="setColumnas()">
+        <option value="7" selected >4 en linea</option>
+        <option value="8">5 en linea</option>
+        <option value="9">6 en linea</option>
+        <option value="10">7 en linea</option>
+      </select>
+    </div>
+    <div>
+      <label for="timer">Tiempo de juego: </label>
+      <select [(ngModel)]="tiempoJuego">
+        <option value="1">1 minuto</option>
+        <option value="2" selected>2 minutos</option>
+        <option value="3">5 minutos</option>
+        <option value="4">10 minutos</option>
+      </select>
+    </div>
+  </div>
+  <div class="puntos">
+    <p class="points" id="pointsj1">
+        Jugador 1: {{juego.pointsj1}}
+    </p>
+    <p class="points" id="pointsj2">
+        Jugador 2: {{juego.pointsj2}}
+    </p>
+  </div>
+  <div class="timer">
+    <h3> {{minutos}} : {{segundos}} </h3>
+  </div>
+  <div class="turnojugador"*ngIf="juego.ganador==0 && juegoiniciado == true">
+    <h3 id="txtp1" *ngIf="juego.turno % 2 == 1">TURNO DEL JUGADOR 1</h3>
+    <h3 id="txtp2" *ngIf="juego.turno % 2 == 0">TURNO DEL JUGADOR 2</h3>
+  </div>
+  <div class="turnojugador"*ngIf="juego.ganador==1 && juegoiniciado == true">
+    <h3 id="txtp1">EL GANADOR ES EL JUGADOR 1</h3>
+  </div>
+  <div class="turnojugador"*ngIf="juego.ganador==2 && juegoiniciado == true">
+    <h3 id="txtp2">EL GANADOR ES EL JUGADOR 2</h3>
+  </div>
+  <div class="turnojugador"*ngIf="juego.ganador==3 && juegoiniciado == true">
+    <h3>ES UN EMPATE!</h3>
+  </div>
+  <div class="turnojugado" *ngIf="juegoiniciado == false">
+    <h3>-------------------------</h3>
+  </div>
+  <div *ngIf="juego.ganador==0 && juegoiniciado == true">
+    <button id="btnReiniciar" class="btn-primary" (click)="reiniciarjuego()">Reiniciar</button>
+  </div>
+  <div *ngIf="juego.ganador!=0 && juegoiniciado == true">
+    <button id="btnReiniciar" class="btn-primary" (click)="continuarJuego()">Continuar</button>
+  </div>
+</div>
+
+<canvas #4enlinea width="800px" height="600px" style="border: 2px solid black;" (mousedown)="juego.mouseDown($event)" (mousemove)="juego.mouseMove($event)" (mouseup)="juego.mouseUp($event)"></canvas>

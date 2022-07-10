@@ -1,0 +1,20 @@
+<article class="gamecontainer {{clase}}">
+    <figure>
+        <a [routerLink]="['/playgame/']">
+            <img src="{{juego.img}}" alt="" class="gameimage">
+            <div class="capa">
+                <div class="favbuttondiv">
+                    <i class="bi bi-star" style="margin-left: 1rem"></i>
+                </div>
+                <div class="namebg">
+                    <p>{{juego.nombre}}</p>
+                </div>
+            </div>
+            <div class="capaR">
+                <div class="namebg">
+                    <p>{{juego.nombre}}</p>
+                </div>
+            </div>
+        </a>
+    </figure>
+</article>

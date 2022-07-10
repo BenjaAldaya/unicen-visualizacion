@@ -1,0 +1,81 @@
+<div class="container">
+    <section class="game-desc-small">
+        <article class="game-info">
+            <div class="game-photo">
+                <img src="./assets/images/games/conecta4.jpg" alt="game-icon">
+            </div>
+            <div class="game-name">
+                <h2>Conecta 4</h2>
+            </div>
+        </article>
+        <article class="game-user-buttons">
+            <div class="star-fav">
+                <i class="bi bi-star " id="btn-fav" (click)="starFill()"></i>
+            </div>
+            <div class="game-desc">
+                <a [routerLink]="['/playgame/']" fragment="description" (click)="scroll('howplay')" >
+                    <p>¿Como jugar?</p>
+                </a>
+            </div>
+            <div class="game-share" (click)="shareFill()">
+                <i class="bi success bi-share" id="btn-share"></i>
+            </div>
+            <div class="game-rating">
+                <div class="up" (click)="ratingFillUp()" >
+                    <i class="bi bi-hand-thumbs-up" id="btn-hand-up"></i>
+                </div>
+            </div>
+        </article>
+    </section>
+</div>
+<div class="container">
+    <section class="playgame">
+        <article class="more-games-column">
+            <div *ngFor="let juego of juegos | slice:0:4;">
+            <app-game-lg [juego]="juego"></app-game-lg>
+            </div>
+        </article>
+        <article class="game">
+            <!-- <i class="bi bi-play-circle" id="btn-play"></i> -->
+            <app-cuatroenlinea></app-cuatroenlinea>
+        </article>
+        <article class="ads">
+            <app-ad></app-ad>
+        </article>
+    </section>
+    <section class="more-games-maxwidth">
+        <div *ngFor="let juego of juegos | slice:0:5;">
+            <app-game-lg [juego]="juego" clase="lg"></app-game-lg>
+        </div>
+    </section>
+    <section class="game-desc-big">
+        <article class="description" id="description">
+            <h1>Descripcion</h1>
+            <p>Conecta 4 es un juego de reflexión para niños y adultos que se dió a conocer en 1974. El Conecta 4 se hizo popular muy rápido ya que las reglas del juego son muy sencillas sin embargo  la estrategia  para ganar requiere experiencia por parte de los jugadores. Es un excelente juego para hacer trabajar el cerebro de sus niños</p>
+        </article>
+        <article class="howplay" id="howplay">
+            <h1>Como jugar</h1>
+            <p>El Conecta 4 se juega se juega de a dos jugadores sobre un tablero de siete columnas y seis filas. El objetivo es alinear cuatro fichas de un mismo jugador, horizontalmente, verticalmente o en diagonal.</p>
+            <p>Haz click sobre las fichas y colocalas sobre los depositadores que se muestran en la pantalla</p>
+            <!-- <img src="../../../assets/images/Arrow_keys.png" alt="" width="300" height="200" >
+            <img src="../../../assets/images/wasd.png" alt="" width="300" height="200" > -->
+            <img src="../../../assets/images/mouse.png" alt="" width="300" height="200">
+        </article>
+        <article class="gameplay">
+            <h1>Gameplay</h1>
+            <div class="galeria" style="--w: 360px; --h: 200px;">
+                <input type="radio" name="navigation2" id="_1" >
+                <input type="radio" name="navigation2" id="_2">
+                <input type="radio" name="navigation2" id="_3" checked>
+                <img src="../../../assets/images/gameplay1.png" width="360" height="200" alt="Galeria CSS 1" />
+                <img src="../../../assets/images/gameplay2.png" width="360" height="200" alt="Galeria CSS 2"  />
+                <img src="../../../assets/images/gameplay3.png" width="360" height="200" alt="Galeria CSS 3" />
+              </div>
+        </article>
+    </section>
+    <section class="more-category">
+        <div *ngFor="let categoria of categorias">
+            <app-category [categoria]="categoria"></app-category>
+        </div>
+    </section>
+</div>

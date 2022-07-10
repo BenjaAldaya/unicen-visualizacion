@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="content">
+    <section class="profile">
+        <div class="user-background">
+            <div class="user">
+                <div class="user-image"></div>
+                <div class="right">
+                    <div class="user-name"><h1>SharkL</h1></div>
+                    <div class="user-country"><p>Argentina</p></div>
+                </div>
+            </div>
+        </div>
+        <section class="profile-games">
+            <div class="title">
+                <h1>Mas jugados</h1>
+            </div>
+            <div class="cont">
+                <div class="games">
+                    <div *ngFor="let juego of juegos | slice:0:6;">
+                        <app-game-lg [juego]="juego" clase="sm"></app-game-lg>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+    <section class="ads"><app-ad></app-ad></section>
+  </div>
+</div>

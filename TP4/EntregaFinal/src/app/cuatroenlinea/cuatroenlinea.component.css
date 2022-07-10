@@ -1,0 +1,56 @@
+/* .btn-primary{
+    position: absolute;
+    top: 20px;
+    left: 30px;
+} */
+
+.container{
+    position: absolute;
+    width: 780px;
+    height: 70px;
+    /* top: 10px;
+    left: 10px; */
+    margin-top: 10px;
+    margin-left: 10px;
+    display: inline-flex;
+    justify-content: space-around;
+    align-items: center;
+    background-color: rgba(108,53,2,0.75);
+}
+
+h3{
+  color: white;
+}
+
+label{
+  color: white;
+}
+.points{
+  color: white;
+
+}
+.puntos{
+  width: max-content;
+  display: flex;
+  flex-direction: column;
+  align-self: center;
+}
+
+.puntos p {
+  width: max-content;
+  justify-content: start;
+}
+
+.timer{
+  padding: 1rem;
+  color: white;
+  background-color: rgba(108,53,2,0.9);;
+}
+
+.turnojugador #txtp1{
+  color: red;
+}
+
+.turnojugador #txtp2{
+  color: blue;
+}

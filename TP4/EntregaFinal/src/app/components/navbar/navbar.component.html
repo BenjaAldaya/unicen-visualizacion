@@ -1,0 +1,117 @@
+<nav>
+  <div class="toggle" style="width: 100%" (click)="showHmb()">
+    <i class="bi bi-list" id="hmb-icon"></i>
+  </div>
+  <div class="logo">
+    <a href="#" role="button">
+      <figure>
+        <img src="./assets/images/izq.png" alt="" height="45" />
+      </figure>
+      <p id="brandswitch">SWITCH</p>
+      <p id="brandgames">games</p>
+      <figure>
+        <img src="./assets/images/der.png" alt="" height="45" />
+      </figure>
+    </a>
+  </div>
+  <div class="logoR">
+    <a href="#" role="button">
+      <figure>
+        <img src="./assets/images/izq.png" alt="" height="45" />
+      </figure>
+      <p id="brandswitch">SWITCH</p>
+      <p id="brandgames">GAMES</p>
+      <figure>
+        <img src="./assets/images/der.png" alt="" height="45" />
+      </figure>
+    </a>
+  </div>
+  <div class="menu">
+    <app-search></app-search>
+    <div class="navcat">
+      <a id="catbutton" role="button">
+        <p>CATEGORIAS</p>
+        <span>&#9660;</span>
+      </a>
+      <ul class="drop-menu cat">
+        <li *ngFor="let categoria of categorias">
+          <a [routerLink]="['/search']"
+            >{{ categoria.name }}
+            <figure class="ellipse">
+              <img src="{{ categoria.icon }}" alt="" />
+            </figure>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="allgames"><button>todos los juegos</button></div>
+  </div>
+
+  <div class="navlogeado" *ngIf="estaLogueado">
+    <div class="navcat">
+      <a type="button">
+        <p>Favoritos</p>
+        <i class="bi bi-star" style="margin-left: 1rem"></i>
+      </a>
+      <ul class="drop-menu cat">
+        <li *ngFor="let juego of juegos | slice: 0:5">
+          <a [routerLink]="['/search']">
+            <p>{{ juego.nombre }}</p>
+            <figure><img src="{{ juego.img }}" alt="" /></figure>
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="['/search']" id="allgames">
+            <p>Todos los favoritos</p>
+          </a>
+        </li>
+      </ul>
+    </div>
+    <div class="navcat">
+        <a type="button">
+          <p>SHARKL</p> 
+          <i class="bi bi-person-circle"></i>
+        </a>
+        <ul class="drop-menu cat">
+          <li>
+            <a [routerLink]="['/profile']" type="button">Mi Perfil</a>
+          </li>
+          <li>
+            <a [routerLink]="['/home']" (click)="deslogear()">Cerrar Session</a>
+          </li>
+        </ul>
+    </div>
+  </div>
+  <!-- [ngClass]="estaLogueado ? 'navlogeado' : 'navlogin'" -->
+  <div class="navlogin" *ngIf="!estaLogueado">
+    <button id="btnlogin" type="button" (click)="showLoginModal()">
+      Iniciar Sesion / Registrarse
+    </button>
+  </div>
+  <div class="navloginR">
+    <a href="#/profile"><i class="bi bi-person-circle" id="profile"></i></a>
+  </div>
+</nav>
+
+<section class="hmb none" id="hmb">
+  <div class="search">
+    <a href="#/search">
+      <p>TODOS LOS JUEGOS</p>
+    </a>
+  </div>
+  <div class="search">
+    <div class="titulocat">
+      <p>CATEGORIAS</p>
+    </div>
+    <ul class="catmlist">
+      <li *ngFor="let categoria of categorias">
+        <a [routerLink]="['/search']"
+          ><figure class="ellipse">
+            <img src="{{ categoria.icon }}" alt="" />
+          </figure>
+          <p>{{ categoria.name }}</p></a
+        >
+      </li>
+    </ul>
+  </div>
+</section>
