@@ -5,14 +5,14 @@ import { Games } from "./games";
 export const Juegos : Games [] = [
     {
         nombre:'Conecta 4',
-        categoria:'Clasicos',
-        categoria2:'Multijugador',
+        categoria:'Multijugador',
+        categoria2:'Estrategia',
         img:'./assets/images/games/conecta4.jpg',
-        clicks:1200,
-        link:'conecta4',
+        clicks:999,
+        link:'conecta-4',
         descripcion:'empty',
         fecha:new Date(2022,5,30),
-        valoracion:5
+        valoracion:4
     },
     {
         nombre:'Among Us',

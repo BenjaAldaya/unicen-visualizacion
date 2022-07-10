@@ -21,11 +21,14 @@ export class PlayGameComponent implements OnInit {
   share = document.getElementById('btn-share');
   handUp = document.getElementById('btn-hand-up');
   handDown = document.getElementById('btn-hand-down');
+  juegoiniciado:boolean = false;
 
   ngOnInit(): void {
 
   }
-
+  empezarjuego(){
+    this.juegoiniciado = true;
+  }
   starFill(): void{
     if(document.getElementById('btn-fav')?.classList.contains('bi-star')){
       document.getElementById('btn-fav')?.classList.remove('bi-star');
