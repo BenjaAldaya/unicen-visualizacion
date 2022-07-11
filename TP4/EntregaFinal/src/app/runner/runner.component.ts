@@ -1,5 +1,6 @@
 import { Component, ElementRef, OnInit, ViewChild } from '@angular/core';
 import { Layer } from './layer';
+import { Avatar } from './avatar'
 
 @Component({
   selector: 'app-runner',
@@ -15,6 +16,7 @@ export class RunnerComponent implements OnInit {
   heigth:number;
   layers: Array<Layer> = [];
   gameSpeed: number;
+  avatar:Avatar;
 
   constructor() {}
 
@@ -24,10 +26,12 @@ export class RunnerComponent implements OnInit {
     this.heigth = this.canvas.nativeElement.height;
     this.ctx = this.canvas.nativeElement.getContext('2d')!;
     this.gameSpeed = 5;
+    this.avatar = new Avatar(this.ctx);
     this.cargarFondo1();
     this.animate();
     setInterval(() =>{this.animate()}, 1000/60);
 
+    console.log(this.avatar);
   }
 
   cargarFondo1():void{
@@ -56,11 +60,11 @@ export class RunnerComponent implements OnInit {
 
   animate(){
     this.ctx.clearRect(0,0,this.width,this.heigth);
-    this.layers.forEach(event =>{
-      event.update();
-      event.draw();
-    })
-
+     this.layers.forEach(event =>{
+       event.update();
+       event.draw();
+     })
+     this.avatar.draw();
    }
 
 
