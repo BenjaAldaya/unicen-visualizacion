@@ -221,10 +221,10 @@
 
 @keyframes obstacle-movement {
     0% {
-        left: 800px;
+        left: 710px;
     }
     100%{
-        left:-300px;
+        left:0px;
     }
 }
 
@@ -245,7 +245,7 @@
     height: 75px;
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/burbuja.png');
-    top: 337px;
+    top: 287px;
     left: 387px;
     z-index: 8;
 }
@@ -255,7 +255,7 @@
     height: 75px;
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/burbuja-die.png');
-    top: 337px;
+    top: 287px;
     left: 387px;
     animation: burbuja 2s steps(7) infinite;
     z-index: 8;

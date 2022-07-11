@@ -55,6 +55,14 @@ export class RunnerComponent implements OnInit {
       this.perdida = this.colision();
     },10)
 
+    var arrow_keys_handler = function(e: { code: any; preventDefault: () => void; }) {
+      switch(e.code){
+          case "ArrowUp": case "ArrowDown": e.preventDefault(); break;
+          default: break; // do not block other keys
+      }
+    };
+    window.addEventListener("keydown", arrow_keys_handler, false);
+
     setInterval(() =>{
       if(this.perdida == false){
         this.generarFuego();
