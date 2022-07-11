@@ -61,10 +61,14 @@ export class RunnerComponent implements OnInit {
         this.agacharse();
       }
     });
-
+    document.addEventListener('keyup',(e)=>{
+      if(e.key == 'ArrowUp'){
+        this.jump();
+      }
+    });
 
   }
-
+    
   jump(){
     if(this.chicken.classList != "animate" && this.chicken.classList != 'agacharse'){
       this.chicken.classList.add("animate");
