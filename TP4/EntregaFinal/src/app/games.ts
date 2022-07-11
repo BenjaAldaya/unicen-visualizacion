@@ -6,7 +6,12 @@ export interface Games {
     clicks:number;
     link:string;
     descripcion:string;
-    comojugar?:string;
+    comojugar1?:string;
+    comojugar2?:string;
+    comojugar3?:string;
+    comojugarimg?:string;
+    comojugarimgH?:string;
+    comojugarimgW?:string;
     fecha:Date;
     valoracion:Number;
 }
