@@ -1,0 +1,44 @@
+@keyframes scroll {
+    0% {
+		background-position: 0px;
+	}
+	100% {
+		background-position: -2670px;
+	}
+}
+
+.layer {
+    min-height: 600px;
+    width: 800px;
+    height: 800px;
+    position:absolute;
+    top: 0;
+    left:0;
+    background-repeat: repeat-x;
+    background-size: cover;
+}
+
+.layer1{
+    background-image:url('../../assets/images/games/runner/layer-1.png') ;
+    z-index: 1;
+}
+.layer2{
+    background-image:url('../../assets/images/games/runner/layer-2.png') ;
+    animation: scroll 20s infinite linear;
+    z-index: 2;
+}
+.layer3{
+    background-image:url('../../assets/images/games/runner/layer-3.png') ;
+    animation: scroll 15s infinite linear;
+    z-index: 3;
+}
+.layer4{
+    background-image:url('../../assets/images/games/runner/layer-4.png') ;
+    animation: scroll 15s infinite linear;
+    z-index: 4;
+}
+.layer5{
+    background-image:url('../../assets/images/games/runner/layer-5.png') ;
+    animation: scroll 5s infinite linear;
+    z-index: 5;
+}
