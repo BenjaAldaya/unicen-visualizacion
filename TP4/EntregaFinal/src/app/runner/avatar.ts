@@ -24,8 +24,14 @@ export class Avatar{
     }
 
     public jump(){
-        this.y = 400;
-        this.image.src = '../assets/images/games/runner/avatar/7.png';
+        if(this.y = 480){
+            this.y = 400;
+            this.image.src = '../assets/images/games/runner/avatar/7.png';
+            setTimeout(() =>{
+                this.y = 480;
+                this.image.src = '../assets/images/games/runner/avatar/0.png';
+            }, 500)
+        }
     }
 }
 

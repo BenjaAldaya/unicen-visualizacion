@@ -1,16 +1,15 @@
 @keyframes scroll {
     0% {
-		background-position: 0px;
+		background-position-x: 0px;
 	}
 	100% {
-		background-position: -2670px;
+		background-position-x: -2670px;
 	}
 }
 
 .layer {
-    min-height: 600px;
     width: 800px;
-    height: 800px;
+    height: 600px;
     position:absolute;
     top: 0;
     left:0;
@@ -41,4 +40,64 @@
     background-image:url('../../assets/images/games/runner/layer-5.png') ;
     animation: scroll 5s infinite linear;
     z-index: 5;
+}
+
+#game{
+    width: 800px;
+    height: 600px;
+    /* background: navy; */
+    z-index: 6;
+}
+
+.caminar{
+    width: 80px;
+    height: 120px;
+    position: relative;
+    top: 330px;
+    left: 50px;
+    background-image: url('../../assets/images/games/runner/soldier_walk1.png');
+    background-position: center;
+    background-size: cover;
+    z-index: 7;
+}
+
+@keyframes steps {
+    /* background-image: url('../../assets/images/games/runner/soldier_walk2.png'); */
+}
+
+.agacharse{
+    width: 80px;
+    height: 100px;
+    position: relative;
+    top: 350px;
+    left: 50px;
+    background-image: url('../../assets/images/games/runner/soldier_duck.png');
+    background-position: center;
+    background-size: cover;
+    z-index: 7;
+}
+
+.animate{
+    animation: jump .5s linear 0s;
+}
+@keyframes jump {
+    0%{top:330px;}
+    30%{top:270px;}
+    50%{top:230px;}
+    70%{top:270px;}
+    100%{top:330px;}
+}
+
+#obstacle{
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    top: 440px;
+    left: 100%;
+    animation: block 2.5s infinite linear;
+    z-index: 7;
+}
+@keyframes block {
+    0%{left:800px;}
+    100%{left:-680px;}
 }
