@@ -117,6 +117,19 @@
     animation: slide 1s steps(10) infinite;
 }
 
+.char-die{
+    width: 117px;
+    height: 121px;
+    position: absolute;
+    top: 440px;
+    left: 60px;
+    background-image: url('../../assets/images/games/runner/avatar/avatar-die2.png');
+    /* background-position: center; */
+    /* background-size: cover; */
+    z-index: 7;
+    animation: die 1.5s steps(10) infinite;
+}
+
 @keyframes run {
     0% {
 		background-position-x: 0px;
@@ -143,7 +156,14 @@
 		background-position-x: -1000px;
 	}
 }
-
+@keyframes die {
+    0% {
+		background-position-x: 0px;
+	}
+	100% {
+		background-position-x: -1172px;
+	}
+}
 /* ----------OBSTACULOS---------- */
 
 .obstacle{
