@@ -44,9 +44,9 @@
 }
 
 #game{
+    position: relative;
     width: 800px;
     height: 600px;
-    /* background: navy; */
     z-index: 6;
 }
 

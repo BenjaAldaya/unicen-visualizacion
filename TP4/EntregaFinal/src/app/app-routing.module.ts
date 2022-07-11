@@ -8,7 +8,7 @@ import { RunnerComponent } from './runner/runner.component';
 
 const routes: Routes = [
   {path:"home", component:HomeComponent },
-  {path:'playgame', component:PlayGameComponent},
+  {path:'playgame/:LINK', component:PlayGameComponent},
   {path:'search', component: AdvancedSearchComponent},
   {path:'profile', component: ProfileComponent},
   {path:'runner', component: RunnerComponent},

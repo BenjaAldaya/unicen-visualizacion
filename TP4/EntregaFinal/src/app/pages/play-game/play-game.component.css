@@ -188,20 +188,42 @@ app-play-game app-game-lg .gamecontainer {
 .game{
     /* width: 60%; */
     width: 800px ;
+    height: 600px;
     background-color: (0,0,0,0.1);
-    background-image: url(../../../assets/images/games/Minecraft.png);
     background-size: cover;
     display: flex;
     justify-content: center;
     align-items: center;
 }
+.gameinc{
+    position: absolute;
+    width: 800px ;
+    height: 600px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 1;
+}
+
+.gameinc a{
+    z-index: 2;
+    background-color: none;
+    cursor: pointer;
+    animation: tiembla 1.5s infinite;
+}
+
+@keyframes tiembla{
+    0%  { -webkit-transform:rotateZ( 5deg); }
+    50% { -webkit-transform:rotateZ( 0deg) scale(.8); }
+    100%{ -webkit-transform:rotateZ( 5deg); }
+}
 
 .game img{
+    position: absolute;
     width: 100%;
     display: flex;
-    height: auto;
-    opacity: 0.4;
-    filter: blur(8px);
+    height: 600px;
+    filter: blur(6px);
 }
 
 .ads{

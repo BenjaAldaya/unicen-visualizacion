@@ -5,12 +5,24 @@ import { Games } from "./games";
 export const Juegos : Games [] = [
     {
         nombre:'Conecta 4',
+        categoria:'Multijugador',
+        categoria2:'Estrategia',
+        img:'./assets/images/games/conecta4.jpg',
+        clicks:999,
+        link:'conecta-4',
+        descripcion:'empty',
+        fecha:new Date(2022,5,30),
+        valoracion:4
+    },
+    {
+        nombre:'Ninja Run',
         categoria:'Clasicos',
         categoria2:'Multijugador',
         img:'./assets/images/games/conecta4.jpg',
         clicks:1200,
-        link:'conecta4',
+        link:'runner',
         descripcion:'empty',
+        comojugar:'empty',
         fecha:new Date(2022,5,30),
         valoracion:5
     },

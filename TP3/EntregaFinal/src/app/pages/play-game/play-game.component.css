@@ -199,8 +199,8 @@ app-play-game app-game-lg .gamecontainer {
     position: absolute;
     width: 800px ;
     height: 600px;
-    background-image: url('../../../assets/images/games/cuatroenlinea.png');
-    background-size: cover;
+    /* background-image: url('../../../assets/images/games/cuatroenlinea.png');
+    background-size: cover; */
     display: flex;
     justify-content: center;
     align-items: center;
