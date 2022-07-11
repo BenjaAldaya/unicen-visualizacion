@@ -18,11 +18,18 @@ export class RunnerComponent implements OnInit {
   // gameSpeed: number;
   // avatar:Avatar;
 
-  chicken: any;
-  obstacle: any;
-  counter : number;
-  lose: any;
+  player: any;
+  obstaculoBajo : any;
+  obstaculoAlto : any;
+  contador : number;
+  perdida: boolean = false;
+  perdio : any;
   keypress :any;
+
+  salto: any;
+  agachar : any;
+
+  fuego: any;
 
 
   constructor() {}
@@ -39,22 +46,20 @@ export class RunnerComponent implements OnInit {
     // setInterval(() =>{this.animate()}, 1000/60);
 
 
-    this.chicken = document.getElementById('char');
-    this.obstacle = document.getElementById('obstacle');
-    this.counter = 0;
-    this.lose = setInterval(() =>{
-      var chickenTop = parseInt(window.getComputedStyle(this.chicken).getPropertyValue("top"))
-      var blockLeft = parseInt(window.getComputedStyle(this.obstacle).getPropertyValue("left"))
-      // console.log(chickenTop);
-      if(this.obstacle.style.display != 'none'){
-        if(blockLeft>=60 && blockLeft<=100 && chickenTop<=435 && chickenTop >= 405){
-          this.obstacle.style.animation = 'none';
-          this.obstacle.style.display = 'none';
-          this.obstacle.style.left = '100%';
-          alert("Score:"+ this.counter);
-        }
-      }
+    this.player = document.getElementById('char');
+    this.obstaculoBajo = document.getElementById('obstacle');
+    this.obstaculoAlto = document.getElementById('obstacle2');
+    this.contador = 0;
+
+    this.perdio = setInterval(() =>{
+      this.perdida = this.colision();
     },10)
+
+    setInterval(() =>{
+      if(this.perdida == false){
+        this.generarFuego();
+      }
+    },2500)
 
     document.addEventListener('keydown', (e) => {
       if(e.key == 'ArrowDown'){
@@ -70,23 +75,86 @@ export class RunnerComponent implements OnInit {
   }
     
   jump(){
-    if(this.chicken.classList != "animate" && this.chicken.classList != 'agacharse'){
-      this.chicken.classList.add("animate");
+    if(this.player.classList != "char-jump" && this.player.classList != 'char-slide'){
+      this.player.classList.remove("char-run");
+      this.player.classList.add("char-jump");
     }
-    setTimeout(() =>{
-      this.chicken.classList.remove("animate");
-      this.counter++;
-    },500)
+    this.salto = setTimeout(() =>{
+      this.player.classList.remove("char-jump");
+      this.player.classList.add("char-run");
+      this.contador++;
+    },1500)
   }
 
   agacharse(){
-    this.chicken.classList.remove('caminar');
-    this.chicken.classList.add('agacharse');
-    setTimeout(()=>{
-      this.chicken.classList.remove('agacharse');
-      this.chicken.classList.add('caminar');
-    },500)
+    if(this.player.classList != "char-slide" && this.player.classList != "char-jump"){
+      this.player.classList.remove('char-run');
+      this.player.classList.add('char-slide');
+      this.agachar = setTimeout(()=>{
+        this.player.classList.remove('char-slide');
+        this.player.classList.add('char-run');
+      },500)
+    }
   }
+
+  colision():boolean{
+    var playerTop = parseInt(window.getComputedStyle(this.player).getPropertyValue("top"))
+    var blockLeftBajo = parseInt(window.getComputedStyle(this.obstaculoBajo).getPropertyValue("left"))
+    var blockLeftAlto = parseInt(window.getComputedStyle(this.obstaculoAlto).getPropertyValue("left"))
+
+    if(this.obstaculoAlto.style.display == 'none'){
+      // Colision con el obstaculo bajo
+      if(blockLeftBajo >= 50 && blockLeftBajo <= 90 && playerTop >= 390 && playerTop <= 500){
+        clearTimeout(this.salto);
+        clearTimeout(this.agachar);
+        this.player.classList.remove('char-run');
+        this.player.classList.remove('char-jump');
+        this.player.classList.remove('char-slide');
+        this.player.classList.add('char-die');
+        setTimeout(() => {
+          //Codigo cuando se muere el personaje
+          this.player.classList.remove('char-die');
+          this.player.classList.add('fijo');
+        }, 1500);
+        clearInterval(this.perdio);
+        this.obstaculoBajo.style.display = 'none';
+        return true;
+      }
+    }
+     else if (this.obstaculoBajo.style.display == 'none'){
+      // Colision con el obstaculo alto
+      if(blockLeftAlto >= 50 && blockLeftAlto <= 90 && playerTop >= 225 && playerTop <= 400){
+        clearTimeout(this.salto);
+        clearTimeout(this.agachar);
+        this.player.classList.remove('char-run');
+        this.player.classList.remove('char-jump');
+        this.player.classList.remove('char-slide');
+        this.player.classList.add('char-die');
+        setTimeout(() => {
+          //Codigo cuando se muere el personaje
+          this.player.classList.remove('char-die');
+          this.player.classList.add('fijo');
+        }, 1500);
+        clearInterval(this.perdio);
+        this.obstaculoAlto.style.display = 'none';
+        return true;
+    }
+
+  }
+  return false;
+}
+
+  generarFuego(){
+      var random = Math.floor(Math.random() * 3);
+      console.log(random);
+      if(random == 0){
+        this.obstaculoAlto.style.display = 'block';
+        this.obstaculoBajo.style.display = 'none';
+      } else {
+        this.obstaculoAlto.style.display = 'none';
+        this.obstaculoBajo.style.display = 'block';
+      }
+    }
 
   // cargarFondo1():void{
   //   // Aca crearia el fondo del juego, cargando las respectivas imagenes al arreglo de Layers

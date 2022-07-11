@@ -66,16 +66,6 @@
     z-index: 7;
 } */
 
-/* .animate{
-    animation: jump .5s linear 0s;
-}
-@keyframes jump {
-    0%{top:330px;}
-    30%{top:270px;}
-    50%{top:230px;}
-    70%{top:270px;}
-    100%{top:330px;}
-} */
 
 
 .char-run{
@@ -101,7 +91,7 @@
     /* background-position: center; */
     /* background-size: cover; */
     z-index: 7;
-    animation: jump 1.2s steps(10) infinite;
+    animation: jump 1.5s steps(10) infinite, jump-top 1.5s linear;  
 }
 
 .char-slide{
@@ -121,7 +111,7 @@
     width: 117px;
     height: 121px;
     position: absolute;
-    top: 440px;
+    top: 400px;
     left: 60px;
     background-image: url('../../assets/images/games/runner/avatar/avatar-die2.png');
     /* background-position: center; */
@@ -129,6 +119,19 @@
     z-index: 7;
     animation: die 1.5s steps(10) infinite;
 }
+
+.fijo{
+    width: 117px;
+    height: 121px;
+    position: absolute;
+    top: 400px;
+    left: 60px;
+    background-image: url('../../assets/images/games/runner/avatar/avatar-die-fijo.png');
+    /* background-position: center;
+    background-size: cover; */
+    z-index: 7;
+}
+
 
 @keyframes run {
     0% {
@@ -146,6 +149,24 @@
 	100% {
 		background-position-x: -900px;
 	}
+}
+
+@keyframes jump-top{
+    0%{
+        top:400px;
+    }
+    25%{
+        top:300px;
+    }
+    50%{
+        top:225px;
+    }
+    75%{
+        top:300px;
+    }
+    100%{
+        top:400px;
+    }
 }
 
 @keyframes slide {
@@ -167,23 +188,25 @@
 /* ----------OBSTACULOS---------- */
 
 .obstacle{
+    display: none;
     width: 111px;
     height: 65px;
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/redspritesheet.png');
-    top: 440px;
+    top: 420px;
     left: 300px;
-    animation: obstacle 1s steps(6) infinite;
+    animation: obstacle 1s steps(6) infinite, obstacle-movement 2.5s infinite linear ;
     z-index: 7;
 }
 .obstacle2{
+    display: none;
     width: 111px;
     height: 65px;
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/bluespritesheet.png');
-    top: 375px;
-    left: 300px;
-    animation: obstacle 1s steps(6) infinite;
+    top: 350px;
+    left: 50px;
+    animation: obstacle 1s steps(6) infinite, obstacle-movement 2.5s infinite linear ;
     z-index: 7;
 }
 
@@ -196,13 +219,22 @@
 	}
 }
 
+@keyframes obstacle-movement {
+    0% {
+        left: 800px;
+    }
+    100%{
+        left:-300px;
+    }
+}
+
 /* ----------COLECCIONABLE---------- */
 .coleccionable{
     width: 49px;
     height: 49px;
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/coinspritesheet.png');
-    top: 350px;
+    top: 300px;
     left: 400px;
     animation: coleccionable 1s steps(6) infinite;
     z-index: 7;
