@@ -35,9 +35,19 @@
             <app-game-lg [juego]="juego"></app-game-lg>
             </div>
         </article>
-        <article class="game">
-            <!-- <i class="bi bi-play-circle" id="btn-play"></i> -->
-            <app-cuatroenlinea></app-cuatroenlinea>
+        <article class="game" *ngIf="gameact?.link == 'conecta-4'">
+                <div class="gameinc" *ngIf="juegoiniciado == false">
+                    <img src="../../../assets/images/games/cuatroenlinea.png">
+                    <a role="button"><i class="bi bi-play-circle" id="btn-play" (click)="empezarjuego()"></i></a>
+                </div>
+                <app-cuatroenlinea *ngIf="juegoiniciado==true"></app-cuatroenlinea>
+        </article>
+        <article class="game" *ngIf="gameact?.link == 'runner'">
+            <div class="gameinc" *ngIf="juegoiniciado == false">
+                <!-- <img src="../../../assets/images/games/cuatroenlinea.png"> -->
+                <a role="button"><i class="bi bi-play-circle" id="btn-play" (click)="empezarjuego()"></i></a>
+            </div>
+            <app-runner *ngIf="juegoiniciado==true"></app-runner>
         </article>
         <article class="ads">
             <app-ad></app-ad>
@@ -79,3 +89,4 @@
         </div>
     </section>
 </div>
+

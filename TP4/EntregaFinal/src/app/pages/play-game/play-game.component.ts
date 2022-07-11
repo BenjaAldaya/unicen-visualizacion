@@ -3,6 +3,8 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { Categorias } from '../../category-array';
 import { Juegos } from '../../games-array';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
+import { Games } from 'src/app/games';
+import { Juego } from 'src/app/cuatroenlinea/juego';
 
 @Component({
   selector: 'app-play-game',
@@ -13,17 +15,28 @@ import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 export class PlayGameComponent implements OnInit {
 
 
-  constructor(private viewportScroller: ViewportScroller) { }
-
+  constructor(private viewportScroller: ViewportScroller, private route:ActivatedRoute) { }
+  nombregame:string;
+  gameact: Games | undefined;
   juegos = Juegos;
   categorias = Categorias
   star = document.getElementById('btn-fav');
   share = document.getElementById('btn-share');
   handUp = document.getElementById('btn-hand-up');
   handDown = document.getElementById('btn-hand-down');
+  juegoiniciado:boolean = false;
 
   ngOnInit(): void {
+    this.route.params.subscribe(gamename=> {
+     this.nombregame = gamename["LINK"];
+    })
 
+    this.gameact = this.juegos.find(game => game.link == this.nombregame);
+    console.log(this.gameact);
+  }
+  
+  empezarjuego(){
+    this.juegoiniciado = true;
   }
 
   starFill(): void{
