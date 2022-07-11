@@ -170,7 +170,7 @@
     width: 111px;
     height: 65px;
     position: absolute;
-    background-image: url('../../assets/images/games/runner/obstacle/redspritesheet2.png');
+    background-image: url('../../assets/images/games/runner/obstacle/redspritesheet.png');
     top: 440px;
     left: 300px;
     animation: obstacle 1s steps(6) infinite;
@@ -180,7 +180,7 @@
     width: 111px;
     height: 65px;
     position: absolute;
-    background-image: url('../../assets/images/games/runner/obstacle/bluespritesheet2.png');
+    background-image: url('../../assets/images/games/runner/obstacle/bluespritesheet.png');
     top: 375px;
     left: 300px;
     animation: obstacle 1s steps(6) infinite;
@@ -208,11 +208,41 @@
     z-index: 7;
 }
 
+.burbuja{
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    background-image: url('../../assets/images/games/runner/obstacle/burbuja.png');
+    top: 337px;
+    left: 387px;
+    z-index: 8;
+}
+
+.burbuja-die{
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    background-image: url('../../assets/images/games/runner/obstacle/burbuja-die.png');
+    top: 337px;
+    left: 387px;
+    animation: burbuja 2s steps(7) infinite;
+    z-index: 8;
+}
+
 @keyframes coleccionable {
     0% {
 		background-position-x: 0px;
 	}
 	100% {
 		background-position-x: -295px;
+	}
+}
+
+@keyframes burbuja {
+    0% {
+		background-position-x: 0px;
+	}
+	100% {
+		background-position-x: -525px;
 	}
 }
