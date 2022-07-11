@@ -3,7 +3,7 @@
 		background-position-x: 0px;
 	}
 	100% {
-		background-position-x: -2670px;
+		background-position-x: -2000px;
 	}
 }
 
@@ -33,7 +33,7 @@
 }
 .layer4{
     background-image:url('../../assets/images/games/runner/layer-4.png') ;
-    animation: scroll 15s infinite linear;
+    animation: scroll 10s infinite linear;
     z-index: 4;
 }
 .layer5{
