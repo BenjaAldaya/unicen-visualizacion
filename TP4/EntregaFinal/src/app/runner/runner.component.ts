@@ -29,11 +29,13 @@ export class RunnerComponent implements OnInit {
   muerte : any;
   salto: any;
   agachar : any;
-
+  
   fuego: any;
 
   coin:any;
   burbuja:any;
+  coin2:any;
+  burbuja2:any;
 
 
   constructor() {}
@@ -55,6 +57,8 @@ export class RunnerComponent implements OnInit {
     this.obstaculoAlto = document.getElementById('obstacle2');
     this.coin = document.getElementById('coin');
     this.burbuja = document.getElementById('burbuja');
+    this.coin2 = document.getElementById('coin2');
+    this.burbuja2 = document.getElementById('burbuja2');
     this.contador = 0;
     this.contadorMonedas = 0;
 
@@ -89,7 +93,7 @@ export class RunnerComponent implements OnInit {
         this.player.classList.remove("char-jump");
         this.player.classList.add("char-run");
         this.contador++;
-      },1500)
+      },900)
   }
 
   agacharse(){
@@ -148,51 +152,77 @@ export class RunnerComponent implements OnInit {
 }
 
   generarFuego(){
-      this.contador = Math.floor(Math.random() * 4);
+      this.contador = Math.floor(Math.random() * 3);
       var random = Math.floor(Math.random() * 2);
-      console.log(random);
-      console.log(this.contador);
+      // console.log(random);
+      // console.log(this.contador);
       if(random == 0){
         this.obstaculoAlto.style.display = 'block';
         this.obstaculoBajo.style.display = 'none';
-        if(this.contador >= 3 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
+        if(this.contador >= 2 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
           this.generarMoneda();
         }
       } else if(random == 1) {
         this.obstaculoAlto.style.display = 'none';
         this.obstaculoBajo.style.display = 'block';
-        if(this.contador >= 3 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
+        if(this.contador >= 2 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
           this.generarMoneda();
         }
       }
     }
 
   generarMoneda(){
-    this.coin.classList.add('coin');
-    this.burbuja.classList.add('burbuja');
+    var random = Math.floor(Math.random() * 2);
+    if(random == 0){
+      this.coin.classList.add('coin');
+      this.burbuja.classList.add('burbuja');
+    }else if (random == 1){
+      this.coin2.classList.add('coin2');
+      this.burbuja2.classList.add('burbuja2');
+    }
   }
 
   colisionMoneda():boolean{
     var playerTop = parseInt(window.getComputedStyle(this.player).getPropertyValue("top"));
-    var coinLeft = parseInt(window.getComputedStyle(this.coin).getPropertyValue("left"));
-
-    if(coinLeft >= 50 && coinLeft <= 90 && playerTop >= 225 && playerTop <= 300){
-      this.coin.classList.remove('coin');
-      this.burbuja.classList.remove('burbuja');
-      this.burbuja.classList.add('burbuja-die');
-      this.burbuja.style.left = coinLeft-13;
-      setTimeout(()=>{
+    if  (this.coin.classList.contains('coin')){ // si es la moneda 1 
+      var coinLeft = parseInt(window.getComputedStyle(this.coin).getPropertyValue("left"));
+      if(coinLeft >= 50 && coinLeft <= 90 && playerTop >= 250 && playerTop <= 300){
+        this.coin.classList.remove('coin');
+        this.burbuja.classList.remove('burbuja');
+        this.burbuja.classList.add('burbuja-die');
+        this.burbuja.style.left = coinLeft-13;
+        setTimeout(()=>{
+          this.burbuja.classList.remove('burbuja-die');
+        },2000)
+        this.contadorMonedas += 1;
+        console.log("Moneda agarrada, total:" + this.contadorMonedas);
+        return true;
+      } else if (coinLeft <= 1) {
+        this.coin.classList.remove('coin');
+        this.burbuja.classList.remove('burbuja');
         this.burbuja.classList.remove('burbuja-die');
-      },2000)
-      this.contadorMonedas += 1;
-      console.log("Moneda agarrada, total:" + this.contadorMonedas);
-      return true;
-    } else if (coinLeft <= 10) {
-      this.coin.classList.remove('coin');
-      this.burbuja.classList.remove('burbuja');
-      this.burbuja.classList.remove('burbuja-die');
-    }
+      }
+      return false;
+    }else{ // si es la moneda 2 
+      var coinLeft2 = parseInt(window.getComputedStyle(this.coin2).getPropertyValue("left"))
+      if(coinLeft2 >= 50 && coinLeft2 <= 90 && playerTop >= 400 && playerTop <= 450){
+        this.coin2.classList.remove('coin2');
+        this.burbuja2.classList.remove('burbuja2');
+        this.burbuja2.classList.add('burbuja-die2');
+        this.burbuja2.style.left = coinLeft2-13;
+        setTimeout(()=>{
+          this.burbuja2.classList.remove('burbuja-die2');
+        },2000)
+        this.contadorMonedas += 1;
+        console.log("Moneda agarrada, total:" + this.contadorMonedas);
+        return true;
+      }else if (coinLeft2 <= 1){
+        this.coin2.classList.remove('coin2');
+        this.burbuja2.classList.remove('burbuja2');
+        this.burbuja2.classList.remove('burbuja-die2');
+      }
     return false;
+    }
   }
 
   reiniciarJuego(){
@@ -224,6 +254,9 @@ export class RunnerComponent implements OnInit {
     this.coin.classList.remove('coin');
     this.burbuja.classList.remove('burbuja');
     this.burbuja.classList.remove('burbuja-die');
+    this.coin2.classList.remove('coin2');
+    this.burbuja2.classList.remove('burbuja2');
+    this.burbuja2.classList.remove('burbuja-die2');
   }
 
   iniciarJuego(){
@@ -231,7 +264,7 @@ export class RunnerComponent implements OnInit {
     this.perdio = setInterval(() =>{
       this.perdida = this.colision();
 
-      if(this.coin.classList == 'coin'){
+      if(this.coin.classList == 'coin' || this.coin2.classList == 'coin2' ){
           this.colisionMoneda();
       }
     },10)
@@ -240,7 +273,7 @@ export class RunnerComponent implements OnInit {
       if(this.perdida == false){
         this.generarFuego();
       }
-    },2500)
+    },2000)
   }
 
 
