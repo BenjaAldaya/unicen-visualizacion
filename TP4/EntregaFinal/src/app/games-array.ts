@@ -11,8 +11,7 @@ export const Juegos : Games [] = [
         clicks:999,
         link:'conecta-4',
         descripcion:'Conecta 4 es un juego de reflexión para niños y adultos que se dió a conocer en 1974. El Conecta 4 se hizo popular muy rápido ya que las reglas del juego son muy sencillas sin embargo  la estrategia  para ganar requiere experiencia por parte de los jugadores. Es un excelente juego para hacer trabajar el cerebro de sus niños',
-        comojugar1:"El Conecta 4 se juega se juega de a dos jugadores sobre un tablero de siete columnas y seis filas. El objetivo es alinear cuatro fichas de un mismo jugador, horizontalmente, verticalmente o en diagonal.",
-        comojugar2:"Haz click sobre las fichas y colocalas sobre los depositadores que se muestran en la pantalla",
+        comojugar1:"El Conecta 4 se juega se juega de a dos jugadores sobre un tablero de siete columnas y seis filas. El objetivo es alinear cuatro fichas de un mismo jugador, horizontalmente, verticalmente o en diagonal. Haz click sobre las fichas y colocalas sobre los depositadores que se muestran en la pantalla",
         comojugarimg:"../../../assets/images/mouse.png",
         fecha:new Date(2022,5,30),
         valoracion:4
