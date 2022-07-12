@@ -42,6 +42,8 @@ export class RunnerComponent implements OnInit {
   winner:any;
   panel:any;
 
+  winnercondition:number;
+
 
   constructor() {}
 
@@ -55,6 +57,7 @@ export class RunnerComponent implements OnInit {
     // this.cargarFondo1();
     // this.animate();
     // setInterval(() =>{this.animate()}, 1000/60);
+    this.winnercondition = 5;
     this.panel = document.getElementById('panelcontrol');
     this.cartel = document.getElementById('cartel');
     this.winner = document.getElementById('winner');
@@ -202,7 +205,7 @@ export class RunnerComponent implements OnInit {
           this.burbuja.classList.remove('burbuja-die');
         },500)
         this.contadorMonedas += 1;
-        if(this.contadorMonedas == 1){
+        if(this.contadorMonedas == this.winnercondition){
           this.findejuego();
         }
         return true;
@@ -223,7 +226,7 @@ export class RunnerComponent implements OnInit {
           this.burbuja2.classList.remove('burbuja-die2');
         },500)
         this.contadorMonedas += 1;
-        if(this.contadorMonedas ==1){
+        if(this.contadorMonedas == this.winnercondition){
           this.findejuego();
         }
         return true;
