@@ -40,6 +40,7 @@ export class RunnerComponent implements OnInit {
   cartel:any;
   gameover: any;
   winner:any;
+  panel:any;
 
 
   constructor() {}
@@ -54,7 +55,7 @@ export class RunnerComponent implements OnInit {
     // this.cargarFondo1();
     // this.animate();
     // setInterval(() =>{this.animate()}, 1000/60);
-
+    this.panel = document.getElementById('panelcontrol');
     this.cartel = document.getElementById('cartel');
     this.winner = document.getElementById('winner');
     this.gameover = document.getElementById('gameover');
@@ -232,6 +233,7 @@ export class RunnerComponent implements OnInit {
   }
 
   reiniciarJuego(){
+    this.contadorMonedas = 0;
     this.limpiarMonedas();
     this.limpiarIntervalos();
     this.reiniciarJugador();
@@ -256,7 +258,6 @@ export class RunnerComponent implements OnInit {
   }
 
   limpiarMonedas(){
-    this.contadorMonedas = 0;
     this.coin.classList.remove('coin');
     this.burbuja.classList.remove('burbuja');
     this.burbuja.classList.remove('burbuja-die');
@@ -266,15 +267,18 @@ export class RunnerComponent implements OnInit {
   }
 
   findejuego(){
-    this.cartel.style.display='block';
+    this.limpiarMonedas();
+    this.panel.style.display = 'none';
+    this.cartel.style.display='flex';
     if (this.perdida){
-      this.gameover.style.display='block';
+      this.gameover.style.display='flex';
     }else{
-      this.winner.style.display='block';
+      this.winner.style.display='flex';
     }
   }
 
   iniciarJuego(){
+    this.panel.style.display = 'flex';
     this.cartel.style.display='none';
     this.gameover.style.display='none';
     this.winner.style.display='none';
@@ -289,6 +293,8 @@ export class RunnerComponent implements OnInit {
     this.fuego = setInterval(() =>{
       if(this.perdida == false){
         this.generarFuego();
+      }else{
+        this.findejuego();
       }
     },2000)
   }

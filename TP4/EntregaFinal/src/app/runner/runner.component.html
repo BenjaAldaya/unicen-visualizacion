@@ -3,7 +3,7 @@
 <!-- <canvas #runner id="runner" width="800px" height="600px" style="border: 2px solid black;"  (mousedown)="jump()"></canvas> -->
 
 <div id="game">
-    <div class="container">
+    <div id="panelcontrol" class="container">
         <!-- <div class="puntuacion">Puntuacion : {{contadorMonedas}}</div> -->
         <div class="puntuacion"><div class="coincontador"></div><div class="burbujacontador"></div> <div> X{{contadorMonedas}}</div></div>
         <div class="reiniciar"><button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button></div>
@@ -12,12 +12,12 @@
         <div id="gameover" class="gameover">
             <h3 class="animate-charcter"> GAME OVER</h3>
             <h4>Puntuacion: {{contadorMonedas}}</h4>
-            <div class="reiniciar"><button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button></div>
+            <button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button>
         </div>
         <div id="winner" class="winner">
             <h3 class="animate-charcter"> WINNER</h3>
             <h4>Puntuacion: {{contadorMonedas}}</h4>
-            <div class="reiniciar"><button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button></div>
+            <button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button>
         </div>
        
     </div>
