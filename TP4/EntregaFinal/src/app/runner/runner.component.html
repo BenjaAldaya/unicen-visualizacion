@@ -7,6 +7,19 @@
         <div class="puntuacion">Puntuacion : {{contadorMonedas}}</div>
         <div class="reiniciar"><button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button></div>
     </div>
+    <div id="cartel" class="cartelcont">
+        <div id="gameover" class="gameover">
+            <h3 class="animate-charcter"> GAME OVER</h3>
+            <h4>Puntuacion: {{contadorMonedas}}</h4>
+            <div class="reiniciar"><button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button></div>
+        </div>
+        <div id="winner" class="winner">
+            <h3 class="animate-charcter"> WINNER</h3>
+            <h4>Puntuacion: {{contadorMonedas}}</h4>
+            <div class="reiniciar"><button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button></div>
+        </div>
+       
+    </div>
     <div class="layer layer1"></div>
     <div class="layer layer2"></div>
     <div class="layer layer3"></div>

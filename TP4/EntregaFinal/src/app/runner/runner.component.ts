@@ -37,6 +37,10 @@ export class RunnerComponent implements OnInit {
   coin2:any;
   burbuja2:any;
 
+  cartel:any;
+  gameover: any;
+  winner:any;
+
 
   constructor() {}
 
@@ -51,7 +55,9 @@ export class RunnerComponent implements OnInit {
     // this.animate();
     // setInterval(() =>{this.animate()}, 1000/60);
 
-
+    this.cartel = document.getElementById('cartel');
+    this.winner = document.getElementById('winner');
+    this.gameover = document.getElementById('gameover');
     this.player = document.getElementById('char');
     this.obstaculoBajo = document.getElementById('obstacle');
     this.obstaculoAlto = document.getElementById('obstacle2');
@@ -259,8 +265,19 @@ export class RunnerComponent implements OnInit {
     this.burbuja2.classList.remove('burbuja-die2');
   }
 
-  iniciarJuego(){
+  findejuego(){
+    this.cartel.style.display='block';
+    if (this.perdida){
+      this.gameover.style.display='block';
+    }else{
+      this.winner.style.display='block';
+    }
+  }
 
+  iniciarJuego(){
+    this.cartel.style.display='none';
+    this.gameover.style.display='none';
+    this.winner.style.display='none';
     this.perdio = setInterval(() =>{
       this.perdida = this.colision();
 
