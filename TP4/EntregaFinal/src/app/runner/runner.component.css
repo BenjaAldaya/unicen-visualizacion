@@ -301,7 +301,7 @@
 
 @keyframes coin-movement {
     0%{
-        left:650px;
+        left:725px;
     }
     100%{
         left: 0px;
@@ -310,7 +310,7 @@
 
 @keyframes burbuja-movement{
     0%{
-        left:650px;
+        left:712px;
     }
     100%{
         left:-13px;
@@ -358,6 +358,29 @@
     height: 100%;
     display: flex;
     justify-content: flex-end;
+}
+
+.coincontador{
+    /* display:none; */
+    width: 49px;
+    height: 49px;
+    position: absolute;
+    background-image: url('../../assets/images/games/runner/obstacle/coinspritesheet.png');
+    left: 13px;
+    top: 13px;
+    animation: coleccionable 1s steps(6) infinite;
+    z-index: 7;
+}
+
+.burbujacontador{
+    /* display:none; */
+    width: 75px;
+    height: 75px;
+    position: absolute;
+    background-image: url('../../assets/images/games/runner/obstacle/burbuja.png');
+    left: 0px;
+    top:0px;
+    z-index: 8;
 }
 
 /* CARTEL */
