@@ -25,11 +25,15 @@ export class RunnerComponent implements OnInit {
   perdida: boolean = false;
   perdio : any;
   keypress :any;
-
+  contadorMonedas:number;
+  muerte : any;
   salto: any;
   agachar : any;
 
   fuego: any;
+
+  coin:any;
+  burbuja:any;
 
 
   constructor() {}
@@ -49,11 +53,12 @@ export class RunnerComponent implements OnInit {
     this.player = document.getElementById('char');
     this.obstaculoBajo = document.getElementById('obstacle');
     this.obstaculoAlto = document.getElementById('obstacle2');
+    this.coin = document.getElementById('coin');
+    this.burbuja = document.getElementById('burbuja');
     this.contador = 0;
+    this.contadorMonedas = 0;
 
-    this.perdio = setInterval(() =>{
-      this.perdida = this.colision();
-    },10)
+    this.iniciarJuego();
 
     var arrow_keys_handler = function(e: { code: any; preventDefault: () => void; }) {
       switch(e.code){
@@ -63,19 +68,14 @@ export class RunnerComponent implements OnInit {
     };
     window.addEventListener("keydown", arrow_keys_handler, false);
 
-    setInterval(() =>{
-      if(this.perdida == false){
-        this.generarFuego();
-      }
-    },2500)
 
     document.addEventListener('keydown', (e) => {
-      if(e.key == 'ArrowDown'){
+      if(e.key == 'ArrowDown' && this.player.classList == "char-run"){
         this.agacharse();
       }
     });
     document.addEventListener('keyup',(e)=>{
-      if(e.key == 'ArrowUp'){
+      if(e.key == 'ArrowUp' && this.player.classList == "char-run"){
         this.jump();
       }
     });
@@ -83,26 +83,22 @@ export class RunnerComponent implements OnInit {
   }
     
   jump(){
-    if(this.player.classList != "char-jump" && this.player.classList != 'char-slide'){
       this.player.classList.remove("char-run");
       this.player.classList.add("char-jump");
-    }
-    this.salto = setTimeout(() =>{
-      this.player.classList.remove("char-jump");
-      this.player.classList.add("char-run");
-      this.contador++;
-    },1500)
+      this.salto = setTimeout(() =>{
+        this.player.classList.remove("char-jump");
+        this.player.classList.add("char-run");
+        this.contador++;
+      },1500)
   }
 
   agacharse(){
-    if(this.player.classList != "char-slide" && this.player.classList != "char-jump"){
       this.player.classList.remove('char-run');
       this.player.classList.add('char-slide');
       this.agachar = setTimeout(()=>{
         this.player.classList.remove('char-slide');
         this.player.classList.add('char-run');
       },500)
-    }
   }
 
   colision():boolean{
@@ -119,7 +115,7 @@ export class RunnerComponent implements OnInit {
         this.player.classList.remove('char-jump');
         this.player.classList.remove('char-slide');
         this.player.classList.add('char-die');
-        setTimeout(() => {
+        this.muerte = setTimeout(() => {
           //Codigo cuando se muere el personaje
           this.player.classList.remove('char-die');
           this.player.classList.add('fijo');
@@ -129,7 +125,7 @@ export class RunnerComponent implements OnInit {
         return true;
       }
     }
-     else if (this.obstaculoBajo.style.display == 'none'){
+    else if (this.obstaculoBajo.style.display == 'none'){
       // Colision con el obstaculo alto
       if(blockLeftAlto >= 50 && blockLeftAlto <= 90 && playerTop >= 225 && playerTop <= 400){
         clearTimeout(this.salto);
@@ -138,7 +134,7 @@ export class RunnerComponent implements OnInit {
         this.player.classList.remove('char-jump');
         this.player.classList.remove('char-slide');
         this.player.classList.add('char-die');
-        setTimeout(() => {
+        this.muerte = setTimeout(() => {
           //Codigo cuando se muere el personaje
           this.player.classList.remove('char-die');
           this.player.classList.add('fijo');
@@ -146,60 +142,106 @@ export class RunnerComponent implements OnInit {
         clearInterval(this.perdio);
         this.obstaculoAlto.style.display = 'none';
         return true;
+      }
     }
-
-  }
   return false;
 }
 
   generarFuego(){
-      var random = Math.floor(Math.random() * 3);
+      this.contador = Math.floor(Math.random() * 4);
+      var random = Math.floor(Math.random() * 2);
       console.log(random);
+      console.log(this.contador);
       if(random == 0){
         this.obstaculoAlto.style.display = 'block';
         this.obstaculoBajo.style.display = 'none';
-      } else {
+        if(this.contador >= 3 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
+          this.generarMoneda();
+        }
+      } else if(random == 1) {
         this.obstaculoAlto.style.display = 'none';
         this.obstaculoBajo.style.display = 'block';
+        if(this.contador >= 3 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
+          this.generarMoneda();
+        }
       }
     }
 
-  // cargarFondo1():void{
-  //   // Aca crearia el fondo del juego, cargando las respectivas imagenes al arreglo de Layers
-  //   // Estaria bueno hacerlo en esta funcion, ya que podriamos pasarlo por parametros y asi tener distintos tipos de fondos, lo que nos daria la promocion
-  //   var backgroundLayer1 = new Image();
-  //   backgroundLayer1.src = '../assets/images/games/runner/layer-1.png';
-  //   var backgroundLayer2 = new Image();
-  //   backgroundLayer2.src = '../assets/images/games/runner/layer-2.png';
-  //   var backgroundLayer3 = new Image();
-  //   backgroundLayer3.src = '../assets/images/games/runner/layer-3.png';
-  //   var backgroundLayer4 = new Image();
-  //   backgroundLayer4.src = '../assets/images/games/runner/layer-4.png';
-  //   var backgroundLayer5 = new Image();
-  //   backgroundLayer5.src = '../assets/images/games/runner/layer-5.png';
+  generarMoneda(){
+    this.coin.classList.add('coin');
+    this.burbuja.classList.add('burbuja');
+  }
 
-  //   var layer1 = new Layer(this.ctx,backgroundLayer1,0.6,this.gameSpeed);
-  //   var layer2 = new Layer(this.ctx,backgroundLayer2,0.5,this.gameSpeed);
-  //   var layer3 = new Layer(this.ctx,backgroundLayer3,0.4,this.gameSpeed);
-  //   var layer4 = new Layer(this.ctx,backgroundLayer4,0.3,this.gameSpeed);
-  //   var layer5 = new Layer(this.ctx,backgroundLayer5,0.2,this.gameSpeed);
+  colisionMoneda():boolean{
+    var playerTop = parseInt(window.getComputedStyle(this.player).getPropertyValue("top"));
+    var coinLeft = parseInt(window.getComputedStyle(this.coin).getPropertyValue("left"));
 
+    if(coinLeft >= 50 && coinLeft <= 90 && playerTop >= 225 && playerTop <= 300){
+      this.coin.classList.remove('coin');
+      this.burbuja.classList.remove('burbuja');
+      this.burbuja.classList.add('burbuja-die');
+      this.burbuja.style.left = coinLeft-13;
+      setTimeout(()=>{
+        this.burbuja.classList.remove('burbuja-die');
+      },2000)
+      this.contadorMonedas += 1;
+      console.log("Moneda agarrada, total:" + this.contadorMonedas);
+      return true;
+    } else if (coinLeft <= 10) {
+      this.coin.classList.remove('coin');
+      this.burbuja.classList.remove('burbuja');
+      this.burbuja.classList.remove('burbuja-die');
+    }
+    return false;
+  }
 
-  //   this.layers.push(layer1,layer2,layer3,layer4,layer5);
-  // }
+  reiniciarJuego(){
+    this.limpiarMonedas();
+    this.limpiarIntervalos();
+    this.reiniciarJugador();
+    this.iniciarJuego();
+  }
 
-  // jump(){
-  //   this.avatar.jump();
-  // }
+  reiniciarJugador(){
+    this.player.classList.remove('fijo');
+    this.player.classList.remove('char-die');
+    this.player.classList.remove('char-slide');
+    this.player.classList.remove('char-jump');
+    this.player.classList.remove('char-run');
+    this.player.classList.add('char-run');
+  }
 
-  // animate(){
-  //   this.ctx.clearRect(0,0,this.width,this.heigth);
-  //    this.layers.forEach(event =>{
-  //      event.update();
-  //      event.draw();
-  //    })
-  //    this.avatar.draw();
-  //  }
+  limpiarIntervalos(){
+    clearInterval(this.perdio);
+    clearTimeout(this.salto);
+    clearTimeout(this.agachar);
+    clearTimeout(this.muerte);
+    clearInterval(this.fuego);
+  }
+
+  limpiarMonedas(){
+    this.contadorMonedas = 0;
+    this.coin.classList.remove('coin');
+    this.burbuja.classList.remove('burbuja');
+    this.burbuja.classList.remove('burbuja-die');
+  }
+
+  iniciarJuego(){
+
+    this.perdio = setInterval(() =>{
+      this.perdida = this.colision();
+
+      if(this.coin.classList == 'coin'){
+          this.colisionMoneda();
+      }
+    },10)
+
+    this.fuego = setInterval(() =>{
+      if(this.perdida == false){
+        this.generarFuego();
+      }
+    },2500)
+  }
 
 
 }
