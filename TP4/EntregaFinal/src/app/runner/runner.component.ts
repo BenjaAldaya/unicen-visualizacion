@@ -93,7 +93,7 @@ export class RunnerComponent implements OnInit {
         this.player.classList.remove("char-jump");
         this.player.classList.add("char-run");
         this.contador++;
-      },900)
+      },700)
   }
 
   agacharse(){
@@ -112,7 +112,7 @@ export class RunnerComponent implements OnInit {
 
     if(this.obstaculoAlto.style.display == 'none'){
       // Colision con el obstaculo bajo
-      if(blockLeftBajo >= 50 && blockLeftBajo <= 90 && playerTop >= 390 && playerTop <= 500){
+      if(blockLeftBajo >= 90 && blockLeftBajo <= 150 && playerTop >= 390 && playerTop <= 500){
         clearTimeout(this.salto);
         clearTimeout(this.agachar);
         this.player.classList.remove('char-run');
@@ -131,7 +131,7 @@ export class RunnerComponent implements OnInit {
     }
     else if (this.obstaculoBajo.style.display == 'none'){
       // Colision con el obstaculo alto
-      if(blockLeftAlto >= 50 && blockLeftAlto <= 90 && playerTop >= 225 && playerTop <= 400){
+      if(blockLeftAlto >= 90 && blockLeftAlto <= 150 && playerTop >= 250 && playerTop <= 425){
         clearTimeout(this.salto);
         clearTimeout(this.agachar);
         this.player.classList.remove('char-run');
@@ -186,14 +186,14 @@ export class RunnerComponent implements OnInit {
     var playerTop = parseInt(window.getComputedStyle(this.player).getPropertyValue("top"));
     if  (this.coin.classList.contains('coin')){ // si es la moneda 1 
       var coinLeft = parseInt(window.getComputedStyle(this.coin).getPropertyValue("left"));
-      if(coinLeft >= 50 && coinLeft <= 90 && playerTop >= 250 && playerTop <= 300){
+      if(coinLeft >= 80 && coinLeft <= 120 && playerTop >= 250 && playerTop <= 300){
         this.coin.classList.remove('coin');
         this.burbuja.classList.remove('burbuja');
         this.burbuja.classList.add('burbuja-die');
-        this.burbuja.style.left = coinLeft-13;
+        // this.burbuja.style.left = coinLeft-13;
         setTimeout(()=>{
           this.burbuja.classList.remove('burbuja-die');
-        },2000)
+        },500)
         this.contadorMonedas += 1;
         console.log("Moneda agarrada, total:" + this.contadorMonedas);
         return true;
@@ -205,14 +205,14 @@ export class RunnerComponent implements OnInit {
       return false;
     }else{ // si es la moneda 2 
       var coinLeft2 = parseInt(window.getComputedStyle(this.coin2).getPropertyValue("left"))
-      if(coinLeft2 >= 50 && coinLeft2 <= 90 && playerTop >= 400 && playerTop <= 450){
+      if(coinLeft2 >= 80 && coinLeft2 <= 120 && playerTop >= 400 && playerTop <= 450){
         this.coin2.classList.remove('coin2');
         this.burbuja2.classList.remove('burbuja2');
         this.burbuja2.classList.add('burbuja-die2');
-        this.burbuja2.style.left = coinLeft2-13;
+        // this.burbuja2.style.left = coinLeft2;
         setTimeout(()=>{
           this.burbuja2.classList.remove('burbuja-die2');
-        },2000)
+        },500)
         this.contadorMonedas += 1;
         console.log("Moneda agarrada, total:" + this.contadorMonedas);
         return true;

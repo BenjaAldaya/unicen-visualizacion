@@ -73,7 +73,7 @@
     height: 121px;
     position: absolute;
     top: 400px;
-    left: 50px;
+    left: 80px;
     background-image: url('../../assets/images/games/runner/avatar/avatar-run.png');
     /* background-position: center; */
     /* background-size: cover; */
@@ -86,7 +86,7 @@
     height: 121px;
     position: absolute;
     top: 400px;
-    left: 50px;
+    left: 80px;
     background-image: url('../../assets/images/games/runner/avatar/avatar-jump.png');
     /* background-position: center; */
     /* background-size: cover; */
@@ -99,7 +99,7 @@
     height: 94px;
     position: absolute;
     top: 440px;
-    left: 50px;
+    left: 80px;
     background-image: url('../../assets/images/games/runner/avatar/avatar-slide.png');
     /* background-position: center; */
     /* background-size: cover; */
@@ -112,7 +112,7 @@
     height: 121px;
     position: absolute;
     top: 400px;
-    left: 60px;
+    left: 90px;
     background-image: url('../../assets/images/games/runner/avatar/avatar-die2.png');
     /* background-position: center; */
     /* background-size: cover; */
@@ -125,7 +125,7 @@
     height: 121px;
     position: absolute;
     top: 400px;
-    left: 60px;
+    left: 90px;
     background-image: url('../../assets/images/games/runner/avatar/avatar-die-fijo.png');
     /* background-position: center;
     background-size: cover; */
@@ -204,7 +204,7 @@
     height: 65px;
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/bluespritesheet.png');
-    top: 350px;
+    top: 370px;
     /* left: 50px; */
     animation: obstacle 1s steps(6) infinite, obstacle-movement 2s infinite linear ;
     z-index: 7;
@@ -259,8 +259,8 @@
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/burbuja-die.png');
     top: 287px;
-    /* left: 637px; */
-    animation: burbuja 2s steps(7) infinite;
+    left: 30px;
+    animation: burbuja 0.5s steps(7);
     z-index: 8;
 }
 
@@ -294,8 +294,8 @@
     position: absolute;
     background-image: url('../../assets/images/games/runner/obstacle/burbuja-die.png');
     top: 437px;
-    /* left: 637px; */
-    animation: burbuja 2s steps(7) infinite;
+    left: 30px;
+    animation: burbuja 0.5s steps(7);
     z-index: 8;
 }
 
