@@ -14,8 +14,6 @@ export const Juegos : Games [] = [
         comojugar1:"El Conecta 4 se juega se juega de a dos jugadores sobre un tablero de siete columnas y seis filas. El objetivo es alinear cuatro fichas de un mismo jugador, horizontalmente, verticalmente o en diagonal.",
         comojugar2:"Haz click sobre las fichas y colocalas sobre los depositadores que se muestran en la pantalla",
         comojugarimg:"../../../assets/images/mouse.png",
-        comojugarimgH:'50%',
-        comojugarimgW:'25%',
         fecha:new Date(2022,5,30),
         valoracion:4
     },

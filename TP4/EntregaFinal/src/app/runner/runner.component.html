@@ -5,8 +5,8 @@
 <div id="game">
     <div id="panelcontrol" class="container">
         <!-- <div class="puntuacion">Puntuacion : {{contadorMonedas}}</div> -->
-        <div class="puntuacion"><div class="coincontador"></div><div class="burbujacontador"></div> <div> X{{contadorMonedas}}</div></div>
-        <div class="reiniciar"><button class="btn-primary" (click)="reiniciarJuego()">Reiniciar</button></div>
+        <div class="puntuacion"><div class="coincontador"></div><div class="burbujacontador"></div><div class="puntos"><h3>x {{contadorMonedas}}</h3></div></div>
+        <div class="reiniciar"><div class="puntosobjetivo"><h3>Objetivo: {{winnercondition}}</h3></div></div>
     </div>
     <div id="cartel" class="cartelcont">
         <div id="gameover" class="gameover">

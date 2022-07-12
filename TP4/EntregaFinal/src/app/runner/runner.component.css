@@ -350,7 +350,19 @@
     width: 50%;
     height: 100%;
     display: flex;
-    justify-content: flex-start;
+}
+
+.puntuacion .puntos{
+    position: absolute;
+    left:75px;
+    top:17px;   
+    font-size: 25px;
+}
+
+.reiniciar .puntosobjetivo{
+    position: absolute; 
+    top:17px;
+    font-size: 25px;
 }
 
 .reiniciar{
