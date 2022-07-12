@@ -322,7 +322,7 @@ export class RunnerComponent implements OnInit {
       if(this.contador <= 1){
         this.generarMoneda();
       }
-    },1000)
+    },1234)
   }
 
 

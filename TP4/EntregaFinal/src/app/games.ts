@@ -10,8 +10,6 @@ export interface Games {
     comojugar2?:string;
     comojugar3?:string;
     comojugarimg?:string;
-    comojugarimgH?:string;
-    comojugarimgW?:string;
     fecha:Date;
     valoracion:Number;
 }
