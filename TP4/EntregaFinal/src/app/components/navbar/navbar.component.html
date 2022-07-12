@@ -47,15 +47,17 @@
     <div class="allgames"><button>todos los juegos</button></div>
   </div>
 
-  <div class="navlogeado" *ngIf="estaLogueado">
-    <div class="navcat">
+  <div class="navlogeado" *ngIf="estaLogueado"> 
+    <!-- Barra favoritos -->
+    <div class="dropdown">
       <a type="button">
         <p>Favoritos</p>
         <i class="bi bi-star" style="margin-left: 1rem"></i>
       </a>
-      <ul class="drop-menu cat">
+      <!-- drop-menu cat -->
+      <ul class="dropdown-content">
         <li *ngFor="let juego of juegos | slice: 0:5">
-          <a [routerLink]="['/search']">
+          <a routerLink="/playgame/{{juego.link}}">
             <p>{{ juego.nombre }}</p>
             <figure><img src="{{ juego.img }}" alt="" /></figure>
           </a>

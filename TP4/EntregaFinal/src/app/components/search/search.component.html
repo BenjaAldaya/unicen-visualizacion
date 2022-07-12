@@ -2,7 +2,7 @@
     <input type="text" placeholder="Buscador" id="search" [(ngModel)]="search" (ngModelChange)="buscar($event)">
     <ul class="dropdown-content">
         <li *ngFor="let juego of juegosFiltrados | slice:0:6;">
-            <a href="playgame/{{juego.nombre}}">
+            <a routerLink="/playgame/{{juego.link}}">
                 <p>{{juego.nombre}}</p>
                 <figure><img src={{juego.img}} alt=""></figure>
             </a>
