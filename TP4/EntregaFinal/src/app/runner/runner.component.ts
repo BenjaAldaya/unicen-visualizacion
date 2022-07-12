@@ -42,6 +42,8 @@ export class RunnerComponent implements OnInit {
   winner:any;
   panel:any;
 
+  winnercondition:number;
+
 
   constructor() {}
 
@@ -55,6 +57,7 @@ export class RunnerComponent implements OnInit {
     // this.cargarFondo1();
     // this.animate();
     // setInterval(() =>{this.animate()}, 1000/60);
+    this.winnercondition = 5;
     this.panel = document.getElementById('panelcontrol');
     this.cartel = document.getElementById('cartel');
     this.winner = document.getElementById('winner');
@@ -202,7 +205,9 @@ export class RunnerComponent implements OnInit {
           this.burbuja.classList.remove('burbuja-die');
         },500)
         this.contadorMonedas += 1;
-        console.log("Moneda agarrada, total:" + this.contadorMonedas);
+        if(this.contadorMonedas == this.winnercondition){
+          this.findejuego();
+        }
         return true;
       } else if (coinLeft <= 1) {
         this.coin.classList.remove('coin');
@@ -221,7 +226,9 @@ export class RunnerComponent implements OnInit {
           this.burbuja2.classList.remove('burbuja-die2');
         },500)
         this.contadorMonedas += 1;
-        console.log("Moneda agarrada, total:" + this.contadorMonedas);
+        if(this.contadorMonedas == this.winnercondition){
+          this.findejuego();
+        }
         return true;
       }else if (coinLeft2 <= 1){
         this.coin2.classList.remove('coin2');
@@ -266,6 +273,13 @@ export class RunnerComponent implements OnInit {
     this.burbuja2.classList.remove('burbuja-die2');
   }
 
+  limpiarObstaculos(){
+    this.obstaculoAlto.style.display='none';
+    this.obstaculoBajo.style.display='none';
+    this.obstaculoAlto.classList.remove('obstaculo');
+    this.obstaculoBajo.classList.remove('obstaculo2');
+  }
+
   findejuego(){
     this.limpiarMonedas();
     this.panel.style.display = 'none';
@@ -273,6 +287,9 @@ export class RunnerComponent implements OnInit {
     if (this.perdida){
       this.gameover.style.display='flex';
     }else{
+      this.limpiarIntervalos();
+      this.limpiarObstaculos();
+      this.reiniciarJugador();
       this.winner.style.display='flex';
     }
   }
