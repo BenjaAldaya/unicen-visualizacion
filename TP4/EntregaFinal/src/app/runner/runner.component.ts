@@ -43,6 +43,7 @@ export class RunnerComponent implements OnInit {
   panel:any;
 
   winnercondition:number;
+  moneda: any;
 
 
   constructor() {}
@@ -162,31 +163,31 @@ export class RunnerComponent implements OnInit {
 }
 
   generarFuego(){
-      this.contador = Math.floor(Math.random() * 3);
       var random = Math.floor(Math.random() * 2);
       // console.log(random);
       // console.log(this.contador);
       if(random == 0){
         this.obstaculoAlto.style.display = 'block';
         this.obstaculoBajo.style.display = 'none';
-        if(this.contador >= 2 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
-          this.generarMoneda();
-        }
       } else if(random == 1) {
         this.obstaculoAlto.style.display = 'none';
         this.obstaculoBajo.style.display = 'block';
-        if(this.contador >= 2 && this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die'){
-          this.generarMoneda();
-        }
       }
+    }
+
+    nohayMoneda():boolean{
+        if(this.coin.classList != 'coin' && this.burbuja.classList != 'burbuja' && this.burbuja.classList != 'burbuja-die' && this.coin2.classList != 'coin2' && this.burbuja2.classList != 'burbuja2' && this.burbuja2.classList != 'burbuja-die2'){
+          return true;
+        }
+      return false;
     }
 
   generarMoneda(){
     var random = Math.floor(Math.random() * 2);
-    if(random == 0){
+    if(random == 0 && this.nohayMoneda()){
       this.coin.classList.add('coin');
       this.burbuja.classList.add('burbuja');
-    }else if (random == 1){
+    }else if (random == 1 && this.nohayMoneda()){
       this.coin2.classList.add('coin2');
       this.burbuja2.classList.add('burbuja2');
     }
@@ -262,6 +263,7 @@ export class RunnerComponent implements OnInit {
     clearTimeout(this.agachar);
     clearTimeout(this.muerte);
     clearInterval(this.fuego);
+    clearInterval(this.moneda);
   }
 
   limpiarMonedas(){
@@ -299,9 +301,9 @@ export class RunnerComponent implements OnInit {
     this.cartel.style.display='none';
     this.gameover.style.display='none';
     this.winner.style.display='none';
+
     this.perdio = setInterval(() =>{
       this.perdida = this.colision();
-
       if(this.coin.classList == 'coin' || this.coin2.classList == 'coin2' ){
           this.colisionMoneda();
       }
@@ -314,6 +316,13 @@ export class RunnerComponent implements OnInit {
         this.findejuego();
       }
     },2000)
+
+    this.moneda = setInterval(() =>{
+      this.contador = Math.floor(Math.random() * 3);
+      if(this.contador <= 1){
+        this.generarMoneda();
+      }
+    },1000)
   }
 
 

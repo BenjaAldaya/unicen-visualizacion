@@ -24,8 +24,8 @@ export const Juegos : Games [] = [
         img:'./assets/images/games/runner.jpg',
         clicks:1200,
         link:'runner',
-        descripcion:'empty',
-        comojugar1:'empty',
+        descripcion:'El personaje del jugador se ve obligado a correr durante un tiempo infinito mientras evita los obstáculos. El objetivo del jugador es alcanzar una alta puntuación sobreviviendo el mayor tiempo posible.',
+        comojugar1:'Utiliza la flecha hacia arriba para saltar y la flecha hacia abajo para deslizarte, deberas saltar cuando venga la roja y deslizarte cuando la azul quiera matarte.',
         comojugarimg:'./assets/images/Arrow_keys_updown.png',
         fecha:new Date(2022,5,30),
         valoracion:5
