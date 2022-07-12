@@ -2,10 +2,10 @@
     <section class="game-desc-small">
         <article class="game-info">
             <div class="game-photo">
-                <img src="./assets/images/games/conecta4.jpg" alt="game-icon">
+                <img src={{gameact?.img}} alt="game-icon">
             </div>
             <div class="game-name">
-                <h2>Conecta 4</h2>
+                <h2>{{gameact?.nombre}}</h2>
             </div>
         </article>
         <article class="game-user-buttons">
@@ -44,10 +44,16 @@
         </article>
         <article class="game" *ngIf="gameact?.link == 'runner'">
             <div class="gameinc" *ngIf="juegoiniciado == false">
-                <!-- <img src="../../../assets/images/games/cuatroenlinea.png"> -->
+                <img src="../../../assets/images/games/ninjarunner.jpg">
                 <a role="button"><i class="bi bi-play-circle" id="btn-play" (click)="empezarjuego()"></i></a>
             </div>
             <app-runner *ngIf="juegoiniciado==true"></app-runner>
+        </article>
+        <article class="game" *ngIf="gameact?.link != 'conecta-4' && gameact?.link != 'runner'">
+            <div class="gameinc" *ngIf="juegoiniciado == false">
+                <img src={{gameact?.img}}>
+                <a role="button"><i class="bi bi-play-circle" id="btn-play"></i></a>
+            </div>
         </article>
         <article class="ads">
             <app-ad></app-ad>
@@ -61,15 +67,17 @@
     <section class="game-desc-big">
         <article class="description" id="description">
             <h1>Descripcion</h1>
-            <p>Conecta 4 es un juego de reflexión para niños y adultos que se dió a conocer en 1974. El Conecta 4 se hizo popular muy rápido ya que las reglas del juego son muy sencillas sin embargo  la estrategia  para ganar requiere experiencia por parte de los jugadores. Es un excelente juego para hacer trabajar el cerebro de sus niños</p>
+            <p>{{gameact?.descripcion}}</p>
         </article>
         <article class="howplay" id="howplay">
             <h1>Como jugar</h1>
-            <p>El Conecta 4 se juega se juega de a dos jugadores sobre un tablero de siete columnas y seis filas. El objetivo es alinear cuatro fichas de un mismo jugador, horizontalmente, verticalmente o en diagonal.</p>
+            <!-- <p>El Conecta 4 se juega se juega de a dos jugadores sobre un tablero de siete columnas y seis filas. El objetivo es alinear cuatro fichas de un mismo jugador, horizontalmente, verticalmente o en diagonal.</p>
             <p>Haz click sobre las fichas y colocalas sobre los depositadores que se muestran en la pantalla</p>
-            <!-- <img src="../../../assets/images/Arrow_keys.png" alt="" width="300" height="200" >
-            <img src="../../../assets/images/wasd.png" alt="" width="300" height="200" > -->
-            <img src="../../../assets/images/mouse.png" alt="" width="300" height="200">
+            <img src="../../../assets/images/mouse.png" alt="" width="300" height="200"> -->
+            <p>{{gameact?.comojugar1}}</p>
+            <p>{{gameact?.comojugar2}}</p>
+            <img src="{{gameact?.comojugarimg}}" alt="" [ngClass]="{'imgconecta4':gameact?.link=='conecta-4' , 'imgrunner':gameact?.link == 'runner'}">
+
         </article>
         <article class="gameplay">
             <h1>Gameplay</h1>

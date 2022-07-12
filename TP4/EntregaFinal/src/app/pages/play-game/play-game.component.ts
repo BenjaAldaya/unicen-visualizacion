@@ -29,11 +29,11 @@ export class PlayGameComponent implements OnInit {
   ngOnInit(): void {
     this.route.params.subscribe(gamename=> {
      this.nombregame = gamename["LINK"];
+     this.gameact = this.juegos.find(game => game.link == this.nombregame);
+     console.log(this.gameact);
     })
-
-    this.gameact = this.juegos.find(game => game.link == this.nombregame);
-    console.log(this.gameact);
-  }
+  }   
+  
   
   empezarjuego(){
     this.juegoiniciado = true;
