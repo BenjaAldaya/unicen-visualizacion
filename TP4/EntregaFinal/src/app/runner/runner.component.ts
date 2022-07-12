@@ -282,9 +282,9 @@ export class RunnerComponent implements OnInit {
     this.cartel.style.display='none';
     this.gameover.style.display='none';
     this.winner.style.display='none';
+
     this.perdio = setInterval(() =>{
       this.perdida = this.colision();
-
       if(this.coin.classList == 'coin' || this.coin2.classList == 'coin2' ){
           this.colisionMoneda();
       }
